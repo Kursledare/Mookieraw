@@ -1,5 +1,6 @@
 ﻿
 using System;
+using GameEquipment;
 
 namespace ProjecktMookieraaw_Weapon
 {

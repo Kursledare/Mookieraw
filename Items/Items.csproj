@@ -43,7 +43,7 @@
     <Compile Include="Armor.cs" />
     <Compile Include="ChainArmor.cs" />
     <Compile Include="FullArmor.cs" />
-    <Compile Include="IItems.cs" />
+    <Compile Include="Interfaces\IItems.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="LeatherArmor.cs" />
     <Compile Include="LongSword.cs" />
