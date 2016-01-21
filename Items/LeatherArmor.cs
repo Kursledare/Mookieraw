@@ -2,7 +2,7 @@
 
 namespace GameEquipment
 {
-   public class LeatherArmor : Armor, IItems
+   public class LeatherArmor : Armor
    {
        public LeatherArmor()
        {

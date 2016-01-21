@@ -1,8 +1,9 @@
 ﻿using Items.Enums;
+using Items.Interfaces;
 
 namespace GameEquipment
 {
-    public class FullPlate : Armor, IItems
+    public class FullPlate : Armor
     {
         public FullPlate()
         {
