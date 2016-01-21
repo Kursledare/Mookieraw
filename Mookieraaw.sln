@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurnManager", "TurnManager\TurnManager.csproj", "{127D7283-B4D8-4585-A755-675D2B4E8A44}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandHandler", "CommandHandler\CommandHandler.csproj", "{8DDD7E24-AFF5-4686-8602-EC0E9C262DCE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dices", "Dices\Dices.csproj", "{F00036F7-E63B-4D1A-A3D9-D63E6F20D368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Items", "Items\Items.csproj", "{83257DF5-F699-4FC9-946D-FF87348AA1DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F00036F7-E63B-4D1A-A3D9-D63E6F20D368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F00036F7-E63B-4D1A-A3D9-D63E6F20D368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F00036F7-E63B-4D1A-A3D9-D63E6F20D368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83257DF5-F699-4FC9-946D-FF87348AA1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83257DF5-F699-4FC9-946D-FF87348AA1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83257DF5-F699-4FC9-946D-FF87348AA1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83257DF5-F699-4FC9-946D-FF87348AA1DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
