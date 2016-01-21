@@ -52,6 +52,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommandHandler\CommandHandler.csproj">
+      <Project>{8ddd7e24-aff5-4686-8602-ec0e9c262dce}</Project>
+      <Name>CommandHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EntityData\EntityData.csproj">
       <Project>{de6a9122-de0e-4678-806c-dd7f52f07499}</Project>
       <Name>EntityData</Name>
