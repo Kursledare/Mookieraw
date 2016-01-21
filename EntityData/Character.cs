@@ -88,7 +88,9 @@ namespace EntityData
         #region Methods
         public void Action()
         {
-            throw new NotImplementedException();
+            //TODO Add select action logic, just attack target for now.
+            var targetEntity = Target as IEntity;
+            if (targetEntity != null) Attack(targetEntity);
         }
 
         public void Attack(IEntity entity)
