@@ -1,11 +1,12 @@
-﻿using CommandHandler.enums;
+﻿using System.Dynamic;
+using CommandHandler.enums;
 
 namespace CommandHandler.interfaces
 {
     public interface ICommandable
     {
         Commands CurrentCommands { get; set; }
-        Commands GetAvailableCommands();
+        Commands AvailableCommands { get; }
         bool PlayerControlled { get; }
     }
 }

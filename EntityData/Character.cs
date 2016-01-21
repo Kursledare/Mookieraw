@@ -1,4 +1,5 @@
 ﻿using System;
+using CommandHandler.enums;
 using EntityData.Interfaces;
 using TurnManager;
 using TurnManager.interfaces;
@@ -65,6 +66,11 @@ namespace EntityData
         {
             get { return _d20.Roll() + InitiativeBonus; }
         }
+        
+        public Attributes Attributes { get; set; }
+        public int AttackBonus { get; set; }
+        public int DamageBonus { get; set; }
+        #endregion
 
         #region IGameObject properties
         public bool IsActive { get; private set; }
@@ -72,9 +78,15 @@ namespace EntityData
         public IGameObject Target { get; set; }
         #endregion
 
-        public Attributes Attributes { get; set; }
-        public int AttackBonus { get; set; }
-        public int DamageBonus { get; set; }
+        #region ICommandable properties
+        public Commands CurrentCommands { get; set; }
+
+        public Commands AvailableCommands
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool PlayerControlled { get; }
         #endregion
 
         #region Entity Properties
@@ -117,5 +129,7 @@ namespace EntityData
             _d20 = new Dices.D20();
         }
         #endregion
+
+        
     }
 }

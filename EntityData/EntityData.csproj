@@ -52,6 +52,10 @@
     <Compile Include="Race.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommandHandler\CommandHandler.csproj">
+      <Project>{8ddd7e24-aff5-4686-8602-ec0e9c262dce}</Project>
+      <Name>CommandHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dices\Dices.csproj">
       <Project>{f00036f7-e63b-4d1a-a3d9-d63e6f20d368}</Project>
       <Name>Dices</Name>
@@ -60,6 +64,9 @@
       <Project>{127d7283-b4d8-4585-a755-675d2b4e8a44}</Project>
       <Name>TurnManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,8 +1,9 @@
-﻿using TurnManager.interfaces;
+﻿using CommandHandler.interfaces;
+using TurnManager.interfaces;
 
 namespace EntityData.Interfaces
 {
-    public interface IEntity:IGameObject
+    public interface IEntity:IGameObject,ICommandable
     {
         int CurrentHp { get; set; }
         int Ac { get; set; }
