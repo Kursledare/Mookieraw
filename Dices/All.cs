@@ -1,38 +1,8 @@
 ﻿using System;
+using Dices.Interfaces;
 
 namespace Dices
 {
-    public interface IDice
-    {
-        //Int32 Roll()
-        //{
-        //    Random rand1 = new Random();
-
-        //    int sum = rand1.Next(1, 7);
-        //    int count = 1;
-
-        //    {
-        //        sum = rand1.Next(1, 7);
-        //        count++;
-        //    }
-
-        //    return count;
-        //}
-
-        Int32 Sides
-        {
-            get;
-            set;
-        }
-
-        String Name
-        {
-            get;
-            set;
-        }
-        
-    }
-
     public class Dice
     {
         public class D3 : IDice
@@ -49,11 +19,14 @@ namespace Dices
                 set { Sides = 3; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
+
         public class D4 : IDice
         {
             public string Name
@@ -68,11 +41,14 @@ namespace Dices
                 set { Sides = 4; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
+
         public class D8 : IDice
         {
             public string Name
@@ -87,11 +63,14 @@ namespace Dices
                 set { Sides = 8; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
+
         public class D10 : IDice
         {
             public string Name
@@ -106,11 +85,14 @@ namespace Dices
                 set { Sides = 10; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
+
         public class D12 : IDice
         {
             public string Name
@@ -125,11 +107,14 @@ namespace Dices
                 set { Sides = 12; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
+
         public class D20 : IDice
         {
             public string Name
@@ -144,11 +129,14 @@ namespace Dices
                 set { Sides = 20; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
+
         public class D100 : IDice
         {
             public string Name
@@ -163,11 +151,12 @@ namespace Dices
                 set { Sides = 100; }
             }
 
-            public int Roll()
+            public int Roll(Dice dice)
             {
-                throw new NotImplementedException();
+                var r1 = new Random();
+                var resultat = r1.Next(1, (Sides + 1));
+                return resultat;
             }
         }
     }
-
 }
