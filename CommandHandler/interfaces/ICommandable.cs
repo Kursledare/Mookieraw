@@ -6,5 +6,6 @@ namespace CommandHandler.interfaces
     {
         Commands CurrentCommands { get; set; }
         Commands GetAvailableCommands();
+        bool PlayerControlled { get; }
     }
 }
