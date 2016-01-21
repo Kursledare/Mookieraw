@@ -15,6 +15,8 @@ namespace TurnManagerTest
             public int Initiative { get; } = 1;
             public bool IsActive { get; } = true;
             public Vector2 Position { get; }=new Vector2();
+            public IGameObject Target { get; set; }
+
             public void Action()
             {
                 ActionCalled = true;
