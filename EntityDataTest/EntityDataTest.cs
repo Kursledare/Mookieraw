@@ -9,12 +9,21 @@ namespace EntityDataTest
         [Test]
         public void CharacterCanAttack()
         {
-            var testCharacter = new Character();
-            var testTarget = new Character();
+            var testCharacter = new Character()
+            {
+                CurrentHp = 100,
+                Ac = 100
+            };
+            var testTarget = new Character()
+            {
+                CurrentHp = 100,
+                Ac = 0
+
+            };
             testCharacter.Target = testTarget;
             var targetHpBeforeAttack = testTarget.CurrentHp;
             testCharacter.Action();
-            Assert.That(testTarget.CurrentHp,Is.LessThan(targetHpBeforeAttack));
+            Assert.That(testTarget.CurrentHp, Is.LessThan(targetHpBeforeAttack));
         }
     }
 }
