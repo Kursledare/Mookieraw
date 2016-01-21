@@ -13,7 +13,6 @@ namespace Dices.Interfaces
             get;
             set;
         }
-
         String Name
         {
             get;
