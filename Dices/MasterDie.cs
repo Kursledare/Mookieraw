@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Dices.Interfaces;
 
 namespace Dices
@@ -12,8 +8,12 @@ namespace Dices
         private readonly Random _rand;
 
         public int Sides { get; protected set; }
-        public string Name { get; protected set; }
+        public Die Name { get; protected set; }
 
+        /// <summary>
+        /// Rolls the specific die.
+        /// </summary>
+        /// <returns></returns>
         public int Roll()
         {
             var resultat = _rand.Next(1, (Sides + 1));

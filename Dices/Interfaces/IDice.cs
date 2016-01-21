@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dices.Interfaces
 {
@@ -12,7 +8,7 @@ namespace Dices.Interfaces
         {
             get;
         }
-        String Name
+        Die Name
         {
             get;
         }

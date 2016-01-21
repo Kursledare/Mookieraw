@@ -1,10 +1,10 @@
-﻿
+﻿using Items.Interfaces;
 using System;
 using GameEquipment;
 
-namespace ProjecktMookieraaw_Weapon
+namespace Items
 {
-    public class LongSword : IWeapon , IItems
+    public class LongSword : IWeapon
     {
         public int Enchanment
         {
@@ -20,21 +20,11 @@ namespace ProjecktMookieraaw_Weapon
             }
         }
 
+        public int NumOfDice { get; set; }
+
         public string Name { get; set; }
 
-        public int NumOfDise
-        {
-            get { return NumOfDise; }
-            set { NumOfDise = value; }
-        }
-
-        public string DiceZise
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string DiceSize { get; }
 
         public int DamageRoll()
         {

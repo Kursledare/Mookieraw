@@ -1,12 +1,12 @@
-﻿namespace ProjecktMookieraaw_Weapon
+﻿namespace Items.Interfaces
 {
-    public interface IWeapon
+    public interface IWeapon : IItems
     {
         int Enchanment { get; set; }
 
-        int NumOfDise { get; set; }
+        int NumOfDice { get; set; }
 
-        string DiceZise { get; }
+        string DiceSize { get; }
 
         int DamageRoll();
     }

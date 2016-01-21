@@ -3,24 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Items.Enums;
 
 namespace GameEquipment
 {
    public class LeatherArmor : Armor, IItems
    {
-       private string armorType;
-
-
-       public int Armorvalue { get; } = 2;
-
-       public string ArmorType
+       public LeatherArmor()
        {
-           get { return "Leather armor"; } 
-       }
-
-       public string Name
-       {
-           get { return "The monsteskin"; }
+            base.Name = "Leather Armor";
+            base.ArmorType = ArmorTypes.Light;
+            base.ArmorValue = 2;
        }
     }
 }

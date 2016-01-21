@@ -15,7 +15,7 @@ namespace IGameObject
         private Inventory _inventory;
         private int _totalHp;
         private int _charAttackBonus;
-        private Dice.D20 _d20;
+        private Dices.D20 _d20;
         #endregion
 
         #region Basic Properties
@@ -103,7 +103,7 @@ namespace IGameObject
         #region Constructors
         public Character()
         {
-            _d20 = new Dice.D20();
+            _d20 = new Dices.D20();
         } 
         #endregion
     }

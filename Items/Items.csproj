@@ -41,15 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Armor.cs" />
-    <Compile Include="ChainArmor.cs" />
-    <Compile Include="FullArmor.cs" />
+    <Compile Include="Chainmail.cs" />
+    <Compile Include="Enums\ArmorTypes.cs" />
+    <Compile Include="FullPlate.cs" />
+    <Compile Include="Interfaces\IArmor.cs" />
     <Compile Include="Interfaces\IItems.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="LeatherArmor.cs" />
     <Compile Include="LongSword.cs" />
-    <Compile Include="PlateArmor.cs" />
+    <Compile Include="HalfPlate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniqeArmor.cs" />
+    <Compile Include="Weapon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,36 +4,23 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Items.Enums;
+using Items.Interfaces;
 
 namespace GameEquipment
 {
-    public class Armor  : IItems
+    public abstract class Armor  : IArmor
     {
-        private string name;
-        private  int  armorvalue;
-        private string armortype;
+        private string _name;
+        private  int  _armorValue;
+        private string _armorType;
 
-        public string armorType;
 
-        public string ArmorType
-        {
-            get { return armorType; }
-        }
+        public ArmorTypes ArmorType { get; protected set; }
 
-        public string Name
-        {
-            get { return name; }
+        public string Name { get; protected set; }
 
-            set { name = value; }
-        }
-
-        public int ArmorValue
-        {
-            get
-            {
-                return armorvalue;
-            }
-        }
+        public int ArmorValue { get; protected set; }
 
     }
 }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Items.Interfaces
+namespace Items.Enums
 {
-    public interface IItems
+    public enum ArmorTypes
     {
-         string Name { get; }
+        Light, Medium, Heavy
     }
 }
