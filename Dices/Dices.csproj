@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="All.cs" />
+    <Compile Include="Die.cs" />
     <Compile Include="Interfaces\IDice.cs" />
     <Compile Include="MasterDie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

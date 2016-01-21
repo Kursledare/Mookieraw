@@ -1,8 +1,7 @@
 ﻿using System;
-using Dices;
-using IGameObject.Interfaces;
+using EntityData.Interfaces;
 
-namespace IGameObject
+namespace EntityData
 {
     public class Character : IPlayerCharacter
     {

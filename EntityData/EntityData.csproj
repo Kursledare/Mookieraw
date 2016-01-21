@@ -7,8 +7,8 @@
     <ProjectGuid>{DE6A9122-DE0E-4678-806C-DD7F52F07499}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IGameObject</RootNamespace>
-    <AssemblyName>IGameObject</AssemblyName>
+    <RootNamespace>EntityData</RootNamespace>
+    <AssemblyName>EntityData</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

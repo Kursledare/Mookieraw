@@ -1,4 +1,4 @@
-﻿namespace IGameObject.Interfaces
+﻿namespace EntityData.Interfaces
 {
     interface ICharacter : IEntity
     {

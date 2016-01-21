@@ -1,6 +1,5 @@
 ﻿using Items.Interfaces;
 using System;
-using GameEquipment;
 
 namespace Items
 {

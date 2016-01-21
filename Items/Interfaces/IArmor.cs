@@ -1,5 +1,4 @@
-﻿using GameEquipment;
-using Items.Enums;
+﻿using Items.Enums;
 
 namespace Items.Interfaces
 {
