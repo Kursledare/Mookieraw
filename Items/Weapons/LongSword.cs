@@ -1,33 +1,14 @@
-﻿using Items.Interfaces;
-using System;
+﻿using Dices;
 
 namespace Items
 {
-    public class LongSword : IWeapon
+    public class LongSword : Weapon
     {
-        public int Enchanment
+        public LongSword()
         {
-            
-            get
-            {
-                return Enchanment;
-            }
-
-            set
-            {
-                Enchanment = value;
-            }
-        }
-
-        public int NumOfDice { get; set; }
-
-        public string Name { get; set; }
-
-        public string DiceSize { get; }
-
-        public int DamageRoll()
-        {
-            throw new NotImplementedException();
+            base.Name = "Longsword";
+            base.Dice = new DiceManager(new D8());
+            base.Enchanment = 0;
         }
     }
 }
