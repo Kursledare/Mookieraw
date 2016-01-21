@@ -5,157 +5,66 @@ namespace Dices
 {
     public class Dice
     {
-        public class D3 : IDice
+        public class D3 : MasterDie
         {
-            public string Name
+            public D3()
             {
-                get { return Name; }
-                set { Name = "D3"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 3; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D3";
+                base.Sides = 3;
             }
         }
 
-        public class D4 : IDice
+        public class D4 : MasterDie
         {
-            public string Name
+            public D4()
             {
-                get { return Name; }
-                set { Name = "D4"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 4; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D4";
+                base.Sides = 4;
             }
         }
 
-        public class D8 : IDice
+        public class D8 : MasterDie
         {
-            public string Name
+            public D8()
             {
-                get { return Name; }
-                set { Name = "D8"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 8; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D8";
+                base.Sides = 8;
             }
         }
 
-        public class D10 : IDice
+        public class D10 : MasterDie
         {
-            public string Name
+            public D10()
             {
-                get { return Name; }
-                set { Name = "D10"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 10; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D10";
+                base.Sides = 10;
             }
         }
 
-        public class D12 : IDice
+        public class D12 : MasterDie
         {
-            public string Name
+            public D12()
             {
-                get { return Name; }
-                set { Name = "D12"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 12; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D12";
+                base.Sides = 12;
             }
         }
 
-        public class D20 : IDice
+        public class D20 : MasterDie
         {
-            public string Name
+            public D20()
             {
-                get { return Name; }
-                set { Name = "D20"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 20; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D20";
+                base.Sides = 20;
             }
         }
 
-        public class D100 : IDice
+        public class D100 : MasterDie
         {
-            public string Name
+            public D100()
             {
-                get { return Name; }
-                set { Name = "D100"; }
-            }
-
-            public int Sides
-            {
-                get { return Sides; }
-                set { Sides = 100; }
-            }
-
-            public int Roll(Dice dice)
-            {
-                var r1 = new Random();
-                var resultat = r1.Next(1, (Sides + 1));
-                return resultat;
+                base.Name = "D100";
+                base.Sides = 100;
             }
         }
     }

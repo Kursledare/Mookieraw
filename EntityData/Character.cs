@@ -1,4 +1,5 @@
 ﻿using System;
+using Dices;
 using IGameObject.Interfaces;
 
 namespace IGameObject
@@ -14,6 +15,7 @@ namespace IGameObject
         private Inventory _inventory;
         private int _totalHp;
         private int _charAttackBonus;
+        private Dice.D20 _d20;
         #endregion
 
         #region Basic Properties
@@ -60,7 +62,7 @@ namespace IGameObject
         public int InitiativeBonus { get; set; }
         public int Initiative
         {
-            get;    //Return a D20 + initiative bonus 
+            get { return _d20.Roll() + InitiativeBonus; }
         }
         public Attributes Attributes { get; set; }
         public int AttackBonus { get; set; }
@@ -96,6 +98,13 @@ namespace IGameObject
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region Constructors
+        public Character()
+        {
+            _d20 = new Dice.D20();
+        } 
         #endregion
     }
 }
