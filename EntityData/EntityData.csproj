@@ -56,6 +56,10 @@
       <Project>{f00036f7-e63b-4d1a-a3d9-d63e6f20d368}</Project>
       <Name>Dices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TurnManager\TurnManager.csproj">
+      <Project>{127d7283-b4d8-4585-a755-675d2b4e8a44}</Project>
+      <Name>TurnManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

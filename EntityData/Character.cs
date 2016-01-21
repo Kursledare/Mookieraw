@@ -1,5 +1,7 @@
 ﻿using System;
 using EntityData.Interfaces;
+using TurnManager;
+using TurnManager.interfaces;
 
 namespace EntityData
 {
@@ -63,6 +65,13 @@ namespace EntityData
         {
             get { return _d20.Roll() + InitiativeBonus; }
         }
+
+        #region IGameObject properties
+        public bool IsActive { get; private set; }
+        public Vector2 Position { get; set; }
+        public IGameObject Target { get; set; }
+        #endregion
+
         public Attributes Attributes { get; set; }
         public int AttackBonus { get; set; }
         public int DamageBonus { get; set; }
@@ -77,10 +86,11 @@ namespace EntityData
         #endregion
 
         #region Methods
-        public bool IsActive()
+        public void Action()
         {
             throw new NotImplementedException();
         }
+
         public void Attack(IEntity entity)
         {
             //int d20Cast = Dice.D20();
@@ -103,7 +113,7 @@ namespace EntityData
         public Character()
         {
             _d20 = new Dices.D20();
-        } 
+        }
         #endregion
     }
 }
