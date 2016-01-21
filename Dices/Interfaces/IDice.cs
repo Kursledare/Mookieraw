@@ -11,13 +11,11 @@ namespace Dices.Interfaces
         Int32 Sides
         {
             get;
-            set;
         }
         String Name
         {
             get;
-            set;
         }
-        Int32 Roll(Dice dice);
+        Int32 Roll();
     }
 }
