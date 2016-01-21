@@ -66,7 +66,7 @@ namespace EntityData
         {
             get { return _d20.Roll() + InitiativeBonus; }
         }
-        
+
         public Attributes Attributes { get; set; }
         public int AttackBonus { get; set; }
         public int DamageBonus { get; set; }
@@ -79,14 +79,28 @@ namespace EntityData
         #endregion
 
         #region ICommandable properties
-        public Commands CurrentCommands { get; set; }
+
+        private Commands _currentCommands;
+        public Commands CurrentCommands
+        {
+            get { return _currentCommands; }
+            set
+            {
+                if ((AvailableCommands | value) == value) _currentCommands = value;
+            }
+        }
 
         public Commands AvailableCommands
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                //TODO return Available commands based on class ?
+                return Commands.Attack;
+            }
         }
 
         public bool PlayerControlled { get; }
+        private Int32 _numberOfActionsPerTurn = 1;
         #endregion
 
         #region Entity Properties
@@ -100,9 +114,27 @@ namespace EntityData
         #region Methods
         public void Action()
         {
-            //TODO Add select action logic, just attack target for now.
-            var targetEntity = Target as IEntity;
-            if (targetEntity != null) Attack(targetEntity);
+            var numberOfActionsPerformed = 0;
+            foreach (Commands value in Enum.GetValues(typeof(Commands)))
+            {
+                if ((CurrentCommands & value) != value || numberOfActionsPerformed >= _numberOfActionsPerTurn) continue;
+                numberOfActionsPerformed++;
+                switch (value)
+                {
+                    case Commands.Attack:
+                        var targetEntity = Target as IEntity;
+                        if (targetEntity != null) Attack(targetEntity);
+                        break;
+                    case Commands.Move:
+                        throw new NotImplementedException();
+                        break;
+                    case Commands.Defend:
+                        throw new NotImplementedException();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         public void Attack(IEntity entity)
@@ -130,6 +162,6 @@ namespace EntityData
         }
         #endregion
 
-        
+
     }
 }

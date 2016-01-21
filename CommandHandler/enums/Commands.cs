@@ -7,7 +7,6 @@ namespace CommandHandler.enums
     {
         Attack=1,
         Move=2,
-        Die=4,
-        Defend=8
+        Defend=4
     }
 }

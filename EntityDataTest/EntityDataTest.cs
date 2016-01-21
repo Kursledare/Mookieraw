@@ -1,4 +1,5 @@
-﻿using EntityData;
+﻿using CommandHandler.enums;
+using EntityData;
 using NUnit.Framework;
 
 namespace EntityDataTest
@@ -20,8 +21,12 @@ namespace EntityDataTest
                 Ac = 0
 
             };
+
             testCharacter.Target = testTarget;
+
             var targetHpBeforeAttack = testTarget.CurrentHp;
+
+            testCharacter.CurrentCommands = Commands.Attack;
             testCharacter.Action();
             Assert.That(testTarget.CurrentHp, Is.LessThan(targetHpBeforeAttack));
         }
