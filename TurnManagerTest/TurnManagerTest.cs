@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using TurnManager;
 using TurnManager.interfaces;
 using static TurnManager.TurnManager;
@@ -10,14 +11,16 @@ namespace TurnManagerTest
     {
         private class DummyGameObject:IGameObject
         {
-            public int Initiative { get; }
-            public bool IsActive { get; }
-            public Vector2 Position { get; }
+            public Boolean ActionCalled { get; private set; }
+            public int Initiative { get; } = 1;
+            public bool IsActive { get; } = true;
+            public Vector2 Position { get; }=new Vector2();
             public void Action()
             {
-                throw new System.NotImplementedException();
+                ActionCalled = true;
             }
         }
+
         [Test]
         public void CanRegisterGameObject()
         {
@@ -26,6 +29,21 @@ namespace TurnManagerTest
             Register(go);
             Assert.That(GameObjects.Count,Is.EqualTo(1));
             Assert.That(GameObjects.Contains(go),Is.EqualTo(true));
+            Unregister(go);
+            RunTurn();
+        }
+
+        [Test]
+        public void ActionIsCalledOnGameObjectInRunTurn()
+        {
+            var go = new DummyGameObject();
+            Register(go);
+            Assert.That(go.ActionCalled,Is.False);
+            RunTurn();
+            Assert.That(go.ActionCalled,Is.True);
+            Unregister(go);
+            RunTurn();
+
         }
     }
 }
