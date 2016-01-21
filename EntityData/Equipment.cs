@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace IGameObject
+﻿namespace EntityData
 {
     public class Equipment
     {

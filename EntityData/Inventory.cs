@@ -1,4 +1,4 @@
-﻿namespace IGameObject
+﻿namespace EntityData
 {
     public class Inventory
     {

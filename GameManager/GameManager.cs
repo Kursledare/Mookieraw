@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CommandHandler.interfaces;
-using IGameObject;
+using EntityData;
 using static TurnManager.TurnManager;
 
 namespace GameManager
