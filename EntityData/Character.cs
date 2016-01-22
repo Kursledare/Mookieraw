@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CommandHandler.enums;
 using EntityData.Interfaces;
 using TurnManager;
@@ -80,14 +81,19 @@ namespace EntityData
 
         #region ICommandable properties
 
-        private Commands _currentCommands;
-        public Commands CurrentCommands
+        private Queue<Commands> _currentCommands=new Queue<Commands>();
+
+        public bool AddCommand(Commands commands)
         {
-            get { return _currentCommands; }
-            set
-            {
-                if ((AvailableCommands | value) == value) _currentCommands = value;
-            }
+            if (_currentCommands.Count >= NumberOfCommandsPerTurn) return false;
+            _currentCommands.Enqueue(commands);
+            return true;
+        }
+
+        public Commands GetNextCommand()
+        {
+            if (_currentCommands.Count < 1) return Commands.None;
+            return _currentCommands.Dequeue();
         }
 
         public Commands AvailableCommands
@@ -100,7 +106,7 @@ namespace EntityData
         }
 
         public bool PlayerControlled { get; }
-        private Int32 _numberOfActionsPerTurn = 1;
+        public  Int32 NumberOfCommandsPerTurn { get; }= 1;
         #endregion
 
         #region Entity Properties
@@ -115,11 +121,10 @@ namespace EntityData
         public void Action()
         {
             var numberOfActionsPerformed = 0;
-            foreach (Commands value in Enum.GetValues(typeof(Commands)))
+            foreach (Commands command in _currentCommands)
             {
-                if ((CurrentCommands & value) != value || numberOfActionsPerformed >= _numberOfActionsPerTurn) continue;
                 numberOfActionsPerformed++;
-                switch (value)
+                switch (command)
                 {
                     case Commands.Attack:
                         var targetEntity = Target as IEntity;

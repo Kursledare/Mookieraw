@@ -26,7 +26,12 @@ namespace EntityDataTest
 
             var targetHpBeforeAttack = testTarget.CurrentHp;
 
-            testCharacter.CurrentCommands = Commands.Attack;
+            var addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
+            Assert.That(addAttackCommandResult,Is.True);
+
+            addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
+            Assert.That(addAttackCommandResult, Is.False);
+
             testCharacter.Action();
             Assert.That(testTarget.CurrentHp, Is.LessThan(targetHpBeforeAttack));
         }
