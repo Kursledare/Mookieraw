@@ -17,7 +17,7 @@ namespace EntityData.Monsters
             base.WillSave = -1;
             base.Equipment.Weapons.Add(new ShortSword());
             base.Equipment.Armor.Add(new LeatherArmor());
-            base.Equipment.Shields.Add(new WoodenShield());
+            base.Equipment.Shield=new WoodenShield();
             base.Attributes = new Attributes(11,15,12,10,9,6);
             base.AttackBonus = 1;
         }

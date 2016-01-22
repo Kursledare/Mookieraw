@@ -1,6 +1,11 @@
-﻿using CommandHandler.enums;
+﻿using System.Collections.Generic;
+using CommandHandler.enums;
 using EntityData;
+using EntityData.Characters;
+using EntityData.Monsters;
+using GameEquipment;
 using Items;
+using Items.Interfaces;
 using NUnit.Framework;
 
 namespace EntityDataTest
@@ -21,32 +26,24 @@ namespace EntityDataTest
             addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
             Assert.That(addAttackCommandResult, Is.False);
         }
+
         [Test]
-        public void CharacterCanAttack()
+        public void CanCreateBasicFighter()
         {
-            var testCharacter = new Character()
-            {
-                CurrentHp = 100,
-                Ac = 100
-            };
-            testCharacter.Equipment.Weapons.Add(new GreatSword());
-            var testTarget = new Character()
-            {
-                CurrentHp = 100,
-                Ac = 0
-                
-            };
+            Assert.DoesNotThrow(() => { var testFighter = new BasicFighter("TestFighter"); });
+        }
 
-            testCharacter.Target = testTarget;
+        [Test]
+        public void CanCreateGoblin()
+        {
+            Assert.DoesNotThrow(() => { var testGoblin = new Goblin(); });
+        }
 
-            var targetHpBeforeAttack = testTarget.CurrentHp;
-
-            var addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
-            Assert.That(addAttackCommandResult,Is.True);
-
-
-            testCharacter.Action();
-            Assert.That(testTarget.CurrentHp, Is.LessThan(targetHpBeforeAttack));
+        [Test]
+        public void BasicFighterCanAttack()
+        {
+            //TODO
+            Assert.That(0,Is.EqualTo(1));
         }
     }
 }
