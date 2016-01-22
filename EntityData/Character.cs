@@ -120,10 +120,11 @@ namespace EntityData
         #region Methods
         public void Action()
         {
-            var numberOfActionsPerformed = 0;
+            var numberOfCommandsPerformed = 0;
             foreach (Commands command in _currentCommands)
             {
-                numberOfActionsPerformed++;
+                numberOfCommandsPerformed++;
+                if(numberOfCommandsPerformed>NumberOfCommandsPerTurn)continue;
                 switch (command)
                 {
                     case Commands.Attack:
