@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IItems.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Armor\LeatherArmor.cs" />
+    <Compile Include="Weapons\GreatSword.cs" />
     <Compile Include="Weapons\LongSword.cs" />
     <Compile Include="Armor\HalfPlate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,9 @@
       <Project>{f00036f7-e63b-4d1a-a3d9-d63e6f20d368}</Project>
       <Name>Dices</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Weapons\Club.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
