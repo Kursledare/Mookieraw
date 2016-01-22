@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommandHandler.enums;
 using EntityData.Interfaces;
 using TurnManager;
 using TurnManager.interfaces;
 
-namespace EntityData
+namespace EntityData.Monsters
 {
     public abstract class Monster : IMonster
     {
@@ -35,6 +31,8 @@ namespace EntityData
             throw new NotImplementedException();
         }
 
+        public string Name { get; set; }
+        public int TotalHp { get; set; }
         public int CurrentHp { get; set; }
         public int Ac { get; set; }
         public int FortSave { get; set; }

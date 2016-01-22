@@ -27,6 +27,17 @@ namespace Dices
             return resultat;
         }
 
+        /// <summary>
+        /// Overloaded method that accepts an integer as bonus damage.
+        /// </summary>
+        /// <param name="bonus"></param>
+        /// <returns></returns>
+        public int Roll(int bonus)
+        {
+            var resultat = _rand.Next(1, (Sides + 1));
+            return resultat + bonus;
+        }
+
         protected MasterDie()
         {
             _rand = new Random();
