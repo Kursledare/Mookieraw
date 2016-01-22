@@ -8,6 +8,19 @@ namespace EntityDataTest
     public class CharacterTest
     {
         [Test]
+        public void AddCommandWorkingProperly()
+        {
+            var testCharacter = new Character();
+            bool addAttackCommandResult;
+            for (var i = 0; i < testCharacter.NumberOfCommandsPerTurn;i++)
+            {
+                addAttackCommandResult=testCharacter.AddCommand(Commands.Attack);
+                Assert.That(addAttackCommandResult,Is.True);
+            }
+            addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
+            Assert.That(addAttackCommandResult, Is.False);
+        }
+        [Test]
         public void CharacterCanAttack()
         {
             var testCharacter = new Character()
@@ -29,8 +42,6 @@ namespace EntityDataTest
             var addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
             Assert.That(addAttackCommandResult,Is.True);
 
-            addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
-            Assert.That(addAttackCommandResult, Is.False);
 
             testCharacter.Action();
             Assert.That(testTarget.CurrentHp, Is.LessThan(targetHpBeforeAttack));
