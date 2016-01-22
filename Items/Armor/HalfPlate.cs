@@ -2,7 +2,7 @@
 
 namespace GameEquipment
 {
-    class HalfPlate : Armor
+    public class HalfPlate : Armor
     {
         public HalfPlate()
         {

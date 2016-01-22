@@ -1,8 +1,8 @@
 ﻿using Items.Enums;
 
-namespace GameEquipment
+namespace Items.Armor
 {
-    class StuddedLeather : Armor
+    public class StuddedLeather : GameEquipment.Armor
     {
         public StuddedLeather()
         {

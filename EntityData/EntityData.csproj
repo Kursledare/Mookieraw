@@ -46,8 +46,10 @@
     <Compile Include="Equipment.cs" />
     <Compile Include="Interfaces\ICharacter.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IMonster.cs" />
     <Compile Include="Interfaces\IPlayerCharacter.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
   </ItemGroup>
@@ -67,6 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Characters\" />
+    <Folder Include="Monsters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

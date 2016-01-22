@@ -3,6 +3,13 @@ using Dices.Interfaces;
 
 namespace Dices
 {
+    /// <summary>
+    /// This is the abstract class from which all other dice inherit from.
+    /// 
+    /// In later versions, I'm thinking it might be cool to have properties
+    /// attached to dice.  Such as fire, acid, electric, sonic, etc.  This
+    /// would be a nifty way to handle elemental damage.
+    /// </summary>
     public abstract class MasterDie : IDice
     {
         private readonly Random _rand;

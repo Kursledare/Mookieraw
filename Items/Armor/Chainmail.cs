@@ -2,7 +2,7 @@
 
 namespace GameEquipment
 {
-    class Chainmail : Armor
+    public class Chainmail : Armor
     {
         public Chainmail()
         {

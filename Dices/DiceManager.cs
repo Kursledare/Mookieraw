@@ -17,6 +17,11 @@ namespace Dices
             set { _dice = value; }
         }
 
+        /// <summary>
+        /// Rolls all the dice held by the manager.  This is a barebones
+        /// version that will likely change.
+        /// </summary>
+        /// <returns></returns>
         public int RollAll()
         {
             return Dice.Sum(dice => dice.Roll());
