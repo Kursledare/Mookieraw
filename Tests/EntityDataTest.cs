@@ -25,8 +25,19 @@ namespace EntityDataTest
         [Test]
         public void BasicFighterCanAttack()
         {
-            //TODO
-            Assert.That(0, Is.EqualTo(1));
+            //Brittle test, can fail if unlucky with dices
+            var testFighter = new BasicFighter("TestFighter");
+            var testGoblin = new Goblin();
+            var HpBefore = testGoblin.CurrentHp;
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            testFighter.Attack(testGoblin);
+            Assert.That(testGoblin.CurrentHp,Is.LessThan(HpBefore));
         }
 
         [Test]
