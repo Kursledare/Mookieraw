@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes.cs" />
-    <Compile Include="Character.cs" />
+    <Compile Include="Characters\BasicFighter.cs" />
+    <Compile Include="Characters\Character.cs" />
     <Compile Include="Class.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Feats.cs" />
@@ -77,7 +78,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Characters\" />
     <Folder Include="MonsterAbilities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

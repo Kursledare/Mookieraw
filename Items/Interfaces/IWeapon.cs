@@ -9,5 +9,6 @@ namespace Items.Interfaces
         DiceManager Dice { get; }
 
         int DamageRoll();
+        bool CanOneHanded { get; set; }
     }
 }

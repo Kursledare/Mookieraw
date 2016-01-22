@@ -14,6 +14,8 @@ namespace Items
             return Dice.RollAll();
         }
 
+        public bool CanOneHanded { get; set; }
+
         public string Name { get; protected set; }
     }
 }

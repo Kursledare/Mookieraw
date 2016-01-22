@@ -1,5 +1,6 @@
 ﻿using CommandHandler.enums;
 using EntityData;
+using EntityData.Characters;
 using NUnit.Framework;
 
 namespace EntityDataTest

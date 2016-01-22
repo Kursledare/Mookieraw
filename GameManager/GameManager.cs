@@ -2,6 +2,7 @@
 using System.Linq;
 using CommandHandler.interfaces;
 using EntityData;
+using EntityData.Characters;
 using static TurnManager.TurnManager;
 
 namespace GameManager

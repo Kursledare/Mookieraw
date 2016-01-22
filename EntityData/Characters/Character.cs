@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CommandHandler.enums;
 using EntityData.Interfaces;
 using TurnManager;
 using TurnManager.interfaces;
 
-namespace EntityData
+namespace EntityData.Characters
 {
     public class Character : IPlayerCharacter
     {
@@ -111,7 +112,13 @@ namespace EntityData
 
         #region Entity Properties
         public int CurrentHp { get; set; }
-        public int Ac { get; set; }
+
+        public int Ac
+        {
+            get { return 10 + Attributes.DexModifier + Equipment.GetEquipmentArmorValue(); }
+            set { }
+        }
+
         public int FortSave { get; set; }
         public int ReflexSave { get; set; }
         public int WillSave { get; set; }
@@ -144,11 +151,7 @@ namespace EntityData
 
         public void Attack(IEntity entity)
         {
-            //int d20Cast = Dice.D20();
-            var random = new Random();
-            int d20Cast = random.Next(1, 21);
-
-            if (d20Cast + AttackBonus >= entity.Ac)
+            if (_d20.Roll(AttackBonus) >= entity.Ac)
             {
                 var damage = CalculateDamage();
                 entity.CurrentHp = entity.CurrentHp - damage;
@@ -156,7 +159,16 @@ namespace EntityData
         }
         public int CalculateDamage()
         {
-            throw new NotImplementedException();
+            var weaponDamage = Equipment.Weapons.First().DamageRoll();
+
+            var damageBonus = 0;
+
+            if (Equipment.Shield != null)
+                damageBonus = Attributes.GetModifier(AttributeTypes.Str);
+            else
+                damageBonus = (int) (Attributes.GetModifier(AttributeTypes.Str)*1.5);
+
+            return weaponDamage + damageBonus;
         }
         #endregion
 
