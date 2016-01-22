@@ -6,7 +6,7 @@ namespace EntityData.Monsters
 {
     public class Goblin : Monster
     {
-        public Goblin()
+        public Goblin() : base()
         {
             base.Name = "Gerblin";
             base.Ac = 16;

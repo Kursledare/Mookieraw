@@ -10,6 +10,7 @@ namespace EntityData.Characters
 {
     public class Character : IPlayerCharacter
     {
+       
         #region Fields
         private string _name;
         private int _level;
@@ -176,6 +177,7 @@ namespace EntityData.Characters
         public Character()
         {
             _d20 = new Dices.D20();
+            Equipment=new Equipment();
         }
         #endregion
 

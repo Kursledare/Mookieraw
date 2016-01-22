@@ -16,5 +16,12 @@ namespace EntityData
 
             return 0;
         }
+
+        public Equipment()
+        {
+            Weapons=new List<IWeapon>();
+            Armor=new List<IArmor>();
+            
+        }
     }
 }

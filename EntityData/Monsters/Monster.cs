@@ -8,6 +8,10 @@ namespace EntityData.Monsters
 {
     public abstract class Monster : IMonster
     {
+        protected Monster()
+        {
+         Equipment=new Equipment();   
+        }
         public int Initiative { get; }
         public bool IsActive { get; }
         public Vector2 Position { get; set; }
