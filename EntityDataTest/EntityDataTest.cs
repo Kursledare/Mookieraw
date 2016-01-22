@@ -1,6 +1,6 @@
 ﻿using CommandHandler.enums;
 using EntityData;
-using EntityData.Characters;
+using Items;
 using NUnit.Framework;
 
 namespace EntityDataTest
@@ -29,11 +29,12 @@ namespace EntityDataTest
                 CurrentHp = 100,
                 Ac = 100
             };
+            testCharacter.Equipment.Weapons.Add(new GreatSword());
             var testTarget = new Character()
             {
                 CurrentHp = 100,
                 Ac = 0
-
+                
             };
 
             testCharacter.Target = testTarget;
