@@ -60,6 +60,10 @@
       <Project>{de6a9122-de0e-4678-806c-dd7f52f07499}</Project>
       <Name>EntityData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Items\Items.csproj">
+      <Project>{83257df5-f699-4fc9-946d-ff87348aa1db}</Project>
+      <Name>Items</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TurnManager\TurnManager.csproj">
       <Project>{127d7283-b4d8-4585-a755-675d2b4e8a44}</Project>
       <Name>TurnManager</Name>

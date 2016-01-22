@@ -12,10 +12,10 @@ namespace EntityData
         #region Fields
         private string _name;
         private int _level;
-        private Class _class;
-        private Race _race;
-        private Equipment _equipment;
-        private Inventory _inventory;
+        private Class _class= new Class();
+        private Race _race = new Race();
+        private Equipment _equipment=new Equipment();
+        private Inventory _inventory=new Inventory();
         private int _totalHp;
         private int _charAttackBonus;
         private Dices.D20 _d20;
