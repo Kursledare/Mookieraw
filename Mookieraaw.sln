@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManager", "GameManager\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Items", "Items\Items.csproj", "{83257DF5-F699-4FC9-946D-FF87348AA1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "TurnManagerTest\Tests.csproj", "{98D47395-FE3B-4DB6-9B41-F428469E0948}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{98D47395-FE3B-4DB6-9B41-F428469E0948}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
