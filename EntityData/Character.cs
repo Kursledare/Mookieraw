@@ -156,7 +156,8 @@ namespace EntityData
         }
         public int CalculateDamage()
         {
-            throw new NotImplementedException();
+            var weapon = Equipment.Weapons.Count > 0 ? Equipment.Weapons[0] : null;
+            return weapon?.DamageRoll() ?? 0;
         }
         #endregion
 
