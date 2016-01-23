@@ -2,9 +2,8 @@
 using NUnit.Framework;
 using TurnManager;
 using TurnManager.interfaces;
-using static TurnManager.TurnManager;
 
-namespace TurnManagerTest
+namespace Tests
 {
     [TestFixture]
     public class TurnManagerTest
@@ -27,24 +26,24 @@ namespace TurnManagerTest
         public void CanRegisterGameObject()
         {
             var go = new DummyGameObject();
-            Assert.That(GameObjects.Count,Is.EqualTo(0));
-            Register(go);
-            Assert.That(GameObjects.Count,Is.EqualTo(1));
-            Assert.That(GameObjects.Contains(go),Is.EqualTo(true));
-            Unregister(go);
-            RunTurn();
+            Assert.That(TurnManager.TurnManager.GameObjects.Count,Is.EqualTo(0));
+            TurnManager.TurnManager.Register(go);
+            Assert.That(TurnManager.TurnManager.GameObjects.Count,Is.EqualTo(1));
+            Assert.That(TurnManager.TurnManager.GameObjects.Contains(go),Is.EqualTo(true));
+            TurnManager.TurnManager.Unregister(go);
+            TurnManager.TurnManager.RunTurn();
         }
 
         [Test]
         public void ActionIsCalledOnGameObjectInRunTurn()
         {
             var go = new DummyGameObject();
-            Register(go);
+            TurnManager.TurnManager.Register(go);
             Assert.That(go.ActionCalled,Is.False);
-            RunTurn();
+            TurnManager.TurnManager.RunTurn();
             Assert.That(go.ActionCalled,Is.True);
-            Unregister(go);
-            RunTurn();
+            TurnManager.TurnManager.Unregister(go);
+            TurnManager.TurnManager.RunTurn();
 
         }
     }
