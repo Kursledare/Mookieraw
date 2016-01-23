@@ -13,6 +13,15 @@ namespace Tests
         {
             Assert.DoesNotThrow(() => { var testFighter = new BasicFighter("TestFighter"); });
         }
+        /// <summary>
+        /// Tests that initial values are correct.
+        /// </summary>
+        [Test]
+        public void BasicFighterProperlyInitialized()
+        {
+            var testFighter=new BasicFighter("TestFighter");
+            Assert.That(testFighter.IsActive,Is.True);
+        }
         [Test]
         public void BasicFighterHpBelowZeroResultsInUnActive()
         {

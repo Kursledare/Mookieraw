@@ -13,7 +13,15 @@ namespace Tests
         {
             Assert.DoesNotThrow(() => { var testGoblin = new Goblin(); });
         }
-
+        /// <summary>
+        /// Tests that initial values are correct.
+        /// </summary>
+        [Test]
+        public void GoblinProperlyInitialized()
+        {
+            var testGoblin = new Goblin();
+            Assert.That(testGoblin.IsActive, Is.True);
+        }
         [Test]
         public void GoblinHpBelowZeroResultsInUnActive()
         {
