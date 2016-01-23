@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BasicFighterTests.cs" />
     <Compile Include="CharacterTests.cs" />
+    <Compile Include="DieTests.cs" />
     <Compile Include="GoblinTests.cs" />
     <Compile Include="TurnManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
