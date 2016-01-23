@@ -14,6 +14,7 @@ namespace Dices
     {
         private readonly Random _rand;
 
+        public int NumDice { get; protected set; }
         public int Sides { get; protected set; }
         public Die Name { get; protected set; }
 
@@ -23,7 +24,11 @@ namespace Dices
         /// <returns></returns>
         public int Roll()
         {
-            var resultat = _rand.Next(1, (Sides + 1));
+            int resultat = 0;
+            for (int i = 0; i < NumDice; i++)
+            {
+                resultat += _rand.Next(1, (Sides + 1));
+            }
             return resultat;
         }
 
@@ -34,13 +39,25 @@ namespace Dices
         /// <returns></returns>
         public int Roll(int bonus)
         {
-            var resultat = _rand.Next(1, (Sides + 1));
+            int resultat = 0;
+            for (int i = 0; i < NumDice; i++)
+            {
+                resultat += _rand.Next(1, (Sides + 1));
+            }
             return resultat + bonus;
         }
 
         protected MasterDie()
         {
             _rand = new Random();
+            NumDice = 1;
+        }
+
+        protected MasterDie(int num)
+        {
+            _rand = new Random();
+
+            NumDice = num > 0 ? num : 1;
         }
     }
 }

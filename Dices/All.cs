@@ -1,4 +1,6 @@
-﻿namespace Dices
+﻿using System.Runtime.Serialization.Formatters;
+
+namespace Dices
 {
     public class D3 : MasterDie
     {
@@ -6,6 +8,13 @@
         {
             base.Name = Die.D3;
             base.Sides = 3;
+            base.NumDice = 1;
+        }
+        public D3(int num) :base (num)
+        {
+            base.Name = Die.D3;
+            base.Sides = 3;
+            base.NumDice = num > 0 ? num : 1;
         }
     }
 
@@ -15,6 +24,13 @@
         {
             base.Name = Die.D4;
             base.Sides = 4;
+            base.NumDice = 1;
+        }
+        public D4(int num) :base (num)
+        {
+            base.Name = Die.D4;
+            base.Sides = 4;
+            base.NumDice = num > 0 ? num : 1;
         }
     }
 
@@ -24,6 +40,13 @@
         {
             base.Name = Die.D6;
             base.Sides = 6;
+            base.NumDice = 1;
+        }
+        public D6(int num) :base (num)
+        {
+            base.Name = Die.D6;
+            base.Sides = 6;
+            base.NumDice = num > 0 ? num : 1;
         }
     }
 
@@ -33,7 +56,15 @@
         {
             base.Name = Die.D8;
             base.Sides = 8;
+            base.NumDice = 1;
         }
+        public D8(int num) :base (num)
+        {
+            base.Name = Die.D8;
+            base.Sides = 8;
+            base.NumDice = num > 0 ? num : 1;
+        }
+
     }
 
     public class D10 : MasterDie
@@ -42,6 +73,13 @@
         {
             base.Name = Die.D10;
             base.Sides = 10;
+            base.NumDice = 1;
+        }
+        public D10(int num) :base (num)
+        {
+            base.Name = Die.D10;
+            base.Sides = 10;
+            base.NumDice = num > 0 ? num : 1;
         }
     }
 
@@ -51,7 +89,15 @@
         {
             base.Name = Die.D12;
             base.Sides = 12;
+            base.NumDice = 1;
         }
+        public D12(int num) :base (num)
+        {
+            base.Name = Die.D12;
+            base.Sides = 12;
+            base.NumDice = num > 0 ? num : 1;
+        }
+
     }
 
     public class D20 : MasterDie
@@ -60,6 +106,13 @@
         {
             base.Name = Die.D20;
             base.Sides = 20;
+            base.NumDice = 1;
+        }
+        public D20(int num) :base (num)
+        {
+            base.Name = Die.D20;
+            base.Sides = 20;
+            base.NumDice = num > 0 ? num : 1;
         }
     }
 
@@ -69,6 +122,13 @@
         {
             base.Name = Die.D100;
             base.Sides = 100;
+            base.NumDice = 1;
+        }
+        public D100(int num) :base (num)
+        {
+            base.Name = Die.D100;
+            base.Sides = 100;
+            base.NumDice = num > 0 ? num : 1;
         }
     }
 }
