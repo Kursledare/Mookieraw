@@ -178,6 +178,7 @@ namespace EntityData.Characters
         {
             _d20 = new Dices.D20();
             Equipment=new Equipment();
+            IsActive = true;
         }
         #endregion
 

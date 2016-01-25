@@ -50,6 +50,7 @@
     <Compile Include="GoblinTests.cs" />
     <Compile Include="TurnManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vector2Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
