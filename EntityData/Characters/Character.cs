@@ -63,6 +63,7 @@ namespace EntityData.Characters
 
         public bool IsActive { get; }
         public Vector2 Position { get; set; }
+        public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
 
         #endregion
