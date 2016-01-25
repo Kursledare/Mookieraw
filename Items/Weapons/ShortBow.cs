@@ -7,13 +7,13 @@ using Dices;
 
 namespace Items.Weapons
 {
-    public class ShortSword : Weapon
+    class ShortBow : Weapon
     {
-        public ShortSword()
+        public ShortBow()
         {
-            base.Name = "Short Sword";
-            base.Dice = new DiceManager(new D4());
-            base.Range = 1;
+            base.Name = "ShortBow";
+			base.Dice = new DiceManager(new D8());
+            base.Range = 30;
             base.Enchanment = 0;
         }
     }
