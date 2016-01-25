@@ -7,11 +7,11 @@ namespace Items
     {
         public int Enchanment { get; set; }
 
-        public DiceManager Dice { get; protected set; }
+        public Dice Dice { get; protected set; }
 
         public int DamageRoll()
         {
-            return Dice.RollAll();
+            return Dice.Roll();
         }
 
         public bool CanOneHanded { get; set; }
