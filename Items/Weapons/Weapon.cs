@@ -17,5 +17,7 @@ namespace Items
         public bool CanOneHanded { get; set; }
 
         public string Name { get; protected set; }
+
+        public int Range { get; set; }
     }
 }

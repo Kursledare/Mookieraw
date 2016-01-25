@@ -51,6 +51,8 @@
     <Compile Include="Armor\LeatherArmor.cs" />
     <Compile Include="Shields\Shield.cs" />
     <Compile Include="Shields\WoodenShield.cs" />
+    <Compile Include="Weapons\EnchantedLongSword.cs" />
+    <Compile Include="Weapons\ShortBow.cs" />
     <Compile Include="Weapons\GreatSword.cs" />
     <Compile Include="Weapons\LongSword.cs" />
     <Compile Include="Armor\HalfPlate.cs" />

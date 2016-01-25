@@ -9,6 +9,7 @@ namespace Items
             base.Name = "GreatSword";
             base.Dice = new DiceManager( new D6(2));
             base.Enchanment = 0;
+            base.Range = 1;
             base.CanOneHanded = false;
         }
     }

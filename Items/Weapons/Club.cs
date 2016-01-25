@@ -13,6 +13,7 @@ namespace Items.Weapons
         {
             base.Name = "Club";
 			base.Dice = new DiceManager(new D6());
+            base.Range = 1;
             base.Enchanment = 0;
         }
     }
