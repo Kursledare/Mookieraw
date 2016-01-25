@@ -16,6 +16,7 @@ namespace EntityData.Monsters
         public int Initiative { get; }
         public bool IsActive { get; }
         public Vector2 Position { get; set; }
+        public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
         public void Action()
         {
