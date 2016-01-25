@@ -31,10 +31,5 @@ namespace Dices
         {
             Dice = dice;
         }
-
-        public DiceManager(int sides, int numofdice)
-        {
-             
-        }
     }
 }
