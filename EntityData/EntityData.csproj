@@ -65,13 +65,13 @@
       <Project>{f00036f7-e63b-4d1a-a3d9-d63e6f20d368}</Project>
       <Name>Dices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameEngine\GameEngine.csproj">
+      <Project>{127d7283-b4d8-4585-a755-675d2b4e8a44}</Project>
+      <Name>GameEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Items\Items.csproj">
       <Project>{83257DF5-F699-4FC9-946D-FF87348AA1DB}</Project>
       <Name>Items</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TurnManager\TurnManager.csproj">
-      <Project>{127d7283-b4d8-4585-a755-675d2b4e8a44}</Project>
-      <Name>TurnManager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

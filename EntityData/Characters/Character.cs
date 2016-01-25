@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using CommandHandler.enums;
 using EntityData.Interfaces;
-using TurnManager;
-using TurnManager.interfaces;
+using GameEngine;
+using GameEngine.interfaces;
 
 namespace EntityData.Characters
 {

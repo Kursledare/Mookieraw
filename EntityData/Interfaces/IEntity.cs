@@ -1,5 +1,5 @@
 ﻿using CommandHandler.interfaces;
-using TurnManager.interfaces;
+using GameEngine.interfaces;
 
 namespace EntityData.Interfaces
 {

@@ -2,9 +2,8 @@
 using EntityData.Characters;
 using EntityData.Monsters;
 using NUnit.Framework;
-using TurnManager;
-using TurnManager.interfaces;
-using static TurnManager.TurnManager;
+using GameEngine;
+using GameEngine.interfaces;
 
 namespace Tests
 {
@@ -28,26 +27,28 @@ namespace Tests
         [Test]
         public void ActionIsCalledOnGameObjectInRunTurn()
         {
+            var gm = new GameManager();
             var go = new DummyGameObject();
-            Register(go);
+            gm.Register(go);
             Assert.That(go.ActionCalled, Is.False);
-            RunTurn();
+            gm.RunTurn();
             Assert.That(go.ActionCalled, Is.True);
-            Unregister(go);
-            RunTurn();
+            gm.Unregister(go);
+            gm.RunTurn();
         }
 
 
         [Test]
         public void CanRegisterGameObject()
         {
+            var gm = new GameManager();
             var go = new DummyGameObject();
-            Assert.That(GameObjects.Count, Is.EqualTo(0));
-            Register(go);
-            Assert.That(GameObjects.Count, Is.EqualTo(1));
-            Assert.That(GameObjects.Contains(go), Is.EqualTo(true));
-            Unregister(go);
-            RunTurn();
+            Assert.That(gm.GameObjects.Count, Is.EqualTo(0));
+            gm.Register(go);
+            Assert.That(gm.GameObjects.Count, Is.EqualTo(1));
+            Assert.That(gm.GameObjects.Contains(go), Is.EqualTo(true));
+            gm.Unregister(go);
+            gm.RunTurn();
         }
         /// <summary>
         /// Test that all Entitys can be register in TurnManager
@@ -56,6 +57,7 @@ namespace Tests
         [Test]
         public void CanRegisterRealStuffToTurnManager()
         {
+            var gm = new GameManager();
             var listofObjectsToRegister = new List<object>
             {
                 new BasicFighter("TestFighter"),
@@ -66,10 +68,10 @@ namespace Tests
             {
                 Assert.That(x is IGameObject, Is.True);
                 var y = x as IGameObject;
-                Assert.DoesNotThrow(() => { Register(y); });
+                Assert.DoesNotThrow(() => { gm.Register(y); });
             });
-            Assert.That(GameObjects.Count, Is.EqualTo(listofObjectsToRegister.Count));
-            listofObjectsToRegister.ForEach(x => { Unregister(x as IGameObject); });
+            Assert.That(gm.GameObjects.Count, Is.EqualTo(listofObjectsToRegister.Count));
+            listofObjectsToRegister.ForEach(x => { gm.Unregister(x as IGameObject); });
         }
     }
 }

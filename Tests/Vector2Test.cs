@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using TurnManager;
+﻿using GameEngine;
+using NUnit.Framework;
 
 namespace Tests
 {

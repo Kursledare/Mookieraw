@@ -1,8 +1,8 @@
 ﻿using System;
 using CommandHandler.enums;
 using EntityData.Interfaces;
-using TurnManager;
-using TurnManager.interfaces;
+using GameEngine;
+using GameEngine.interfaces;
 
 namespace EntityData.Monsters
 {

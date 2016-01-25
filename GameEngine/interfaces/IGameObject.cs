@@ -1,4 +1,4 @@
-﻿namespace TurnManager.interfaces
+﻿namespace GameEngine.interfaces
 {
     public interface IGameObject
     {
