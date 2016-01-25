@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="All.cs" />
+    <Compile Include="Dice.cs" />
     <Compile Include="DiceManager.cs" />
     <Compile Include="Die.cs" />
     <Compile Include="Interfaces\IDice.cs" />
