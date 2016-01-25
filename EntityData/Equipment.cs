@@ -21,7 +21,6 @@ namespace EntityData
         {
             Weapons=new List<IWeapon>();
             Armor=new List<IArmor>();
-            
         }
     }
 }
