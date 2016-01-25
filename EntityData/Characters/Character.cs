@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CommandHandler.enums;
+using Dices;
 using EntityData.Interfaces;
 using GameEngine;
 using GameEngine.interfaces;
@@ -20,7 +21,7 @@ namespace EntityData.Characters
         private Inventory _inventory;
         private int _totalHp;
         private int _charAttackBonus;
-        private Dices.D20 _d20;
+        private Dices.Dice _d20;
         #endregion
 
         #region Basic Properties
@@ -152,7 +153,7 @@ namespace EntityData.Characters
 
         public void Attack(IEntity entity)
         {
-            if (_d20.Roll(AttackBonus) >= entity.Ac)
+            if (_d20.Roll() >= entity.Ac)
             {
                 var damage = CalculateDamage();
                 entity.CurrentHp = entity.CurrentHp - damage;
@@ -176,7 +177,7 @@ namespace EntityData.Characters
         #region Constructors
         public Character()
         {
-            _d20 = new Dices.D20();
+            _d20 = new Dices.Dice(20,1);
             Equipment=new Equipment();
             IsActive = true;
         }

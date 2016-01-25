@@ -12,7 +12,7 @@ namespace Items.Weapons
         public ShortSword()
         {
             base.Name = "Short Sword";
-            base.Dice = new DiceManager(new D4());
+            base.Dice = new Dice(4);
             base.Range = 1;
             base.Enchanment = 0;
         }
