@@ -10,7 +10,8 @@ namespace EntityData.Monsters
     {
         protected Monster()
         {
-         Equipment=new Equipment();   
+            Equipment = new Equipment();
+            IsActive = true;
         }
         public int Initiative { get; }
         public bool IsActive { get; }
