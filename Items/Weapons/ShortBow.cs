@@ -12,7 +12,7 @@ namespace Items.Weapons
         public ShortBow()
         {
             base.Name = "ShortBow";
-			base.Dice = new DiceManager(new D8());
+			base.Dice = new Dice(8);
             base.Range = 30;
             base.Enchanment = 0;
         }

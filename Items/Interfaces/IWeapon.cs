@@ -6,7 +6,7 @@ namespace Items.Interfaces
     {
         int Enchanment { get; set; }
 
-        DiceManager Dice { get; }
+        Dice Dice { get; }
 
         int DamageRoll();
         bool CanOneHanded { get; set; }

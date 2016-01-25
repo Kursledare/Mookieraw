@@ -7,7 +7,7 @@ namespace Items
         public LongSword()
         {
             base.Name = "Longsword";
-            base.Dice = new DiceManager(new D8(1));
+            base.Dice = new Dice(8);
             base.Range = 1;
             base.Enchanment = 0;
         }
