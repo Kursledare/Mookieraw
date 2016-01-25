@@ -12,6 +12,7 @@ namespace GameEngine
         private string _imageSource;
         private Action<object, MouseButtonEventArgs> uIElement_OnMouseDown;
 
+
         public Image Image
         {
             get
@@ -67,6 +68,11 @@ namespace GameEngine
         public Vector2 ToCanvasPosition()
         {
             return new Vector2((float)Canvas.GetLeft(Image), (float)Canvas.GetTop(Image));
+        }
+
+        public void SetOpacity(double value)
+        {
+            Image.Opacity = value;
         }
     }
 }

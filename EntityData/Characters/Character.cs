@@ -118,6 +118,7 @@ namespace EntityData.Characters
             CurrentHp += amount;
         }
 
+    
         #endregion
 
         #region Methods
@@ -148,7 +149,7 @@ namespace EntityData.Characters
 
         public void Attack(IEntity entity)
         {
-            if (_d20.Roll() >= entity.Ac)
+            if (_d20.Roll()+AttackBonus >= entity.Ac)
             {
                 var damage = CalculateDamage();
                 entity.AlterHealth(-damage);

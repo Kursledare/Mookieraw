@@ -20,7 +20,7 @@ namespace EntityData.Monsters
         public IGameObject Target { get; set; }
         public void Action()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public Commands CurrentCommands { get; set; }
@@ -44,6 +44,12 @@ namespace EntityData.Monsters
         public int FortSave { get; set; }
         public int ReflexSave { get; set; }
         public int WillSave { get; set; }
+        public void AlterHealth(int amount)
+        {
+            CurrentHp += amount;
+            ScreenObject.SetOpacity(0.1d);
+        }
+
         public int InitiativeBonus { get; set; }
         public Attributes Attributes { get; set; }
         public int AttackBonus { get; set; }
