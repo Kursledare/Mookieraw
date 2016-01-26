@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui", "Gui\Gui.csproj", "{CC5A2252-84F0-423F-92AC-FAD719D2888B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceLibrary", "FontLibrary\ResourceLibrary.csproj", "{F962997F-BD3B-42AE-B31A-E1ED4BBC6F84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceLibrary", "ResourceLibrary\ResourceLibrary.csproj", "{F962997F-BD3B-42AE-B31A-E1ED4BBC6F84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

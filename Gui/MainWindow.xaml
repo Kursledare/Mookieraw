@@ -5,21 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gui"
         mc:Ignorable="d"
-        Title="NDND v1.0" Height="646" Width="968">
+        Title="NDND v1.0" Height="669" Width="968">
     
-    <Grid Width="960" Height="615">
+    <Grid Width="960" Height="641">
         <StackPanel>
             <StackPanel Name="Header" Width="960" Height="100" VerticalAlignment="Top" Background="Black">
 
             </StackPanel>
 
-            <StackPanel Name="Body" Width="960" Height="313" Orientation="Horizontal">
+            <StackPanel Name="Body" Width="960" Height="339" Orientation="Horizontal">
                 <StackPanel Name="FirstCombatantPanel"  Width="441" Height="313" Orientation="Vertical" Margin="26,0,0,0">
-                    <StackPanel Name="FirstCombatantContentsPanel" Width="441" Height="313"  Orientation="Vertical">
+                    <StackPanel Name="FirstCombatantContentsPanel" Width="441" Height="325"  Orientation="Vertical">
                         <Label Name="FirstCombatantLabel" Width="441" Height="50" Margin="0,13" Content="FIRST COMBATANT" Foreground="White" Background="Black" FontFamily="Adobe Garamond Pro Bold" FontSize="40" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-                        <TextBlock Width="441" Height="37" />
-                        <Rectangle Width="441" Height="1" Fill="Black"/>
-                        <TextBlock Text="Name" />
+                        <StackPanel Name="FirstCombatantDataPanelOne" Width="375">
+                            <TextBlock Width="375" Height="37" />
+                            <Rectangle Width="375" Height="1" Fill="Black"/>
+                            <TextBlock Text="NAME" Margin="5,5,0,0"  FontSize="16" FontFamily="Adobe Garamond Pro" />
+                        </StackPanel>
+
+                        <StackPanel Name="FirstCombatantDataPanelTwo" Width="375" Height="161" Margin="0,13" Orientation="Horizontal">
+                            <StackPanel Name="DataPanelColOne" Width="100" Height="161" Margin="0,0,13,0">
+                                <Label Width="100" Height="45" Background="Black" Foreground="White" Content="" />
+                            </StackPanel>
+
+                            <StackPanel Name="DataPanelColTwo" Width="75" Height="161" Margin="0,0,13,0">
+
+                            </StackPanel>
+
+                            <StackPanel Name="DataPanelColThree" Width="174" Height="161">
+
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
                 
@@ -32,7 +48,7 @@
                 </StackPanel>
             </StackPanel>
             
-            <StackPanel Name="Footer" Width="960" Height="203" Background="Black">
+            <StackPanel Name="Footer" Width="960" Height="239" Background="Black">
                 
             </StackPanel>
 
