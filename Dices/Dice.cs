@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization.Formatters;
-using Dices;
-using Dices.Interfaces;
 
 namespace Dices
 {

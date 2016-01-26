@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Items.Enums;
-using Items.Interfaces;
+﻿using Items.Enums;
 
 namespace Items.Shields
 {
@@ -12,9 +6,9 @@ namespace Items.Shields
     {
         public WoodenShield()
         {
-            base.Name = "Wooden Shield";
-            base.ArmorType = ArmorTypes.Light;
-            base.ArmorValue = 1;
+            Name = "Wooden Shield";
+            ArmorType = ArmorTypes.Light;
+            ArmorValue = 1;
         }
     }
 }

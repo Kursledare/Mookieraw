@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dices;
+﻿using Dices;
 
 namespace Items.Weapons
 {
@@ -11,10 +6,10 @@ namespace Items.Weapons
     {
         public Club()
         {
-            base.Name = "Club";
-			base.Dice = new Dice(6);
-            base.Range = 1;
-            base.Enchanment = 0;
+            Name = "Club";
+			Dice = new Dice(6);
+            Range = 1;
+            Enchanment = 0;
         }
     }
 }

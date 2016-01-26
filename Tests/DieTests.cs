@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Dices;
-using Dices.Interfaces;
 using NUnit.Framework;
 
 namespace Tests

@@ -6,10 +6,10 @@ namespace Items
     {
         public LongSword()
         {
-            base.Name = "Longsword";
-            base.Dice = new Dice(8);
-            base.Range = 1;
-            base.Enchanment = 0;
+            Name = "Longsword";
+            Dice = new Dice(8);
+            Range = 1;
+            Enchanment = 0;
         }
     }
 }

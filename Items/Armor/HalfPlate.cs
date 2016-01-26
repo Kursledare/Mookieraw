@@ -6,9 +6,9 @@ namespace GameEquipment
     {
         public HalfPlate()
         {
-            base.Name = "Half Plate";
-            base.ArmorType = ArmorTypes.Heavy;
-            base.ArmorValue = 8;
+            Name = "Half Plate";
+            ArmorType = ArmorTypes.Heavy;
+            ArmorValue = 8;
         }
     }
 }

@@ -6,9 +6,9 @@ namespace GameEquipment
    {
        public LeatherArmor()
        {
-            base.Name = "Leather Armor";
-            base.ArmorType = ArmorTypes.Light;
-            base.ArmorValue = 2;
+            Name = "Leather Armor";
+            ArmorType = ArmorTypes.Light;
+            ArmorValue = 2;
        }
     }
 }

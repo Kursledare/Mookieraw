@@ -6,9 +6,9 @@ namespace GameEquipment
     {
         public Chainmail()
         {
-            base.Name = "Chainmail";
-            base.ArmorType = ArmorTypes.Medium;
-            base.ArmorValue = 6;
+            Name = "Chainmail";
+            ArmorType = ArmorTypes.Medium;
+            ArmorValue = 6;
         }
     }
 }
