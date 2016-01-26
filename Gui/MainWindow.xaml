@@ -1,0 +1,43 @@
+﻿<Window x:Class="Gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gui"
+        mc:Ignorable="d"
+        Title="NDND v1.0" Height="646" Width="968">
+    
+    <Grid Width="960" Height="615">
+        <StackPanel>
+            <StackPanel Name="Header" Width="960" Height="100" VerticalAlignment="Top" Background="Black">
+
+            </StackPanel>
+
+            <StackPanel Name="Body" Width="960" Height="313" Orientation="Horizontal">
+                <StackPanel Name="FirstCombatantPanel"  Width="441" Height="313" Orientation="Vertical" Margin="26,0,0,0">
+                    <StackPanel Name="FirstCombatantContentsPanel" Width="441" Height="313"  Orientation="Vertical">
+                        <Label Name="FirstCombatantLabel" Width="441" Height="50" Margin="0,13" Content="FIRST COMBATANT" Foreground="White" Background="Black" FontFamily="Adobe Garamond Pro Bold" FontSize="40" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                        <TextBlock Width="441" Height="37" />
+                        <Rectangle Width="441" Height="1" Fill="Black"/>
+                        <TextBlock Text="Name" />
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Name="Spacer" Width="26" Height="313">
+                    <Rectangle Height="313" Width="1" Fill="Black"></Rectangle>
+                </StackPanel>
+                
+                <StackPanel Name="SecondCombatantPanel" Width="441" Height="313" Orientation="Vertical"  Margin="0,0,26,0">
+
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Name="Footer" Width="960" Height="203" Background="Black">
+                
+            </StackPanel>
+
+
+        </StackPanel>
+        
+    </Grid>
+</Window>

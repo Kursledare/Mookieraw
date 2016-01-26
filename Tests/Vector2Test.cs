@@ -1,5 +1,4 @@
 ﻿using GameEngine;
-using NUnit.Framework;
 
 namespace Tests
 {

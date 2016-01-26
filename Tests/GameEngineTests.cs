@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using EntityData.Characters;
 using EntityData.Monsters;
-using NUnit.Framework;
 using GameEngine;
 using GameEngine.interfaces;
 

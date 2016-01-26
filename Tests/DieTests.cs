@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Dices;
-using NUnit.Framework;
 
 namespace Tests
 {

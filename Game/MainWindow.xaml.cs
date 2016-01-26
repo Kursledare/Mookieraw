@@ -5,7 +5,6 @@ using System.Windows.Input;
 using CommandHandler.enums;
 using EntityData.Characters;
 using EntityData.Interfaces;
-using EntityData.Monsters;
 using GameEngine;
 using GameEngine.interfaces;
 
