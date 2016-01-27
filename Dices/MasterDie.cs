@@ -10,10 +10,12 @@ namespace Dices
     /// attached to dice.  Such as fire, acid, electric, sonic, etc.  This
     /// would be a nifty way to handle elemental damage.
     /// </summary>
+    /// 
+    
     public abstract class MasterDie : IDice
     {
         private readonly Random _rand;
-
+        
         public int NumDice { get; protected set; }
         public int Sides { get; protected set; }
         public Die Name { get; protected set; }
