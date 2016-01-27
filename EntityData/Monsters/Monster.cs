@@ -14,7 +14,7 @@ namespace EntityData.Monsters
             IsActive = true;
         }
         public int Initiative { get; }
-        public bool IsActive { get; }
+        public bool IsActive { get; private set; }
         public Vector2 Position { get; set; }
         public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
@@ -47,7 +47,7 @@ namespace EntityData.Monsters
         public void AlterHealth(int amount)
         {
             CurrentHp += amount;
-            ScreenObject.SetOpacity(0.1d);
+            IsActive = CurrentHp > 0;
         }
 
         public int InitiativeBonus { get; set; }

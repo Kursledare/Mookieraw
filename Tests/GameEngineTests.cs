@@ -3,6 +3,7 @@ using EntityData.Characters;
 using EntityData.Monsters;
 using GameEngine;
 using GameEngine.interfaces;
+using NUnit.Framework;
 
 namespace Tests
 {

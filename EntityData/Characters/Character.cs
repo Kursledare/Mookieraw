@@ -61,7 +61,7 @@ namespace EntityData.Characters
 
         #region IGameObject properties
 
-        public bool IsActive { get; }
+        public bool IsActive { get; private set; }
         public Vector2 Position { get; set; }
         public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
@@ -116,6 +116,7 @@ namespace EntityData.Characters
         public void AlterHealth(int amount)
         {
             CurrentHp += amount;
+            IsActive = CurrentHp > 0;
         }
 
     

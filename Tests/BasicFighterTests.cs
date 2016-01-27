@@ -1,6 +1,7 @@
 ﻿using System;
 using EntityData.Characters;
 using EntityData.Monsters;
+using NUnit.Framework;
 
 namespace Tests
 {
