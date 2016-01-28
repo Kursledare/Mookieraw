@@ -9,6 +9,8 @@ namespace Items
             Name = "Long Sword of Mighty Swing";
             Dice = new Dice(8);
             Enchanment = 1;
+            WeaponType = WeaponTypeEnum.HeavyBlade;
+            DamageType = "Force";
         }
     }
 }

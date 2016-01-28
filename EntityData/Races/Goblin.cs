@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace EntityData.Races
 {
-    public class Dwarf : Race
+    public class Goblin : Race
     {
-        public Dwarf()
+        public Goblin()
         {
-            Size = Size.Medium;
+            Size = Size.Small;
             Type = Type.Humanoid;
-            Subrace = SubRace.Dwarf;
-            BaseSpeed.Feet = 20;
+            Subrace = SubRace.Goblin;
+            BaseSpeed.Feet = 30;
         }
     }
 }

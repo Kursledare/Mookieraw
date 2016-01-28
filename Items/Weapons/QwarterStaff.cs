@@ -10,6 +10,8 @@ namespace Items.Weapons
 			Dice = new Dice(8);
             Range = 1;
             Enchanment = 0;
+            DamageType = "Blunt";
+            WeaponType = WeaponTypeEnum.Spear;
         }
     }
 }

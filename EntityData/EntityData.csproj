@@ -57,6 +57,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
     <Compile Include="Races\Dwarf.cs" />
+    <Compile Include="Races\Elf.cs" />
+    <Compile Include="Races\Gnome.cs" />
+    <Compile Include="Races\Goblin.cs" />
+    <Compile Include="Races\Halfling.cs" />
+    <Compile Include="Races\Human.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommandHandler\CommandHandler.csproj">

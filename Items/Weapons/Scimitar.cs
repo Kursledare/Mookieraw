@@ -2,12 +2,12 @@
 
 namespace Items.Weapons
 {
-    public class ShortSword : Weapon
+    class Scimitar : Weapon
     {
-        public ShortSword()
+        public Scimitar()
         {
-            Name = "Short Sword";
-            Dice = new Dice(4);
+            Name = "Scimitar";
+			Dice = new Dice(8);
             Range = 1;
             Enchanment = 0;
             DamageType = "Slash";

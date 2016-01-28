@@ -2,16 +2,16 @@
 
 namespace Items.Weapons
 {
-    class Scythe: Weapon
+    class Handaxe : Weapon
     {
-        public Scythe()
+        public Handaxe()
         {
-            Name = "Scythe";
-			Dice = new Dice(4,2);
+            Name = "Handaxe";
+			Dice = new Dice(6);
             Range = 1;
             Enchanment = 0;
             DamageType = "Slash";
-            WeaponType = WeaponTypeEnum.HeavyBlade;
+            WeaponType = WeaponTypeEnum.Axe;
         }
     }
 }
