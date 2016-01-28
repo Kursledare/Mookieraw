@@ -45,6 +45,7 @@ namespace GameEngine
         {
             GameLog.Add(message);
             OnGameLoggedEntry?.Invoke(message);
+          //  CombatLog.AppendText("a");
         }
     }
 }

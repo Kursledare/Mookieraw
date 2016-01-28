@@ -184,7 +184,7 @@
             
             <StackPanel Name="Footer" Width="960" Height="239" Background="Black">
                 <TextBox Name="CombatLog" Width="450" Height="100" Margin="0,13,0,13"/>
-                <Button Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" />
+                <Button Click="DoBattleButton_Click" Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" />
             </StackPanel>
 
 
