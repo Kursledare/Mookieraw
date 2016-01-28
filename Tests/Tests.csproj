@@ -50,6 +50,7 @@
     <Compile Include="DieTests.cs" />
     <Compile Include="GoblinTests.cs" />
     <Compile Include="GameEngineTests.cs" />
+    <Compile Include="Inventorytest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector2Test.cs" />
   </ItemGroup>
