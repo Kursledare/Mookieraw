@@ -22,5 +22,6 @@ namespace EntityData.Monsters
             base.Attributes = new Attributes(11,15,12,10,9,6);
             base.AttackBonus = 1;
         }
+
     }
 }
