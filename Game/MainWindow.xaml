@@ -5,10 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="800" Width="600"
         KeyDown="MainWindow_OnKeyDown">
     <Grid>
         <Canvas Name="MainCanvas" MouseDown="PointerCanvasDown"></Canvas>
         <Image MouseDown="UIElement_OnMouseDown"></Image>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="128" Margin="0,641,0,0" VerticalAlignment="Top" Width="582">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
