@@ -4,6 +4,7 @@ namespace EntityData
 {
     public class Race
     {
+        public Attributes RaceModifier { get; set; }
         public Size Size { get; set; }
         public Type Type { get; set; }
         public SubRace Subrace { get; set; }
