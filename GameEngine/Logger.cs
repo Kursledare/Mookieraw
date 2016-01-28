@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.IO;
 
 namespace GameEngine
@@ -11,15 +10,27 @@ namespace GameEngine
         public static Action<string> OnErrorLogEntry;
         /// <summary>
         /// Log a debug message here, or an error
-        /// TODO should write to a .txt on disk?
         /// </summary>
         /// <param name="message"></param>
         public static void Log(string message)
         {
             DebugLog.Add(message);
-            OnErrorLogEntry(message);
-            StreamWriter writer = File.CreateText(@"c:\code\debug.txt");
-            writer.WriteLine(message);
+            OnErrorLogEntry?.Invoke(message);
+        }
+
+        public static void LogToDisk(string message)
+        {
+            var path = @"c:\code\debugLog.txt";
+
+            if (File.Exists(path))
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.Write("========\n");
+                    sw.Write(message);
+                }
+            }
+
         }
     }
     public static class Game
@@ -33,8 +44,7 @@ namespace GameEngine
         public static void Log(string message)
         {
             GameLog.Add(message);
-            OnGameLoggedEntry(message);
-
+            OnGameLoggedEntry?.Invoke(message);
         }
     }
 }

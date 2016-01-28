@@ -10,6 +10,7 @@ namespace Gui
         public MainWindow()
         {
             InitializeComponent();
+            CombatLog.AppendText("Let the Battle Begin!\n=== o === o ===");
         }
     }
 }
