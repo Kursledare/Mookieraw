@@ -13,12 +13,12 @@
             <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro" />
             <Setter Property="FontSize" Value="11" />
         </Style>
-        
+
         <Style TargetType="TextBlock" x:Key="BlackText">
             <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold"/>
             <Setter Property="FontSize" Value="13" />
         </Style>
-        
+
         <Style TargetType="Label">
             <Setter Property="Background" Value="Black" />
             <Setter Property="Foreground" Value="White" />
@@ -27,7 +27,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
         </Style>
-        
+
         <Style TargetType="TextBlock" x:Key="Title">
             <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold" />
             <Setter Property="FontSize" Value="60" />
@@ -43,10 +43,10 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0,3,0,0"/>
         </Style>
-        
+
     </Window.Resources>
 
-    
+
     <Grid Width="960" Height="669">
         <StackPanel>
             <StackPanel Name="Header" Width="960" Height="100" VerticalAlignment="Top" Background="Black">
@@ -55,11 +55,11 @@
 
             <StackPanel Name="Body" Width="960" Height="339" Orientation="Horizontal">
                 <StackPanel Name="FirstCombatantPanel"  Width="441" Height="313" Orientation="Vertical" Margin="26,0,0,0">
-                   
+
                     <StackPanel Name="FirstCombatantContentsPanel" Width="441" Height="325"  Orientation="Vertical">
-                      
+
                         <Label Name="FirstCombatantLabel" Width="441" Height="50" Margin="0,13" Content="FIRST COMBATANT" HorizontalAlignment="Left" />
-                        
+
                         <StackPanel Name="FirstCombatantDataPanelOne" Width="375">
                             <TextBlock Width="375" Height="37" />
                             <Rectangle Width="375" Height="1" Fill="Black"/>
@@ -67,9 +67,9 @@
                         </StackPanel>
 
                         <StackPanel Name="FirstCombatantDataPanelTwo" Width="375" Height="161" Margin="0,13" Orientation="Horizontal">
-                           
+
                             <StackPanel Name="FirstCombatantDataPanelColOne" Width="100" Height="161" Margin="0,0,13,0">
-                               
+
                                 <StackPanel Name="FirstCombatantHpPanel" Width="100" Height="45" Margin="0,0,0,13" Background="Black">
                                     <TextBlock Style="{StaticResource AttributeHeader}"  Text="HP"/>
                                     <TextBlock Foreground="White" Text="HIT POINTS" HorizontalAlignment="Center"></TextBlock>
@@ -84,12 +84,12 @@
                                     <TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
                                     <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
-                                
+
                             </StackPanel>
 
 
                             <StackPanel Name="FirstCombatantDataPanelColTwo" Width="75" Height="161" Margin="0,0,13,0">
-                                
+
                                 <StackPanel Name="FirstCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <Rectangle Width="75" Height="45" Stroke="Black"/>
                                     <TextBlock/>
@@ -113,14 +113,14 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-                
-                
+
+
                 <StackPanel Name="SecondCombatantPanel" Width="441" Height="313" Orientation="Vertical"  Margin="0,0,26,0">
-                    
+
                     <StackPanel Name="SecondCombatantContentsPanel" Width="441" Height="325"  Orientation="Vertical">
-                      
+
                         <Label Name="SecondCombatantLabel" Width="441" Height="50" Margin="0,13" Content="SECOND COMBATANT" HorizontalAlignment="Left" />
-                        
+
                         <StackPanel Name="SecondCombatantDataPanelOne" Width="375">
                             <TextBlock Width="375" Height="37" />
                             <Rectangle Width="375" Height="1" Fill="Black"/>
@@ -128,9 +128,9 @@
                         </StackPanel>
 
                         <StackPanel Name="SecondCombatantDataPanelTwo" Width="375" Height="161" Margin="0,13" Orientation="Horizontal">
-                           
+
                             <StackPanel Name="SecondCombatantDataPanelColOne" Width="100" Height="161" Margin="0,0,13,0">
-                               
+
                                 <StackPanel Name="SecondCombatantHpPanel" Width="100" Height="45" Margin="0,0,0,13" Background="Black">
                                     <TextBlock Foreground="White" Text="HP" HorizontalAlignment="Center"/>
                                     <TextBlock Foreground="White" Text="HIT POINTS" HorizontalAlignment="Center"></TextBlock>
@@ -145,12 +145,12 @@
                                     <TextBlock Foreground="White" Text="MELEE" HorizontalAlignment="Center"/>
                                     <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
-                                
+
                             </StackPanel>
 
 
                             <StackPanel Name="SecondCombatantDataPanelColTwo" Width="75" Height="161" Margin="0,0,13,0">
-                                
+
                                 <StackPanel Name="SecondCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <Rectangle Width="75" Height="45" Stroke="Black"/>
                                     <TextBlock/>
@@ -174,21 +174,21 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-                
+
                 <StackPanel Name="Spacer" Width="26" Height="313">
                     <Rectangle Height="313" Width="1" Fill="Black"></Rectangle>
                 </StackPanel>
-                    
-                
+
+
             </StackPanel>
-            
+
             <StackPanel Name="Footer" Width="960" Height="239" Background="Black">
-                <TextBox Name="CombatLog" Width="450" Height="100" Margin="0,13,0,13"/>
-                <Button Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" />
+                <TextBox x:Name="CombatLog" Width="450" Height="100" Margin="255,13"/>
+                <Button x:Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" />
             </StackPanel>
 
 
         </StackPanel>
-        
+
     </Grid>
 </Window>

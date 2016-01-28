@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using System.IO;
 
 namespace GameEngine
 {
@@ -17,6 +18,8 @@ namespace GameEngine
         {
             DebugLog.Add(message);
             OnErrorLogEntry(message);
+            StreamWriter writer = File.CreateText(@"c:\code\debug.txt");
+            writer.WriteLine(message);
         }
     }
     public static class Game
@@ -31,6 +34,7 @@ namespace GameEngine
         {
             GameLog.Add(message);
             OnGameLoggedEntry(message);
+
         }
     }
 }
