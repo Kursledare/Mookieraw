@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 
 namespace GameEngine
 {
@@ -16,7 +15,7 @@ namespace GameEngine
         public static void Log(string message)
         {
             DebugLog.Add(message);
-            OnErrorLogEntry(message);
+            OnErrorLogEntry?.Invoke(message);
         }
     }
     public static class Game
@@ -30,7 +29,7 @@ namespace GameEngine
         public static void Log(string message)
         {
             GameLog.Add(message);
-            OnGameLoggedEntry(message);
+            OnGameLoggedEntry?.Invoke(message);
         }
     }
 }
