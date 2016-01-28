@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GameEngine
 {
@@ -9,13 +10,24 @@ namespace GameEngine
         public static Action<string> OnErrorLogEntry;
         /// <summary>
         /// Log a debug message here, or an error
-        /// TODO should write to a .txt on disk?
         /// </summary>
         /// <param name="message"></param>
         public static void Log(string message)
         {
             DebugLog.Add(message);
             OnErrorLogEntry?.Invoke(message);
+
+            var path = @"c:\code\debugLog.txt";
+
+            if (File.Exists(path))
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.Write("========\n");
+                    sw.Write(message);
+                }
+            }
+
         }
     }
     public static class Game
