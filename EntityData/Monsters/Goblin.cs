@@ -1,4 +1,5 @@
-﻿using GameEquipment;
+﻿using Dices;
+using GameEquipment;
 using Items.Shields;
 using Items.Weapons;
 
@@ -10,7 +11,7 @@ namespace EntityData.Monsters
         {
             base.Name = "Gerblin";
             base.Ac = 16;
-            base.TotalHp = new Dices.D10().Roll(1);
+            base.TotalHp = new Dice(10).Roll();
             base.CurrentHp = TotalHp;
             base.FortSave = 3;
             base.ReflexSave = 2;

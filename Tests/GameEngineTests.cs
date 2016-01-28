@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using EntityData.Characters;
 using EntityData.Monsters;
-using NUnit.Framework;
 using GameEngine;
 using GameEngine.interfaces;
+using NUnit.Framework;
 
 namespace Tests
 {
@@ -16,6 +16,7 @@ namespace Tests
             public int Initiative { get; } = 1;
             public bool IsActive { get; } = true;
             public Vector2 Position { get; set; } = new Vector2();
+            public ScreenObject ScreenObject { get; set; }
             public IGameObject Target { get; set; }
 
             public void Action()

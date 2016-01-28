@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CommandHandler.enums;
+using Dices;
 using EntityData.Interfaces;
 using GameEngine;
 using GameEngine.interfaces;
@@ -10,61 +11,43 @@ namespace EntityData.Characters
 {
     public class Character : IPlayerCharacter
     {
-       
+        #region Constructors
+
+        public Character()
+        {
+            _d20 = new Dice(20);
+            Equipment = new Equipment();
+            IsActive = true;
+        }
+
+        #endregion
+
         #region Fields
-        private string _name;
-        private int _level;
-        private Class _class;
-        private Race _race;
-        private Equipment _equipment;
-        private Inventory _inventory;
-        private int _totalHp;
-        private int _charAttackBonus;
-        private Dices.D20 _d20;
+
+        private readonly Dice _d20;
+
         #endregion
 
         #region Basic Properties
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-        public int Level
-        {
-            get { return _level; }
-            set { _level = value; }
-        }
-        public Class Class
-        {
-            get { return _class; }
-            set { _class = value; }
-        }
-        public Race Race
-        {
-            get { return _race; }
-            set { _race = value; }
-        }
-        public Equipment Equipment
-        {
-            get { return _equipment; }
-            set { _equipment = value; }
-        }
-        public Inventory Inventory
-        {
-            get { return _inventory; }
-            set { _inventory = value; }
-        }
-        public int TotalHp
-        {
-            get { return _totalHp; }
-            set { _totalHp = value; }
-        }
-        public int CharAttackBonus
-        {
-            get { return _charAttackBonus; }
-            set { _charAttackBonus = value; }
-        }
+
+        public string Name { get; set; }
+
+        public int Level { get; set; }
+
+        public Class Class { get; set; }
+
+        public Race Race { get; set; }
+
+        public Equipment Equipment { get; set; }
+
+        public Inventory Inventory { get; set; }
+
+        public int TotalHp { get; set; }
+
+        public int CharAttackBonus { get; set; }
+
         public int InitiativeBonus { get; set; }
+
         public int Initiative
         {
             get { return _d20.Roll() + InitiativeBonus; }
@@ -73,17 +56,21 @@ namespace EntityData.Characters
         public Attributes Attributes { get; set; }
         public int AttackBonus { get; set; }
         public int DamageBonus { get; set; }
+
         #endregion
 
         #region IGameObject properties
+
         public bool IsActive { get; private set; }
         public Vector2 Position { get; set; }
+        public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
+
         #endregion
 
         #region ICommandable properties
 
-        private Queue<Commands> _currentCommands=new Queue<Commands>();
+        private readonly Queue<Commands> _currentCommands = new Queue<Commands>();
 
         public bool AddCommand(Commands commands)
         {
@@ -108,10 +95,12 @@ namespace EntityData.Characters
         }
 
         public bool PlayerControlled { get; }
-        public  Int32 NumberOfCommandsPerTurn { get; }= 1;
+        public int NumberOfCommandsPerTurn { get; } = 1;
+
         #endregion
 
         #region Entity Properties
+
         public int CurrentHp { get; set; }
 
         public int Ac
@@ -123,13 +112,22 @@ namespace EntityData.Characters
         public int FortSave { get; set; }
         public int ReflexSave { get; set; }
         public int WillSave { get; set; }
+
+        public void AlterHealth(int amount)
+        {
+            CurrentHp += amount;
+            IsActive = CurrentHp > 0;
+        }
+
+    
         #endregion
 
         #region Methods
+
         public void Action()
         {
             var numberOfActionsPerformed = 0;
-            foreach (Commands command in _currentCommands)
+            foreach (var command in _currentCommands)
             {
                 numberOfActionsPerformed++;
                 switch (command)
@@ -152,12 +150,13 @@ namespace EntityData.Characters
 
         public void Attack(IEntity entity)
         {
-            if (_d20.Roll(AttackBonus) >= entity.Ac)
+            if (_d20.Roll()+AttackBonus >= entity.Ac)
             {
                 var damage = CalculateDamage();
-                entity.CurrentHp = entity.CurrentHp - damage;
+                entity.AlterHealth(-damage);
             }
         }
+
         public int CalculateDamage()
         {
             var weaponDamage = Equipment.Weapons.First().DamageRoll();
@@ -171,17 +170,7 @@ namespace EntityData.Characters
 
             return weaponDamage + damageBonus;
         }
+
         #endregion
-
-        #region Constructors
-        public Character()
-        {
-            _d20 = new Dices.D20();
-            Equipment=new Equipment();
-            IsActive = true;
-        }
-        #endregion
-
-
     }
 }

@@ -12,5 +12,6 @@ namespace EntityData.Interfaces
         int FortSave { get; set; }
         int ReflexSave { get; set; }
         int WillSave { get; set; }
+        void AlterHealth(int amount);
     }
 }

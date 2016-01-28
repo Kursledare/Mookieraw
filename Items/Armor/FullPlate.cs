@@ -6,9 +6,9 @@ namespace GameEquipment
     {
         public FullPlate()
         {
-            base.Name = "Full Plate";
-            base.ArmorType = ArmorTypes.Heavy;
-            base.ArmorValue = 9;
+            Name = "Full Plate";
+            ArmorType = ArmorTypes.Heavy;
+            ArmorValue = 9;
         }
     }
 }

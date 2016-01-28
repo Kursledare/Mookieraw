@@ -12,7 +12,7 @@ namespace EntityData
 
         public int GetEquipmentArmorValue()
         {
-            if (Armor != null) return  Armor.Select(x => x.ArmorValue).Sum() + Shield.ArmorValue;
+            if (Shield != null) return  Armor.Select(x => x.ArmorValue).Sum() + Shield.ArmorValue;
 
             return 0;
         }
@@ -21,7 +21,6 @@ namespace EntityData
         {
             Weapons=new List<IWeapon>();
             Armor=new List<IArmor>();
-            
         }
     }
 }

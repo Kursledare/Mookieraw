@@ -6,11 +6,11 @@ namespace Items
     {
         public GreatSword()
         {
-            base.Name = "GreatSword";
-            base.Dice = new DiceManager( new D6(2));
-            base.Enchanment = 0;
-            base.Range = 1;
-            base.CanOneHanded = false;
+            Name = "GreatSword";
+            Dice = new Dice(6,2);
+            Enchanment = 0;
+            Range = 1;
+            CanOneHanded = false;
         }
     }
 }

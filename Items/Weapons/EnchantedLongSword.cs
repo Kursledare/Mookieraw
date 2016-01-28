@@ -6,9 +6,9 @@ namespace Items
     {
         public EnchantedLongSword()
         {
-            base.Name = "Long Sword of Mighty Swing";
-            base.Dice = new DiceManager(new D8());
-            base.Enchanment = 1;
+            Name = "Long Sword of Mighty Swing";
+            Dice = new Dice(8);
+            Enchanment = 1;
         }
     }
 }

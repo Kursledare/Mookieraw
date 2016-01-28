@@ -6,9 +6,9 @@ namespace Items.Armor
     {
         public StuddedLeather()
         {
-            base.Name = "Studded Leather";
-            base.ArmorType = ArmorTypes.Light;
-            base.ArmorValue = 3;
+            Name = "Studded Leather";
+            ArmorType = ArmorTypes.Light;
+            ArmorValue = 3;
         }
     }
 }
