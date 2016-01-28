@@ -51,6 +51,11 @@
     <Compile Include="Armor\LeatherArmor.cs" />
     <Compile Include="Shields\Shield.cs" />
     <Compile Include="Shields\WoodenShield.cs" />
+    <Compile Include="Weapons\Scythe.cs" />
+    <Compile Include="Weapons\QwarterStaff.cs" />
+    <Compile Include="Weapons\MorningStar.cs" />
+    <Compile Include="Weapons\GreatClub.cs" />
+    <Compile Include="Weapons\Spear.cs" />
     <Compile Include="Weapons\Mace.cs" />
     <Compile Include="Weapons\EnchantedLongSword.cs" />
     <Compile Include="Weapons\Dagger.cs" />
