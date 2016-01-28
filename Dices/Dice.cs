@@ -24,7 +24,9 @@ namespace Dices
             return resultat;
         }
     }
-    }
+}
+
+
     //public class D3 : MasterDie
     //{
     //    public D3()

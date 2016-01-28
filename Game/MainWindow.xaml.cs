@@ -64,6 +64,7 @@ namespace Game
                 bs.AddCommand(Commands.Attack);
                 bs2.AddCommand(Commands.Attack);
 
+                this.Title = "Combat";
                 GM.RunTurn();
             }
         }

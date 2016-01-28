@@ -51,8 +51,10 @@
     <Compile Include="Interfaces\IMonster.cs" />
     <Compile Include="Interfaces\IPlayerCharacter.cs" />
     <Compile Include="Inventory.cs" />
-    <Compile Include="Monsters\Goblin.cs" />
-    <Compile Include="Monsters\Monster.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="MonsterAbilities\Monsters\GoblINI.cs" />
+    <Compile Include="MonsterAbilities\Monsters\Goblin.cs" />
+    <Compile Include="MonsterAbilities\Monsters\Monster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
     <Compile Include="Races\Dwarf.cs" />
@@ -83,9 +85,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MonsterAbilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
