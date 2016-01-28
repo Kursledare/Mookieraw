@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -16,7 +16,10 @@ namespace GameEngine
         {
             DebugLog.Add(message);
             OnErrorLogEntry?.Invoke(message);
+        }
 
+        public static void LogToDisk(string message)
+        {
             var path = @"c:\code\debugLog.txt";
 
             if (File.Exists(path))
