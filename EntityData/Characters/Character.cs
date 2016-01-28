@@ -117,6 +117,7 @@ namespace EntityData.Characters
         {
             CurrentHp += amount;
             IsActive = CurrentHp > 0;
+            Game.Log(Name+" took " + amount + " HP");
         }
 
     
