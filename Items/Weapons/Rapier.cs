@@ -2,15 +2,15 @@
 
 namespace Items.Weapons
 {
-    public class ShortSword : Weapon
+    class Rapier : Weapon
     {
-        public ShortSword()
+        public Rapier()
         {
-            Name = "Short Sword";
-            Dice = new Dice(4);
+            Name = "Rapier";
+			Dice = new Dice(8);
             Range = 1;
             Enchanment = 0;
-            DamageType = "Slash";
+            DamageType = "Stab";
             WeaponType = WeaponTypeEnum.LightBlade;
         }
     }

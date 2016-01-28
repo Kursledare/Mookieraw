@@ -10,6 +10,8 @@ namespace Items.Weapons
 			Dice = new Dice(6);
             Range = 1;
             Enchanment = 0;
+            DamageType = "Blunt";
+            WeaponType = WeaponTypeEnum.Mace;
         }
     }
 }

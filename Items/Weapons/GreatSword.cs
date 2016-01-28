@@ -11,6 +11,8 @@ namespace Items
             Enchanment = 0;
             Range = 1;
             CanOneHanded = false;
+            DamageType = "Slash";
+            WeaponType = WeaponTypeEnum.HeavyBlade;
         }
     }
 }

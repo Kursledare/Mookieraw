@@ -11,6 +11,8 @@ namespace Items
             Enchanment = 0;
             Range = 2;
             CanOneHanded = true;
+            DamageType = "Stab";
+            WeaponType = WeaponTypeEnum.Spear;
         }
     }
 }

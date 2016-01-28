@@ -11,6 +11,8 @@ namespace Items
             Enchanment = 0;
             Range = 1;
             CanOneHanded = true;
+            DamageType = "Stab";
+            WeaponType = WeaponTypeEnum.LightBlade;
         }
     }
 }
