@@ -4,13 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gui"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="NDND v1.0" Height="669" Width="968">
+
+    <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="BlackText">
+            <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold"/>
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold" />
+            <Setter Property="FontSize" Value ="35" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="Title">
+            <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold" />
+            <Setter Property="FontSize" Value="60" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="AttributeHeader" >
+            <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,3,0,0"/>
+        </Style>
+        
+    </Window.Resources>
+
     
     <Grid Width="960" Height="669">
         <StackPanel>
             <StackPanel Name="Header" Width="960" Height="100" VerticalAlignment="Top" Background="Black">
-                <TextBlock Text="NO DUNGEONS, NO DRAGONS" Foreground="White" FontSize="60" Margin="0,5,0,0"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="Main" Text="NO DUNGEONS, NO DRAGONS" Style="{StaticResource Title}" Margin="0,18,0,0" />
             </StackPanel>
 
             <StackPanel Name="Body" Width="960" Height="339" Orientation="Horizontal">
@@ -18,12 +58,12 @@
                    
                     <StackPanel Name="FirstCombatantContentsPanel" Width="441" Height="325"  Orientation="Vertical">
                       
-                        <Label Name="FirstCombatantLabel" Width="441" Height="50" Margin="0,13" Content="FIRST COMBATANT" Foreground="White" Background="Black" FontFamily="Adobe Garamond Pro Bold" FontSize="40" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Name="FirstCombatantLabel" Width="441" Height="50" Margin="0,13" Content="FIRST COMBATANT" HorizontalAlignment="Left" />
                         
                         <StackPanel Name="FirstCombatantDataPanelOne" Width="375">
                             <TextBlock Width="375" Height="37" />
                             <Rectangle Width="375" Height="1" Fill="Black"/>
-                            <TextBlock Text="NAME" Margin="5,5,0,0"  FontSize="16" FontFamily="Adobe Garamond Pro" />
+                            <TextBlock Style="{StaticResource BlackText}" Text="NAME" Margin="5,5,0,0" />
                         </StackPanel>
 
                         <StackPanel Name="FirstCombatantDataPanelTwo" Width="375" Height="161" Margin="0,13" Orientation="Horizontal">
@@ -31,17 +71,17 @@
                             <StackPanel Name="FirstCombatantDataPanelColOne" Width="100" Height="161" Margin="0,0,13,0">
                                
                                 <StackPanel Name="FirstCombatantHpPanel" Width="100" Height="45" Margin="0,0,0,13" Background="Black">
-                                    <TextBlock Foreground="White" Text="HP" HorizontalAlignment="Center"/>
+                                    <TextBlock Style="{StaticResource AttributeHeader}"  Text="HP"/>
                                     <TextBlock Foreground="White" Text="HIT POINTS" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantAcPanel" Width="100" Height="45" Margin="0,0,0,13" Background="Black">
-                                    <TextBlock Foreground="White" Text="AC" HorizontalAlignment="Center"/>
+                                    <TextBlock Style="{StaticResource AttributeHeader}"  Text="AC"/>
                                     <TextBlock Foreground="White" Text="ARMOR CLASS" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantMeleePanel" Width="100" Height="45" Background="Black">
-                                    <TextBlock Foreground="White" Text="MELEE" HorizontalAlignment="Center"/>
+                                    <TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
                                     <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
                                 
@@ -79,7 +119,7 @@
                     
                     <StackPanel Name="SecondCombatantContentsPanel" Width="441" Height="325"  Orientation="Vertical">
                       
-                        <Label Name="SecondCombatantLabel" Width="441" Height="50" Margin="0,13" Content="SECOND COMBATANT" Foreground="White" Background="Black" FontFamily="Adobe Garamond Pro Bold" FontSize="40" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                        <Label Name="SecondCombatantLabel" Width="441" Height="50" Margin="0,13" Content="SECOND COMBATANT" HorizontalAlignment="Left" />
                         
                         <StackPanel Name="SecondCombatantDataPanelOne" Width="375">
                             <TextBlock Width="375" Height="37" />
