@@ -10,7 +10,7 @@ namespace Tests
         [Test]
         public void AddCommandWorkingProperly()
         {
-            var testCharacter = new Character();
+            var testCharacter = new BasicFighter("Hej");
             bool addAttackCommandResult;
             for (var i = 0; i < testCharacter.NumberOfCommandsPerTurn; i++)
             {

@@ -49,7 +49,7 @@ namespace Game
         {
             var img = sender as Image;
             var tt = new ToolTip();
-            var go = GM.GameObjects.First(a => a.ScreenObject.Image == img) as ICharacter;
+            var go = GM.GameObjects.First(a => a.ScreenObject.Image == img) as Character;
             tt.Content=new TextBlock() {Text=go?.Name+"\n"+"Hp: "+go?.CurrentHp};
             img.ToolTip = tt;
 

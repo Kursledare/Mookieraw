@@ -13,5 +13,13 @@ namespace EntityData.Interfaces
         int ReflexSave { get; set; }
         int WillSave { get; set; }
         void AlterHealth(int amount);
+        int InitiativeBonus { get; set; }
+        Attributes Attributes { get; set; }
+        int AttackBonus { get; set; }
+        int DamageBonus { get; set; }
+        Equipment Equipment { get; set; }
+        Class Class { get; set; }
+        Race Race { get; set; }
+        Inventory Inventory { get; set; }
     }
 }

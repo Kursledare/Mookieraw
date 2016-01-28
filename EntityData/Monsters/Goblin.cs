@@ -1,11 +1,12 @@
 ﻿using Dices;
+using EntityData.Characters;
 using GameEquipment;
 using Items.Shields;
 using Items.Weapons;
 
 namespace EntityData.Monsters
 {
-    public class Goblin : Monster
+    public class Goblin : Character
     {
         public Goblin() : base()
         {
