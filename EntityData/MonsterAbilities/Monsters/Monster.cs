@@ -38,6 +38,8 @@ namespace EntityData.Monsters
         }
 
         public string Name { get; set; }
+        public Size Size { get; set; }
+        public BaseSpeed Basespeed { get; set; }
         public int TotalHp { get; set; }
         public int CurrentHp { get; set; }
         public int Ac { get; set; }

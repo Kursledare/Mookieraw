@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\IPlayerCharacter.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="MonsterAbilities\Monsters\Gnoll.cs" />
     <Compile Include="MonsterAbilities\Monsters\GoblINI.cs" />
     <Compile Include="MonsterAbilities\Monsters\Goblin.cs" />
     <Compile Include="MonsterAbilities\Monsters\Monster.cs" />
