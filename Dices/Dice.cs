@@ -23,6 +23,16 @@ namespace Dices
             }
             return resultat;
         }
+        // Gjorde en Roll som lägger till flatbonus tex 2d8+2   ((d8=x)(d8=x)+2)=x+x+2;
+        public int Roll(int flatbonus)
+        {
+            int resultat = 0;
+            for (int i = 0; i < NumofDice; i++)
+            {
+                resultat += _r1.Next(1, (Sides + 1));
+            }
+            return resultat + flatbonus;
+        }
     }
 }
 

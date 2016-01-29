@@ -47,44 +47,7 @@ namespace EntityData
         {
             Items.Remove(it);
         }
-        // This method take the item from inventory to the equipment.
+        
 
-        /// 
-        /// Dessa metoder diskuteras att flytta över till Equipment or Character.
-        /// 
-        /*
-        public bool Equipweapon(Item invitem)
-        {  
-            foreach (var weapon in Weapons)
-            {
-                if (invitem is IWeapon)
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            return false;
-        }
-        // This method take the item from inventory to the equipment.
-        public <IArmor> EquipArmor(Item invitem)
-        {
-            foreach (var arm in Armor)
-            {
-                if (invitem is IArmor)
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            return false;
-        }
-        // This method take items from equipment to the inventory.
-        public void Dropdown()
-        {
-            
-        }
-        */
     }
 }
