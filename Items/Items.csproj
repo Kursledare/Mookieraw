@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Armor\Armor.cs" />
     <Compile Include="Armor\Chainmail.cs" />
+    <Compile Include="Armor\Cloth.cs" />
     <Compile Include="Enums\ArmorTypes.cs" />
     <Compile Include="Armor\FullPlate.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
