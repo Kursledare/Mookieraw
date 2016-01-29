@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EntityData.Characters;
 using EntityData.Interfaces;
 using GameEngine;
@@ -16,7 +17,6 @@ namespace ViewModel
 
         public DoBattleCommand DoBattleButtonCommand { get; set; }
 
-        [NotNull]
         public IEntity FirstCombatant
         {
             get { return _firstCombatant; }
@@ -27,7 +27,6 @@ namespace ViewModel
             }
         }
 
-        [NotNull]
         public IEntity SecondCombatant
         {
             get { return _secondCombatant; }
@@ -66,6 +65,13 @@ namespace ViewModel
             GameEngine = new GameManager();
             var bs = new BasicFighter("Urban den förskräcklige");
             var bs2 = new BasicFighter("Jurgen den Oförskräklige");
+
+            bs.Target = bs2;
+            bs2.Target = bs;
+
+            bs.AddCommand(CommandHandler.enums.Commands.Attack);
+            bs2.AddCommand(CommandHandler.enums.Commands.Attack);
+
             GameEngine.Register(bs);
             GameEngine.Register(bs2);
 
@@ -75,7 +81,7 @@ namespace ViewModel
 
         public void UpdateGameLog(string message)
         {
-            GameLog += message;
+            GameLog += message + Environment.NewLine;
         }
     }
 }

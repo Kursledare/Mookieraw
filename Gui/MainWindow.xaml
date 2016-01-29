@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gui"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
         mc:Ignorable="d"
         Title="NDND v1.0" Height="669" Width="968">
 
     <Window.Resources>
+        <vm:MainWindowVm x:Key="MainVm"></vm:MainWindowVm>
+        
         <Style TargetType="Window">
             <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro" />
             <Setter Property="FontSize" Value="11" />
@@ -17,6 +20,12 @@
         <Style TargetType="TextBlock" x:Key="BlackText">
             <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro Bold"/>
             <Setter Property="FontSize" Value="13" />
+        </Style>
+        
+        <Style TargetType="TextBlock" x:Key="LargeText">
+            <Setter Property="FontFamily" Value="/Gui;component/#Adobe Garamond Pro"/>
+            <Setter Property="FontSize" Value="22" />
+
         </Style>
         
         <Style TargetType="Label">
@@ -47,7 +56,7 @@
     </Window.Resources>
 
     
-    <Grid Width="960" Height="669">
+    <Grid Width="960" Height="669" DataContext="{StaticResource MainVm}">
         <StackPanel>
             <StackPanel Name="Header" Width="960" Height="100" VerticalAlignment="Top" Background="Black">
                 <TextBlock x:Name="Main" Text="NO DUNGEONS, NO DRAGONS" Style="{StaticResource Title}" Margin="0,18,0,0" />
@@ -60,8 +69,8 @@
                       
                         <Label Name="FirstCombatantLabel" Width="441" Height="50" Margin="0,13" Content="FIRST COMBATANT" HorizontalAlignment="Left" />
                         
-                        <StackPanel Name="FirstCombatantDataPanelOne" Width="375">
-                            <TextBlock Width="375" Height="37" />
+                        <StackPanel Name="FirstCombatantDataPanelOne" Width="375" Margin="0,11,0,0">
+                            <TextBlock Width="375" Style="{StaticResource LargeText}" Text="{Binding FirstCombatant.Name}"/>
                             <Rectangle Width="375" Height="1" Fill="Black"/>
                             <TextBlock Style="{StaticResource BlackText}" Text="NAME" Margin="5,5,0,0" />
                         </StackPanel>
@@ -80,9 +89,9 @@
                                     <TextBlock Foreground="White" Text="ARMOR CLASS" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
 
-                                <StackPanel Name="FirstCombatantMeleePanel" Width="100" Height="45" Background="Black">
-                                    <TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
-                                    <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>
+                                <StackPanel Name="FirstCombatantMeleePanel" Width="100" Height="45">
+                                    <!--<TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
+                                    <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>-->
                                 </StackPanel>
                                 
                             </StackPanel>
@@ -92,17 +101,17 @@
                                 
                                 <StackPanel Name="FirstCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock/>
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatant.CurrentHp}" />
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantAcDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock/>
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatant.Ac}"/>
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantMeleeDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
-                                    <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock/>
+                                    <!--<Rectangle Width="75" Height="45" Stroke="Black"/>
+                                    <TextBlock/>-->
                                 </StackPanel>
 
                             </StackPanel>
@@ -121,8 +130,8 @@
                       
                         <Label Name="SecondCombatantLabel" Width="441" Height="50" Margin="0,13" Content="SECOND COMBATANT" HorizontalAlignment="Left" />
                         
-                        <StackPanel Name="SecondCombatantDataPanelOne" Width="375">
-                            <TextBlock Width="375" Height="37" />
+                        <StackPanel Name="SecondCombatantDataPanelOne" Width="375" Margin="0,12,0,0">
+                            <TextBlock Width="375" Style="{StaticResource LargeText}" Text="{Binding SecondCombatant.Name}" />
                             <Rectangle Width="375" Height="1" Fill="Black"/>
                             <TextBlock Style="{StaticResource BlackText}" Text="NAME" Margin="5,5,0,0" />
                         </StackPanel>
@@ -141,9 +150,9 @@
                                     <TextBlock Foreground="White" Text="ARMOR CLASS" HorizontalAlignment="Center"></TextBlock>
                                 </StackPanel>
 
-                                <StackPanel Name="SecondCombatantMeleePanel" Width="100" Height="45" Background="Black">
-                                    <TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
-                                    <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>
+                                <StackPanel Name="SecondCombatantMeleePanel" Width="100" Height="45">
+                                    <!--<TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
+                                    <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>-->
                                 </StackPanel>
                                 
                             </StackPanel>
@@ -153,17 +162,17 @@
                                 
                                 <StackPanel Name="SecondCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock/>
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatant.CurrentHp}" />
                                 </StackPanel>
 
                                 <StackPanel Name="SecondCombatantAcDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock/>
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatant.Ac}" />
                                 </StackPanel>
 
                                 <StackPanel Name="SecondCombatantMeleeDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
-                                    <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock/>
+                                    <!--<Rectangle Width="75" Height="45" Stroke="Black"/>
+                                    <TextBlock/>-->
                                 </StackPanel>
 
                             </StackPanel>
@@ -183,8 +192,8 @@
             </StackPanel>
             
             <StackPanel Name="Footer" Width="960" Height="239" Background="Black">
-                <TextBox Name="CombatLog" Width="450" Height="100" Margin="0,13,0,13"/>
-                <Button Click="DoBattleButton_Click" Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" FontSize="33.333" FontFamily="/Gui;component/#Adobe Garamond Pro Bold" />
+                <TextBox Name="CombatLog" Width="450" Height="100" Margin="0,13,0,13" Text="{Binding GameLog}"/>
+                <Button Click="DoBattleButton_Click" Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" FontSize="33.333" FontFamily="/Gui;component/#Adobe Garamond Pro Bold" Command="{Binding DoBattleButtonCommand}" />
             </StackPanel>
 
 
