@@ -2,6 +2,7 @@
 //using IniParser;
 //using IniParser.Model;
 using System.IO;
+using System.Windows.Controls;
 
 namespace Gui
 {
@@ -26,6 +27,12 @@ namespace Gui
         {
             // Init battle here
 
+        }
+
+        private void CombatLog_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = sender as TextBox;
+            tb?.ScrollToEnd();
         }
     }
 }

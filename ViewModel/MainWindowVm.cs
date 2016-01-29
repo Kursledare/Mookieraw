@@ -68,6 +68,7 @@ namespace ViewModel
                 RaisePropertyChanged(nameof(SecondCombatantHp));
                 RaisePropertyChanged(nameof(FirstCombatantAc));
                 RaisePropertyChanged(nameof(SecondCombatantAc));
+                
             }
         }
 
