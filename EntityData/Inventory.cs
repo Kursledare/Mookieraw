@@ -50,7 +50,7 @@ namespace EntityData
         // This method take the item from inventory to the equipment.
 
         /// 
-        /// Dessa metoder diskuteras att flytta över till Equipment or Character.
+        /// All of this methods shall move to Equipment or Character, rhe follows this class because a remender of this methods.
         /// 
         /*
         public bool Equipweapon(Item invitem)
@@ -66,7 +66,7 @@ namespace EntityData
             }
             return false;
         }
-        // This method take the item from inventory to the equipment.
+        // This method take the itemArmor from inventory to the equipment.
         public <IArmor> EquipArmor(Item invitem)
         {
             foreach (var arm in Armor)
