@@ -25,9 +25,9 @@ namespace EntityData.Monsters
 
         public Commands CurrentCommands { get; set; }
         public Commands AvailableCommands { get; }
-        public int NumberOfCommandsPerTurn { get; }
+        public int NumberOfActionPointsPerTurn { get; }
         public bool PlayerControlled { get; }
-        public bool AddCommand(Commands commands)
+        public bool AddCommand(Commands command)
         {
             throw new NotImplementedException();
         }

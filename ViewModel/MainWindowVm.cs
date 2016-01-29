@@ -94,8 +94,8 @@ namespace ViewModel
             bs.Target = bs2;
             bs2.Target = bs;
 
-            bs.AddCommand(CommandHandler.enums.Commands.Attack);
-            bs2.AddCommand(CommandHandler.enums.Commands.Attack);
+            bs.AddCommand(CommandHandler.enums.Commands.MeleeAttack);
+            bs2.AddCommand(CommandHandler.enums.Commands.MeleeAttack);
 
             GameEngine.Register(bs);
             GameEngine.Register(bs2);

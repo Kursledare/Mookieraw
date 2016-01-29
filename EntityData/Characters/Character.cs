@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using CommandHandler.enums;
 using Dices;
@@ -11,6 +10,12 @@ namespace EntityData.Characters
 {
     public class Character : IPlayerCharacter
     {
+        #region Fields
+
+        private readonly Dice _d20;
+
+        #endregion
+
         #region Constructors
 
         public Character()
@@ -19,12 +24,6 @@ namespace EntityData.Characters
             Equipment = new Equipment();
             IsActive = true;
         }
-
-        #endregion
-
-        #region Fields
-
-        private readonly Dice _d20;
 
         #endregion
 
@@ -72,10 +71,11 @@ namespace EntityData.Characters
 
         private readonly Queue<Commands> _currentCommands = new Queue<Commands>();
 
-        public bool AddCommand(Commands commands)
+        public bool AddCommand(Commands command)
         {
-            if (_currentCommands.Count >= NumberOfCommandsPerTurn) return false;
-            _currentCommands.Enqueue(commands);
+            if (_currentCommands.Count >= NumberOfActionPointsPerTurn) return false;
+            if (!AvailableCommands.HasFlag(command)) return false;
+            _currentCommands.Enqueue(command);
             return true;
         }
 
@@ -89,13 +89,13 @@ namespace EntityData.Characters
         {
             get
             {
-                //TODO return Available commands based on class ?
-                return Commands.Attack;
+                //TODO return Available command based on class ?
+                return Commands.MeleeAttack | Commands.Move;
             }
         }
 
         public bool PlayerControlled { get; }
-        public int NumberOfCommandsPerTurn { get; } = 1;
+        public int NumberOfActionPointsPerTurn { get; } = 5;
 
         #endregion
 
@@ -117,37 +117,34 @@ namespace EntityData.Characters
         {
             CurrentHp += amount;
             IsActive = CurrentHp > 0;
-            Game.Log(Name+" took " + amount + " HP");
+            Game.Log(Name + " took " + amount + " HP");
         }
 
-    
         #endregion
 
         #region Methods
 
         public void Action()
         {
-            var numberOfActionsPerformed = 0;
+            var actionsPointsUsed = 0;
             foreach (var command in _currentCommands)
             {
-                numberOfActionsPerformed++;
+                if (actionsPointsUsed > NumberOfActionPointsPerTurn)
+                {
+                    _currentCommands.Clear();
+                    return;
+                }
+
                 switch (command)
                 {
-                    case Commands.Attack:
+                    case Commands.MeleeAttack:
+                        actionsPointsUsed += 3;
                         var targetEntity = Target as IEntity;
                         if (targetEntity != null)
                         {
-                            Game.Log(Name + "is attacking " + targetEntity.Name);
+                            Game.Log(Name + " is attacking " + targetEntity.Name);
                             Attack(targetEntity);
                         }
-                        break;
-                    case Commands.Move:
-                        throw new NotImplementedException();
-                        break;
-                    case Commands.Defend:
-                        throw new NotImplementedException();
-                        break;
-                    default:
                         break;
                 }
             }
@@ -155,7 +152,12 @@ namespace EntityData.Characters
 
         public void Attack(IEntity entity)
         {
-            if (_d20.Roll()+AttackBonus >= entity.Ac)
+            if (!entity.IsActive)
+            {
+                Game.Log($"{entity.Name} is dead!");
+                return;
+            }
+            if (_d20.Roll() + AttackBonus >= entity.Ac)
             {
                 var damage = CalculateDamage();
                 entity.AlterHealth(-damage);

@@ -12,12 +12,12 @@ namespace Tests
         {
             var testCharacter = new Character();
             bool addAttackCommandResult;
-            for (var i = 0; i < testCharacter.NumberOfCommandsPerTurn; i++)
+            for (var i = 0; i < testCharacter.NumberOfActionPointsPerTurn; i++)
             {
-                addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
+                addAttackCommandResult = testCharacter.AddCommand(Commands.MeleeAttack);
                 Assert.That(addAttackCommandResult, Is.True);
             }
-            addAttackCommandResult = testCharacter.AddCommand(Commands.Attack);
+            addAttackCommandResult = testCharacter.AddCommand(Commands.MeleeAttack);
             Assert.That(addAttackCommandResult, Is.False);
         }
     }

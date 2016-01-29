@@ -61,8 +61,8 @@ namespace Game
             {
                 bs.Target = bs2;
                 bs2.Target = bs;
-                bs.AddCommand(Commands.Attack);
-                bs2.AddCommand(Commands.Attack);
+                bs.AddCommand(Commands.MeleeAttack);
+                bs2.AddCommand(Commands.MeleeAttack);
 
                 this.Title = "Combat";
                 GM.RunTurn();
@@ -75,7 +75,7 @@ namespace Game
             var go = GM.GameObjects.First(obj => obj.ScreenObject.Image == img);
 
             bs.Target = go;
-            bs.AddCommand(Commands.Attack);
+            bs.AddCommand(Commands.MeleeAttack);
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)

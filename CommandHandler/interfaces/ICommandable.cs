@@ -5,9 +5,9 @@ namespace CommandHandler.interfaces
     public interface ICommandable
     {
         Commands AvailableCommands { get; }
-        int NumberOfCommandsPerTurn { get; }
+        int NumberOfActionPointsPerTurn { get; }
         bool PlayerControlled { get; }
-        bool AddCommand(Commands commands);
+        bool AddCommand(Commands command);
         Commands GetNextCommand();
     }
 }
