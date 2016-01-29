@@ -135,7 +135,11 @@ namespace EntityData.Characters
                 {
                     case Commands.Attack:
                         var targetEntity = Target as IEntity;
-                        if (targetEntity != null) Attack(targetEntity);
+                        if (targetEntity != null)
+                        {
+                            Game.Log(Name + "is attacking " + targetEntity.Name);
+                            Attack(targetEntity);
+                        }
                         break;
                     case Commands.Move:
                         throw new NotImplementedException();
@@ -155,6 +159,10 @@ namespace EntityData.Characters
             {
                 var damage = CalculateDamage();
                 entity.AlterHealth(-damage);
+            }
+            else
+            {
+                Game.Log(Name + " missed!");
             }
         }
 

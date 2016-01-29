@@ -4,7 +4,7 @@ namespace Dices
 {
     public class Dice
     {
-        private readonly Random _r1 = new Random();
+        private static readonly Random _r1 = new Random();
         public string Name { get; set; }
         public int Sides { get; set; }
         public int NumofDice { get; set; }
