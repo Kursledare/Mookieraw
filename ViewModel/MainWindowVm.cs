@@ -48,7 +48,6 @@ namespace ViewModel
             }
         }
 
-
         public GameManager GameEngine
         {
             get { return _gameEngineGameManager; }
@@ -62,6 +61,7 @@ namespace ViewModel
         public MainWindowVm()
         {
             DoBattleButtonCommand = new DoBattleCommand(this);
+            Game.OnGameLoggedEntry += UpdateGameLog;
 
             GameEngine = new GameManager();
             var bs = new BasicFighter("Urban den förskräcklige");
@@ -73,13 +73,9 @@ namespace ViewModel
             SecondCombatant = GameEngine.GameObjects.ElementAt(1) as IEntity;
         }
 
-        public void UpdateLogger()
+        public void UpdateGameLog(string message)
         {
-            foreach (var VARIABLE in COLLECTION)
-            {
-                
-            }
+            GameLog += message;
         }
-
     }
 }
