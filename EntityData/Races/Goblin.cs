@@ -13,7 +13,7 @@ namespace EntityData.Races
             Size = Size.Small;
             Type = Type.Humanoid;
             Subrace = SubRace.Goblin;
-            BaseSpeed.Feet = 30;
+            BaseSpeed = new BaseSpeed(20);
         }
     }
 }

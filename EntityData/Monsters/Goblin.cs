@@ -11,7 +11,7 @@ namespace EntityData.Monsters
         {
             base.Name = "Gerblin";
             base.Size = Size.Small;
-            base.Basespeed.Feet = 30;
+            base.Basespeed = new BaseSpeed(30);
             base.Ac = 16;
             base.TotalHp = new Dice(10).Roll();
             base.CurrentHp = TotalHp;

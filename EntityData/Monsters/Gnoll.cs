@@ -12,7 +12,7 @@ namespace EntityData.MonsterAbilities.Monsters
         {
             Name = "BeepBoop";
             Size = Size.Medium;
-            Basespeed.Feet = 30;
+            Basespeed = new BaseSpeed(30);
             Ac = 15;
             TotalHp = new Dice(8, 2).Roll(2);
             CurrentHp = TotalHp;

@@ -13,7 +13,7 @@ namespace EntityData.Races
             Size = Size.Medium;
             Type = Type.Humanoid;
             Subrace = SubRace.Dwarf;
-            BaseSpeed.Feet = 20;
+            BaseSpeed = new BaseSpeed(20);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace EntityData.Races
             Size = Size.Small;
             Type = Type.Humanoid;
             Subrace = SubRace.Gnome;
-            BaseSpeed.Feet = 20;
+            BaseSpeed = new BaseSpeed(30);
         }
     }
 }

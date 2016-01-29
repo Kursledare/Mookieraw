@@ -14,8 +14,13 @@ namespace EntityData
 
     public class BaseSpeed
     {
-        public int Tiles => Feet / 5;
-        public int Feet { get; set; }
+        private readonly int _feet;
+        public int Tiles => _feet / 5;
+
+        public BaseSpeed(int feet)
+        {
+            _feet = feet;
+        }
     }
 
     public enum Size
