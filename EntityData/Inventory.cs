@@ -47,44 +47,7 @@ namespace EntityData
         {
             Items.Remove(it);
         }
-        // This method take the item from inventory to the equipment.
+        
 
-        /// 
-        /// All of this methods shall move to Equipment or Character, rhe follows this class because a remender of this methods.
-        /// 
-        /*
-        public bool Equipweapon(Item invitem)
-        {  
-            foreach (var weapon in Weapons)
-            {
-                if (invitem is IWeapon)
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            return false;
-        }
-        // This method take the itemArmor from inventory to the equipment.
-        public <IArmor> EquipArmor(Item invitem)
-        {
-            foreach (var arm in Armor)
-            {
-                if (invitem is IArmor)
-                {
-                    return true;
-                }
-                else
-                    return false;
-            }
-            return false;
-        }
-        // This method take items from equipment to the inventory.
-        public void Dropdown()
-        {
-            
-        }
-        */
     }
 }
