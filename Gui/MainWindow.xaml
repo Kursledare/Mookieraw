@@ -100,13 +100,13 @@
                             <StackPanel Name="FirstCombatantDataPanelColTwo" Width="75" Height="161" Margin="0,0,13,0">
                                 
                                 <StackPanel Name="FirstCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
-                                    <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatant.CurrentHp}" />
+                                    <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatantHp,Mode=TwoWay}" />
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantAcDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
-                                    <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatant.Ac}"/>
+                                    <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatantAc}"/>
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantMeleeDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
@@ -161,13 +161,13 @@
                             <StackPanel Name="SecondCombatantDataPanelColTwo" Width="75" Height="161" Margin="0,0,13,0">
                                 
                                 <StackPanel Name="SecondCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
-                                    <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatant.CurrentHp}" />
+                                    <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatantHp}" />
                                 </StackPanel>
 
                                 <StackPanel Name="SecondCombatantAcDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
-                                    <Rectangle Width="75" Height="45" Stroke="Black"/>
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatant.Ac}" />
+                                    <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatantAc}" />
                                 </StackPanel>
 
                                 <StackPanel Name="SecondCombatantMeleeDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">

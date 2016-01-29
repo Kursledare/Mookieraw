@@ -17,6 +17,26 @@ namespace ViewModel
 
         public DoBattleCommand DoBattleButtonCommand { get; set; }
 
+        public string FirstCombatantHp
+        {
+            get { return FirstCombatant.CurrentHp.ToString(); }
+            set { }
+        }
+        public string SecondCombatantHp
+        {
+            get { return SecondCombatant.CurrentHp.ToString(); }
+            set { }
+        }
+        public string FirstCombatantAc
+        {
+            get { return FirstCombatant.Ac.ToString(); }
+            set { }
+        }
+        public string SecondCombatantAc
+        {
+            get { return SecondCombatant.Ac.ToString(); }
+            set { }
+        }
         public IEntity FirstCombatant
         {
             get { return _firstCombatant; }
@@ -44,6 +64,10 @@ namespace ViewModel
             {
                 _gameLog = value;
                 RaisePropertyChanged("GameLog");
+                RaisePropertyChanged(nameof(FirstCombatantHp));
+                RaisePropertyChanged(nameof(SecondCombatantHp));
+                RaisePropertyChanged(nameof(FirstCombatantAc));
+                RaisePropertyChanged(nameof(SecondCombatantAc));
             }
         }
 
@@ -77,6 +101,10 @@ namespace ViewModel
 
             FirstCombatant = GameEngine.GameObjects.First() as IEntity;
             SecondCombatant = GameEngine.GameObjects.ElementAt(1) as IEntity;
+            RaisePropertyChanged(nameof(FirstCombatantHp));
+            RaisePropertyChanged(nameof(SecondCombatantHp));
+            RaisePropertyChanged(nameof(FirstCombatantAc));
+            RaisePropertyChanged(nameof(SecondCombatantAc));
         }
 
         public void UpdateGameLog(string message)
