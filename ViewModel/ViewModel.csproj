@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseVm.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\DoBattleCommand.cs" />
     <Compile Include="MainWindowVm.cs" />
     <Content Include="Old.txt" />
     <Compile Include="Properties\Annotations.cs" />

@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using EntityData.Characters;
 using EntityData.Interfaces;
 using GameEngine;
 using ViewModel.Annotations;
+using ViewModel.Commands;
 
 namespace ViewModel
 {
@@ -11,6 +13,8 @@ namespace ViewModel
         private string _gameLog;
         private IEntity _firstCombatant;
         private IEntity _secondCombatant;
+
+        public DoBattleCommand DoBattleButtonCommand { get; set; }
 
         [NotNull]
         public IEntity FirstCombatant
@@ -55,26 +59,26 @@ namespace ViewModel
             }
         }
 
-        public IEntity SecondCombatant1
-        {
-            get
-            {
-                return _secondCombatant;
-            }
-
-            set
-            {
-                _secondCombatant = value;
-            }
-        }
-
         public MainWindowVm()
         {
-            GameEngine = new GameManager();
+            DoBattleButtonCommand = new DoBattleCommand(this);
 
+            GameEngine = new GameManager();
+            var bs = new BasicFighter("Urban den förskräcklige");
+            var bs2 = new BasicFighter("Jurgen den Oförskräklige");
+            GameEngine.Register(bs);
+            GameEngine.Register(bs2);
 
             FirstCombatant = GameEngine.GameObjects.First() as IEntity;
             SecondCombatant = GameEngine.GameObjects.ElementAt(1) as IEntity;
+        }
+
+        public void UpdateLogger()
+        {
+            foreach (var VARIABLE in COLLECTION)
+            {
+                
+            }
         }
 
     }
