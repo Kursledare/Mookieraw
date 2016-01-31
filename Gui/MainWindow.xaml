@@ -81,17 +81,17 @@
                                
                                 <StackPanel Name="FirstCombatantHpPanel" Width="100" Height="45" Margin="0,0,0,13" Background="Black">
                                     <TextBlock Style="{StaticResource AttributeHeader}"  Text="HP"/>
-                                    <TextBlock Foreground="White" Text="HIT POINTS" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Foreground="White" Text="HIT POINTS" HorizontalAlignment="Center" />
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantAcPanel" Width="100" Height="45" Margin="0,0,0,13" Background="Black">
                                     <TextBlock Style="{StaticResource AttributeHeader}"  Text="AC"/>
-                                    <TextBlock Foreground="White" Text="ARMOR CLASS" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Foreground="White" Text="ARMOR CLASS" HorizontalAlignment="Center" />
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantMeleePanel" Width="100" Height="45">
                                     <!--<TextBlock Style="{StaticResource AttributeHeader}"  Text="MELEE" />
-                                    <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center"></TextBlock>-->
+                                    <TextBlock Foreground="White" Text="DAT DAMAGE" HorizontalAlignment="Center" />-->
                                 </StackPanel>
                                 
                             </StackPanel>
@@ -101,12 +101,12 @@
                                 
                                 <StackPanel Name="FirstCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatantHp,Mode=TwoWay}" />
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatantHp,Mode=TwoWay}" FontSize="30" Margin="0,5,0,0" />
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantAcDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatantAc}"/>
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding FirstCombatantAc}" FontSize="30" Margin="0,5,0,0" />
                                 </StackPanel>
 
                                 <StackPanel Name="FirstCombatantMeleeDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
@@ -122,8 +122,12 @@
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
-                
-                
+
+                <StackPanel Name="Spacer" Width="26" Height="313">
+                    <Rectangle Height="313" Width="1" Fill="Black"></Rectangle>
+                </StackPanel>
+
+
                 <StackPanel Name="SecondCombatantPanel" Width="441" Height="313" Orientation="Vertical"  Margin="0,0,26,0">
                     
                     <StackPanel Name="SecondCombatantContentsPanel" Width="441" Height="325"  Orientation="Vertical">
@@ -162,12 +166,12 @@
                                 
                                 <StackPanel Name="SecondCombatantHpDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatantHp}" />
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatantHp}" FontSize="30" Margin="0,5,0,0" />
                                 </StackPanel>
 
                                 <StackPanel Name="SecondCombatantAcDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
                                     <!--<Rectangle Width="75" Height="45" Stroke="Black"/>-->
-                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatantAc}" />
+                                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding SecondCombatantAc}" FontSize="30" Margin="0,5,0,0" />
                                 </StackPanel>
 
                                 <StackPanel Name="SecondCombatantMeleeDisplayPanel" Width="75" Height="45" Margin="0,0,0,13">
@@ -184,9 +188,6 @@
                     </StackPanel>
                 </StackPanel>
                 
-                <StackPanel Name="Spacer" Width="26" Height="313">
-                    <Rectangle Height="313" Width="1" Fill="Black"></Rectangle>
-                </StackPanel>
                     
                 
             </StackPanel>
