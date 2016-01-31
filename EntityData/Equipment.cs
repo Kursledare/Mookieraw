@@ -14,7 +14,7 @@ namespace EntityData
         {
             if (Shield != null) return  Armor.Select(x => x.ArmorValue).Sum() + Shield.ArmorValue;
 
-            return 0;
+            return Armor.Select(x => x.ArmorValue).Sum();
         }
 
         public Equipment()
