@@ -3,6 +3,7 @@ using System.Linq;
 using CommandHandler.enums;
 using Dices;
 using EntityData.Interfaces;
+using EntityData.Races;
 using GameEngine;
 using GameEngine.interfaces;
 
@@ -33,9 +34,9 @@ namespace EntityData.Characters
 
         public int Level { get; set; }
 
-        public Class Class { get; set; }
+        public IClass Class { get; set; }
 
-        public Race Race { get; set; }
+        public IRace Race { get; set; }
 
         public Equipment Equipment { get; set; }
 
@@ -43,24 +44,29 @@ namespace EntityData.Characters
 
         public int TotalHp { get; set; }
 
-        public int CharAttackBonus { get; set; }
-
-        public int InitiativeBonus { get; set; }
-
-        public int Initiative
+        public int InitiativeBonus
         {
-            get { return _d20.Roll() + InitiativeBonus; }
+            get { return Attributes.DexBonus; }
+            set { }
         }
+
+        public int Initiative => _d20.Roll() + InitiativeBonus;
 
         public Attributes Attributes { get; set; }
 
         public int AttackBonus
         {
-            get { return Attributes.StrBonus + Equipment.GetEquipmentAttackBonus(); } 
+            get { return Attributes.StrModifier + Equipment.GetEquipmentEnchantmentBonus() + Class.ClassAttackBonus; } 
             set {}
         }
 
-        public int DamageBonus { get; set; }
+        public int DamageBonus {
+            get
+            {
+                return Attributes.StrModifier + Equipment.GetEquipmentEnchantmentBonus();
+            }
+            set {}
+        }
 
         #endregion
 
@@ -184,14 +190,10 @@ namespace EntityData.Characters
         {
             var weaponDamage = Equipment.Weapons.First().DamageRoll();
 
-            var damageBonus = 0;
+            if (Equipment.Shield == null)
+               return (int)(weaponDamage + DamageBonus * 1.5);
 
-            if (Equipment.Shield != null)
-                damageBonus = Attributes.GetModifier(AttributeTypes.Str);
-            else
-                damageBonus = (int) (Attributes.GetModifier(AttributeTypes.Str)*1.5);
-
-            return weaponDamage + damageBonus;
+            return weaponDamage + DamageBonus;
         }
 
         #endregion

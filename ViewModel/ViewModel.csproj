@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -45,7 +46,6 @@
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\DoBattleCommand.cs" />
     <Compile Include="MainWindowVm.cs" />
-    <Content Include="Old.txt" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
