@@ -125,14 +125,14 @@
     <Resource Include="Images\Dungion5.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Goblin.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\basicfighter.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Dungion1.png" />
     <Resource Include="Images\Dungion6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Goblin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
