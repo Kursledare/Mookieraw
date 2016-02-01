@@ -12,16 +12,24 @@ namespace GameEngine
     /// </summary>
     public class GameManager
     {
+        public static GameManager ActiveGameManager;
+        private int _currentCharacterIndex;
         /// <summary>
         /// This is the list of all gameobjects in the "Scene", visible or not.
         /// Use the method Register To add new objects.
         /// </summary>
         public readonly List<IGameObject> GameObjects = new List<IGameObject>();
         private readonly List<IGameObject> _gameObjectsToRemove = new List<IGameObject>();
+
         /// <summary>
         /// CurrentCharacter is the currently selected character, use this property to select actions, add a target to this object.
         /// </summary>
-        public IGameObject CurrentCharacter { get; set; }
+        public IGameObject CurrentCharacter
+        {
+            get { return Party[_currentCharacterIndex]; }
+            set { _currentCharacterIndex = Party.IndexOf(value); }
+        }
+
         /// <summary>
         /// AvalibleTargets is a List of GameObjects from "GameObjects" that implement ICommandable and is NOT PlayerControlled
         /// TODO Could be based of the distance from the CurrentCharacter
@@ -76,6 +84,18 @@ namespace GameEngine
             {
                 if (gameObject.IsActive) gameObject.Action();
             }
+        }
+        /// <summary>
+        /// Sets CurrentCharacter To the next character in Party.
+        /// </summary>
+        public void SelectNextCharacter()
+        {
+            var max = Party.Count - 1;
+            _currentCharacterIndex = _currentCharacterIndex + 1 > max ? 0 : _currentCharacterIndex + 1;
+        }
+        public GameManager()
+        {
+            ActiveGameManager = this;
         }
     }
 }
