@@ -26,7 +26,11 @@ namespace GameEngine
         /// </summary>
         public IGameObject CurrentCharacter
         {
-            get { return Party[_currentCharacterIndex]; }
+            get
+            {
+                if (_currentCharacterIndex < 0 || _currentCharacterIndex >= Party.Count) return null;
+                return Party[_currentCharacterIndex];
+            }
             set { _currentCharacterIndex = Party.IndexOf(value); }
         }
 

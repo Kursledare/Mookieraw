@@ -32,6 +32,7 @@ namespace Game
             room1.Position=new Vector2(2.8f,3.2f);
             bs = new BasicFighter("Urban den förskräcklige");
             bs.Position += new Vector2(3, 3);
+            bs.PlayerControlled = true;
             bs.ScreenObject = new ScreenObject("basicFighter.png");
             bs2 = new BasicFighter("Jurgen den Oförskräklige");
             bs2.ScreenObject = new ScreenObject("Goblin.png");
@@ -100,6 +101,7 @@ namespace Game
 
         private void Item_Click(object sender, RoutedEventArgs e)
         {
+            MainCanvas.ContextMenu = null;
             var item = sender as MenuItem;
             if (item == null) return;
             if (item.Header.ToString() == "MoveAndAttack")
@@ -109,11 +111,18 @@ namespace Game
                 (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.Move);
                 (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.MeleeAttack);
             }
+            
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
         {
-            if (_mouseHandled) return;
+            
+            if (_mouseHandled)
+            {
+                _mouseHandled = false;
+                return;
+            }
+            MainCanvas.ContextMenu = null;
             var pos = Mouse.GetPosition(MainCanvas);
             if (e.ChangedButton == MouseButton.Left)
             {
