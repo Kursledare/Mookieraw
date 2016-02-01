@@ -1,6 +1,4 @@
-﻿using EntityData.Races;
-
-namespace EntityData.Interfaces
+﻿namespace EntityData.Interfaces
 {
     interface IPlayerCharacter : ICharacter
     {
