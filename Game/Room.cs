@@ -23,6 +23,7 @@ namespace Game
         }
         public Room(Vector2 position, string img)
         {
+            IsActive = true;
             Position = position;
             ScreenObject = new ScreenObject(img);
         }
