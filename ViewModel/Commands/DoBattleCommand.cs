@@ -10,7 +10,7 @@
 
         public override bool CanExecute(object parameter)
         {
-            return Main.FirstCombatant.CurrentHp > 0 && Main.SecondCombatant.CurrentHp > 0;
+            return Main.FirstCombatant.IsActive  && Main.SecondCombatant.IsActive;
         }
 
         public DoBattleCommand(MainWindowVm main) : base(main)

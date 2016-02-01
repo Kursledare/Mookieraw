@@ -132,11 +132,9 @@ namespace EntityData.Characters
             Game.Log(Name + " took " + amount + " HP");
             if (CurrentHp <= 0)
             {
-                Game.Log($"{Name} died!!!");
-
                 IsActive = false;
+                Game.Log($"{Name} died!!!");
             }
-
         }
 
         #endregion
