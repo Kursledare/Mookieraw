@@ -122,12 +122,14 @@ namespace EntityData.Characters
         public void AlterHealth(int amount)
         {
             CurrentHp += amount;
+            Game.Log(Name + " took " + amount + " HP");
             if (CurrentHp <= 0)
             {
                 Game.Log($"{Name} died!!!");
+               
                 IsActive = false;
             }
-            Game.Log(Name + " took " + amount + " HP");
+            
         }
 
         #endregion
