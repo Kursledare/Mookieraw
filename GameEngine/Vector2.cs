@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace GameEngine
 {
@@ -43,6 +44,23 @@ namespace GameEngine
             var dy = a.Y - b.Y;
             var x2Y2 = dx*dx + dy*dy;
             return (float) Math.Sqrt(x2Y2);
+        }
+
+        public float Distance(Vector2 b)
+        {
+            return Distance(this, b);
+        }
+
+        public static Vector2 Normalize(Vector2 a, Vector2 b)
+        {
+            var length = Distance(a, b);
+            var nx = (b.X - a.X)/length;
+            var ny = (b.Y - a.Y)/length;
+            return new Vector2(nx,ny);
+        }
+        public Vector2 Normalize(Vector2 b)
+        {
+            return Normalize(this, b);
         }
     }
 }
