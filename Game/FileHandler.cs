@@ -17,10 +17,11 @@ namespace Game
         /// </summary>
         const string Header = "NdNdv1";
         public static Room Load(string dataFile,string imageFile)
-        { 
+        {
+            var dataFileWithPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName+@"\Images\"+dataFile;
             Room newRoom;
-            if (!File.Exists(dataFile)) return null;
-            using (var stream = File.Open(dataFile, FileMode.Open))
+            if (!File.Exists(dataFileWithPath)) return null;
+            using (var stream = File.Open(dataFileWithPath, FileMode.Open))
             using (var reader = new BinaryReader(stream, Encoding.UTF8))
             {
 

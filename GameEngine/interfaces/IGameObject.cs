@@ -8,6 +8,5 @@
         ScreenObject ScreenObject { get; set; }
         IGameObject Target { get; set; }
         void Action();
-
     }
 }

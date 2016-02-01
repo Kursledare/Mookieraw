@@ -24,6 +24,7 @@ namespace Game
             Position = position;
             ScreenObject = new ScreenObject(img);
         }
+
         public Tile[] Tiles { get; set; }
     
 
