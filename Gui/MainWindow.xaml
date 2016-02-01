@@ -194,7 +194,7 @@
             
             <StackPanel Name="Footer" Width="960" Height="239" Background="Black">
                 <TextBox Name="CombatLog" Width="450" Height="100" Margin="0,13,0,13" Text="{Binding GameLog}" TextChanged="CombatLog_OnTextChanged"/>
-                <Button Click="DoBattleButton_Click" Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" FontSize="33.333" FontFamily="/Gui;component/#Adobe Garamond Pro Bold" Command="{Binding DoBattleButtonCommand}" />
+                <Button Click="DoBattleButton_Click" Name ="DoBattleButton" Width="300" Height="50" Background="White" Content="DO BATTLE!" FontSize="33.333" FontFamily="/Gui;component/#Adobe Garamond Pro Bold" Command="{Binding DoBattleButtonCommand}" IsEnabled="{Binding DoBattleButtonEnabled}"/>
             </StackPanel>
 
 

@@ -16,7 +16,7 @@ namespace ViewModel
         private IEntity _secondCombatant;
 
         public DoBattleCommand DoBattleButtonCommand { get; set; }
-
+        public bool DoBattleButtonEnabled { get; set; } = true;
         public string FirstCombatantHp
         {
             get { return FirstCombatant.CurrentHp.ToString(); }
@@ -110,6 +110,8 @@ namespace ViewModel
 
         public void UpdateGameLog(string message)
         {
+            if (FirstCombatant.CurrentHp <= 0 || SecondCombatant.CurrentHp <= 0) DoBattleButtonEnabled = false;
+            RaisePropertyChanged(nameof(DoBattleButtonEnabled));
             GameLog += message + Environment.NewLine;
         }
     }

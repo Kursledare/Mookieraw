@@ -11,6 +11,7 @@ namespace Gui
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
             //var ini_file = @"c:\code\settings.ini";

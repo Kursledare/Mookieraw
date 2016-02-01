@@ -73,7 +73,7 @@ namespace EntityData.Characters
         #region IGameObject properties
 
         public bool IsActive { get; private set; }
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get; set; } = new Vector2();
         public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
 
@@ -128,12 +128,14 @@ namespace EntityData.Characters
         public void AlterHealth(int amount)
         {
             CurrentHp += amount;
+            Game.Log(Name + " took " + amount + " HP");
             if (CurrentHp <= 0)
             {
                 Game.Log($"{Name} died!!!");
+               
                 IsActive = false;
             }
-            Game.Log(Name + " took " + amount + " HP");
+            
         }
 
         #endregion

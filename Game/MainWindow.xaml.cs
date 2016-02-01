@@ -24,7 +24,8 @@ namespace Game
             InitializeComponent();
             GM = new GameManager();
             var camera = new Camera(MainCanvas, GM);
-            var room1 = new Room(new Vector2(0, 0), "Dungion.png");
+            var room1 = FileHandler.Load("Dungion1.mkr", "Dungion1.png");
+            room1.Position=new Vector2(0,6);
             bs = new BasicFighter("Urban den förskräcklige");
             bs.Position += new Vector2(3, 3);
             bs.ScreenObject = new ScreenObject("basicFighter.png");
@@ -81,24 +82,6 @@ namespace Game
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
         {
         }
-
-        public class Room : IGameObject
-        {
-            public Room(Vector2 position, string img)
-            {
-                Position = position;
-                ScreenObject = new ScreenObject(img);
-            }
-
-            public int Initiative { get; }
-            public bool IsActive { get; }
-            public Vector2 Position { get; set; }
-            public ScreenObject ScreenObject { get; set; }
-            public IGameObject Target { get; set; }
-
-            public void Action()
-            {
-            }
-        }
+        
     }
 }
