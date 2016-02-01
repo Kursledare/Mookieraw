@@ -2,6 +2,7 @@
 using GameEngine.interfaces;
 using System;
 using System.Linq;
+using System.Windows;
 
 namespace GameEngine
 {
@@ -40,6 +41,11 @@ namespace GameEngine
         {
             if ((!(pos.X > (Position.X))) || !(pos.X < (Position.X + DisplayCanvas.Width))) return false;
             return (pos.Y > (Position.Y)) && pos.Y < (Position.Y + DisplayCanvas.Height);
+        }
+
+        public Vector2 PointToWorldPosition(Point point)
+        {
+            return new Vector2((float)(point.X + Position.X)/ScreenObject.PixelsPerUnit, (float)(DisplayCanvas.Height / ScreenObject.PixelsPerUnit) - ((float)(point.Y/ScreenObject.PixelsPerUnit) + Position.Y));
         }
     }
 }

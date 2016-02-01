@@ -18,12 +18,12 @@ namespace Game
         private readonly BasicFighter bs;
         private readonly GameManager GM;
         private readonly BasicFighter bs2;
-
+        private Camera camera;
         public MainWindow()
         {
             InitializeComponent();
             GM = new GameManager();
-            var camera = new Camera(MainCanvas, GM);
+            camera = new Camera(MainCanvas, GM);
             var room1 = FileHandler.Load("Dungion1.mkr", "Dungion1.png");
             room1.Position=new Vector2(0,6);
             bs = new BasicFighter("Urban den förskräcklige");
@@ -81,6 +81,9 @@ namespace Game
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
         {
+            var pos = Mouse.GetPosition(MainCanvas);
+            bs.Position = camera.PointToWorldPosition(pos);
+            camera.RefreshScreen();
         }
         
     }
