@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using CommandHandler.interfaces;
 using GameEngine.interfaces;
 
@@ -25,9 +26,18 @@ namespace GameEngine
         /// AvalibleTargets is a List of GameObjects from "GameObjects" that implement ICommandable and is NOT PlayerControlled
         /// TODO Could be based of the distance from the CurrentCharacter
         /// </summary>
-        public List<IGameObject> AvailibleTargets => (from gameObject in GameObjects.OfType<ICommandable>()
-                                                      where gameObject.PlayerControlled == false
-                                                      select gameObject as IGameObject).ToList();
+        public List<IGameObject> AvailibleTargets
+        {
+            get
+            {
+                return
+                    GameObjects.Where(go => Vector2.Distance(go.Position, CurrentCharacter.Position) < 5)
+                        .Where(go => go is ICommandable)
+                        .Where(go => (go as ICommandable).PlayerControlled == false)
+                        .ToList();
+            }
+        }
+
         /// <summary>
         /// Party is a list of the playerControlled characters
         /// </summary>

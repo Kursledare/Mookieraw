@@ -32,6 +32,7 @@ namespace GameEngine
             foreach (var gameObject in GameManager.GameObjects.Where(gameObject => gameObject.ScreenObject != null))
             {
                 gameObject.ScreenObject.Reposition(gameObject.Position.X - Position.X, (float)(DisplayCanvas.Height / ScreenObject.PixelsPerUnit) - gameObject.Position.Y + Position.Y);
+                //gameObject.ScreenObject.Reposition(gameObject.Position.X - Position.X);
             }
         }
 

@@ -12,6 +12,7 @@ namespace GameEngine
         private string _imageSource;
         private Action<object, MouseButtonEventArgs> uIElement_OnMouseDown;
 
+        public Vector2 PivotPoint { get; set; } = new Vector2(0.5f,0.5f);
 
         public Image Image
         {
@@ -61,8 +62,10 @@ namespace GameEngine
         }
         public void Reposition(float x, float y)
         {
-            Canvas.SetTop(Image, y * PixelsPerUnit);
-            Canvas.SetLeft(Image, x * PixelsPerUnit);
+            Canvas.SetTop(Image, (y * PixelsPerUnit) - Image.Height * PivotPoint.Y);
+            Canvas.SetLeft(Image, (x * PixelsPerUnit) - Image.Height * PivotPoint.X);
+            //Canvas.SetTop(Image, (y*PixelsPerUnit));
+            //Canvas.SetLeft(Image, (x*PixelsPerUnit));
             Panel.SetZIndex(Image, ZIndex);
         }
         public Vector2 ToCanvasPosition()
