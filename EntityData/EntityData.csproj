@@ -43,7 +43,6 @@
     <Compile Include="Attributes.cs" />
     <Compile Include="Characters\BasicFighter.cs" />
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="Classes\Class.cs" />
     <Compile Include="Classes\TempFighter.cs" />
     <Compile Include="Equipment.cs" />
     <Compile Include="Feats.cs" />
