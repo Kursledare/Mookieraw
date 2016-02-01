@@ -26,6 +26,12 @@ namespace GameEngine
         {
             DisplayCanvas = displayCanvas;
             GameManager = gameManager;
+            GameManager.UnregisterEvent += RemoveUnregisteredGameObjectsFromCanvas;
+        }
+
+        private void RemoveUnregisteredGameObjectsFromCanvas(IGameObject gameObject)
+        {
+            if(DisplayCanvas.Children.Contains(gameObject.ScreenObject.Image))DisplayCanvas.Children.Remove(gameObject.ScreenObject.Image);
         }
         public void RefreshScreen()
         {

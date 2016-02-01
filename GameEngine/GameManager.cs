@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using CommandHandler.interfaces;
@@ -14,6 +15,7 @@ namespace GameEngine
     {
         public static GameManager ActiveGameManager;
         private int _currentCharacterIndex;
+        public Action<IGameObject> UnregisterEvent;
         /// <summary>
         /// This is the list of all gameobjects in the "Scene", visible or not.
         /// Use the method Register To add new objects.
@@ -72,6 +74,7 @@ namespace GameEngine
         /// <param name="gameObject"></param>
         public void Unregister(IGameObject gameObject)
         {
+            UnregisterEvent?.Invoke(gameObject);
             if (GameObjects.Contains(gameObject)) _gameObjectsToRemove.Add(gameObject);
         }
         /// <summary>
@@ -87,6 +90,7 @@ namespace GameEngine
             foreach (var gameObject in GameObjects.OrderByDescending(a => a.Initiative))
             {
                 if (gameObject.IsActive) gameObject.Action();
+                else Unregister(gameObject);
             }
         }
         /// <summary>
