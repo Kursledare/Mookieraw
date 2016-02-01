@@ -67,7 +67,7 @@ namespace EntityData.Characters
         #region IGameObject properties
 
         public bool IsActive { get; private set; }
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get; set; } = new Vector2();
         public ScreenObject ScreenObject { get; set; }
         public IGameObject Target { get; set; }
 

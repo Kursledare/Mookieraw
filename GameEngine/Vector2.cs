@@ -2,14 +2,13 @@
 
 namespace GameEngine
 {
-    public struct Vector2
+    public class Vector2
     {
-        public Vector2(float x, float y)
+        public Vector2(float x = 0, float y = 0)
         {
             X = x;
             Y = y;
         }
-
         public float X { get; set; }
         public float Y { get; set; }
 

@@ -1,5 +1,7 @@
 ﻿using System.Windows.Controls;
 using GameEngine.interfaces;
+using System;
+using System.Linq;
 
 namespace GameEngine
 {
@@ -15,7 +17,7 @@ namespace GameEngine
 
         public void Action()
         {
-            //RefreshScreen();
+            RefreshScreen();
         }
 
         public Camera(Canvas displayCanvas, GameManager gameManager)
@@ -25,14 +27,14 @@ namespace GameEngine
         }
         public void RefreshScreen()
         {
-            foreach (var gameObject in GameManager.GameObjects)
+            if(DisplayCanvas == null || double.IsNaN(DisplayCanvas.Height))
+                throw new Exception("The Canvas must be referenced/Canvas has no Height");
+            foreach (var gameObject in GameManager.GameObjects.Where(gameObject => gameObject.ScreenObject != null))
             {
-                if (gameObject.ScreenObject != null)
-                {
-                    gameObject.ScreenObject.Reposition(gameObject.Position.X - Position.X, (float)(DisplayCanvas.Height / ScreenObject.PixelsPerUnit) - gameObject.Position.Y + Position.Y);
-                }
+                gameObject.ScreenObject.Reposition(gameObject.Position.X - Position.X, (float)(DisplayCanvas.Height / ScreenObject.PixelsPerUnit) - gameObject.Position.Y + Position.Y);
             }
         }
+
         private bool IsVectorInScreen(Vector2 pos)
         {
             if ((!(pos.X > (Position.X))) || !(pos.X < (Position.X + DisplayCanvas.Width))) return false;
