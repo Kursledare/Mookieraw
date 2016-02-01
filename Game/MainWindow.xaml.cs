@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -25,7 +26,7 @@ namespace Game
             GM = new GameManager();
             camera = new Camera(MainCanvas, GM);
             var room1 = FileHandler.Load("Dungion1.mkr", "Dungion1.png");
-            room1.Position=new Vector2(0,6);
+            room1.Position=new Vector2(2.8f,3.2f);
             bs = new BasicFighter("Urban den förskräcklige");
             bs.Position += new Vector2(3, 3);
             bs.ScreenObject = new ScreenObject("basicFighter.png");
@@ -72,11 +73,16 @@ namespace Game
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var img = sender as Image;
-            var go = GM.GameObjects.First(obj => obj.ScreenObject.Image == img);
+            var mpos = e.GetPosition(MainCanvas);
+            var room = GM.GameObjects.First(go => go is Room) as Room;
+            if (room != null)
+                MessageBox.Show(Enum.GetName(typeof (TileTypes),
+                    room.GetTile(new Vector2((float) mpos.X, (float) mpos.Y))));
+            //var img = sender as Image;
+            //var go = GM.GameObjects.First(obj => obj.ScreenObject.Image == img);
 
-            bs.Target = go;
-            bs.AddCommand(Commands.MeleeAttack);
+            //bs.Target = go;
+            //bs.AddCommand(Commands.MeleeAttack);
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
