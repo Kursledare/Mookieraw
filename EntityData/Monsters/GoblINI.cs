@@ -1,10 +1,5 @@
-﻿using Dices;
-using GameEquipment;
-using Items.Shields;
-using Items.Weapons;
-//using IniParser;
+﻿//using IniParser;
 //using IniParser.Model;
-using System.IO;
 
 namespace EntityData.Monsters
 {

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using EntityData.Interfaces;
 
-namespace EntityData
+namespace EntityData.Races
 {
-    public class Race
+    public class Race : IRace
     {
         public Attributes RaceModifier { get; set; }
         public Size Size { get; set; }

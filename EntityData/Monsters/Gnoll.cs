@@ -1,5 +1,6 @@
 ﻿using Dices;
 using EntityData.Monsters;
+using EntityData.Races;
 using GameEquipment;
 using Items;
 using Items.Shields;

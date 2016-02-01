@@ -1,7 +1,5 @@
-﻿using GameEquipment;
-using Items.Interfaces;
+﻿using Items.Interfaces;
 using System.Collections.Generic;
-using Items;
 
 namespace EntityData
 {
