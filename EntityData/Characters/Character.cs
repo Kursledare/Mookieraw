@@ -53,7 +53,13 @@ namespace EntityData.Characters
         }
 
         public Attributes Attributes { get; set; }
-        public int AttackBonus { get; set; }
+
+        public int AttackBonus
+        {
+            get { return Attributes.StrBonus + Equipment.GetEquipmentAttackBonus(); } 
+            set {}
+        }
+
         public int DamageBonus { get; set; }
 
         #endregion

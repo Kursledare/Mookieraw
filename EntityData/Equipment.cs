@@ -17,6 +17,12 @@ namespace EntityData
             return Armor.Select(x => x.ArmorValue).Sum();
         }
 
+        public int GetEquipmentAttackBonus()
+        {
+            return Weapons.Select(x => x.Enchanment).Sum();
+
+        }
+
         public Equipment()
         {
             Weapons=new List<IWeapon>();
