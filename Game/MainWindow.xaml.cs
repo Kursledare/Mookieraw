@@ -73,22 +73,14 @@ namespace Game
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            var mpos = e.GetPosition(MainCanvas);
-            var room = GM.GameObjects.First(go => go is Room) as Room;
-            if (room != null)
-                MessageBox.Show(Enum.GetName(typeof (TileTypes),
-                    room.GetTile(new Vector2((float) mpos.X, (float) mpos.Y))));
-            //var img = sender as Image;
-            //var go = GM.GameObjects.First(obj => obj.ScreenObject.Image == img);
-
-            //bs.Target = go;
-            //bs.AddCommand(Commands.MeleeAttack);
+            
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
         {
+            var room = GM.GameObjects.First(a => a is Room) as Room;
             var pos = Mouse.GetPosition(MainCanvas);
-            bs.Position = camera.PointToWorldPosition(pos);
+            if(room.GetTile(new Vector2((float)pos.X,(float)pos.Y))==TileTypes.Floor)bs.Position = camera.PointToWorldPosition(pos);
             camera.RefreshScreen();
         }
         
