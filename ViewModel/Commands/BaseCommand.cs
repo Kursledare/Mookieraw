@@ -7,6 +7,10 @@ namespace ViewModel.Commands
     {
         public MainWindowVm Main { get; set; }
 
+        public void NotifyCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this,new EventArgs());
+        }
         public virtual bool CanExecute(object parameter)
         {
             return true;
@@ -17,7 +21,7 @@ namespace ViewModel.Commands
 
         public event EventHandler CanExecuteChanged;
 
-        public BaseCommand(MainWindowVm main)
+        protected BaseCommand(MainWindowVm main)
         {
             Main = main;
         }
