@@ -6,7 +6,7 @@ namespace CommandHandler.interfaces
     {
         Commands AvailableCommands { get; }
         int NumberOfActionPointsPerTurn { get; }
-        bool PlayerControlled { get; }
+        bool PlayerControlled { get; set; }
         bool AddCommand(Commands command);
         Commands GetNextCommand();
     }

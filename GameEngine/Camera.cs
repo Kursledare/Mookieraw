@@ -14,6 +14,7 @@ namespace GameEngine
         public bool IsActive { get; } = true;
         public Vector2 Position { get; set; } = new Vector2(0, 0);
         public ScreenObject ScreenObject { get; set; } = null;
+        public Vector2 MovePosition { get; set; }
         public IGameObject Target { get; set; } = null;
 
         public void Action()

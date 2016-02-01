@@ -1,5 +1,6 @@
 ﻿using System;
 using CommandHandler.enums;
+using CommandHandler.interfaces;
 using EntityData.Interfaces;
 using EntityData.Races;
 using GameEngine;
@@ -27,7 +28,7 @@ namespace EntityData.Monsters
         public Commands CurrentCommands { get; set; }
         public Commands AvailableCommands { get; }
         public int NumberOfActionPointsPerTurn { get; }
-        public bool PlayerControlled { get; }
+        public bool PlayerControlled { get; set; }
         public bool AddCommand(Commands command)
         {
             throw new NotImplementedException();
@@ -58,5 +59,20 @@ namespace EntityData.Monsters
         public int AttackBonus { get; set; }
         public int DamageBonus { get; set; }
         public Equipment Equipment { get; set; }
+
+        Vector2 IGameObject.MovePosition
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+       
     }
 }

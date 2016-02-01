@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using CommandHandler.enums;
+using CommandHandler.interfaces;
 using EntityData.Characters;
 using EntityData.Interfaces;
 using GameEngine;
@@ -19,7 +20,9 @@ namespace Game
         private readonly BasicFighter bs;
         private readonly GameManager GM;
         private readonly BasicFighter bs2;
+        private IGameObject CurrentTarget;
         private Camera camera;
+        private bool _mouseHandled;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,13 +37,17 @@ namespace Game
             bs2.ScreenObject = new ScreenObject("Goblin.png");
             bs2.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
             bs2.ScreenObject.Image.MouseEnter += Image_MouseEnter;
+            (bs2 as ICommandable).PlayerControlled = false;
+            bs2.Position= new Vector2(2,3);
             bs.ScreenObject.Image.MouseEnter += Image_MouseEnter;
             bs.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
             GM.Register(room1);
             room1.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
             GM.Register(bs2);
             GM.Register(bs);
+            GM.Register(camera);
             camera.RefreshScreen();
+            GM.CurrentCharacter = bs;
 
             //bs.Target = goblin;
             //bs.AddCommand(Commands.Attack);
@@ -73,15 +80,55 @@ namespace Game
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+           
+            var target = GM.AvailibleTargets.FirstOrDefault(a=>a.ScreenObject.Image==sender as Image);
+            if (target != null)
+            {
+                _mouseHandled = true;
+                var cm = new ContextMenu();
+                var item = new MenuItem() { Header = "MoveAndAttack" };
+                var item2 = new MenuItem() {Header = "Move"};
+                item.Click += Item_Click;
+                item2.Click += Item_Click;
+                cm.Items.Add(item);
+                cm.Items.Add(item2);
+                MainCanvas.ContextMenu = cm;
+                CurrentTarget = target;
+            }
+
+        }
+
+        private void Item_Click(object sender, RoutedEventArgs e)
+        {
+            var item = sender as MenuItem;
+            if (item == null) return;
+            if (item.Header.ToString() == "MoveAndAttack")
+            {
+                GM.CurrentCharacter.Target = CurrentTarget;
+                GM.CurrentCharacter.MovePosition = CurrentTarget.Position;
+                (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.Move);
+                (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.MeleeAttack);
+            }
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
         {
-            var room = GM.GameObjects.First(a => a is Room) as Room;
+            if (_mouseHandled) return;
             var pos = Mouse.GetPosition(MainCanvas);
-            if(room.GetTile(new Vector2((float)pos.X,(float)pos.Y))==TileTypes.Floor)bs.Position = camera.PointToWorldPosition(pos);
-            camera.RefreshScreen();
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                var room = GM.GameObjects.First(a => a is Room) as Room;
+                
+                if (room.GetTile(new Vector2((float) pos.X, (float) pos.Y)) == TileTypes.Floor)
+                    bs.Position = camera.PointToWorldPosition(pos);
+                camera.RefreshScreen();
+            }
+            if (e.ChangedButton == MouseButton.Right)
+            {
+                GM.CurrentCharacter.MovePosition = camera.PointToWorldPosition(pos);
+                var ic = GM.CurrentCharacter as ICommandable;
+                ic?.AddCommand(Commands.Move);
+            }
         }
         
     }

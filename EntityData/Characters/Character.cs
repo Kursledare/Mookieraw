@@ -56,16 +56,17 @@ namespace EntityData.Characters
 
         public int AttackBonus
         {
-            get { return Attributes.StrModifier + Equipment.GetEquipmentEnchantmentBonus() + Class.ClassAttackBonus; } 
-            set {}
+            get { return Attributes.StrModifier + Equipment.GetEquipmentEnchantmentBonus() + Class.ClassAttackBonus; }
+            set { }
         }
 
-        public int DamageBonus {
+        public int DamageBonus
+        {
             get
             {
                 return Attributes.StrModifier + Equipment.GetEquipmentEnchantmentBonus();
             }
-            set {}
+            set { }
         }
 
         #endregion
@@ -75,6 +76,7 @@ namespace EntityData.Characters
         public bool IsActive { get; private set; }
         public Vector2 Position { get; set; } = new Vector2();
         public ScreenObject ScreenObject { get; set; }
+        public Vector2 MovePosition { get; set; }
         public IGameObject Target { get; set; }
 
         #endregion
@@ -106,7 +108,7 @@ namespace EntityData.Characters
             }
         }
 
-        public bool PlayerControlled { get; }
+        public bool PlayerControlled { get; set; }
         public int NumberOfActionPointsPerTurn { get; } = 5;
 
         #endregion
@@ -132,10 +134,10 @@ namespace EntityData.Characters
             if (CurrentHp <= 0)
             {
                 Game.Log($"{Name} died!!!");
-               
+
                 IsActive = false;
             }
-            
+
         }
 
         #endregion
@@ -158,11 +160,16 @@ namespace EntityData.Characters
                     case Commands.MeleeAttack:
                         actionsPointsUsed += 3;
                         var targetEntity = Target as IEntity;
-                        if (targetEntity != null)
+                        if (targetEntity != null&&actionsPointsUsed<=NumberOfActionPointsPerTurn)
                         {
                             Game.Log(Name + " is attacking " + targetEntity.Name);
                             Attack(targetEntity);
                         }
+                        break;
+                    case Commands.Move:
+                        actionsPointsUsed += 2;
+                        if (MovePosition == null||actionsPointsUsed>NumberOfActionPointsPerTurn) continue;
+                        Position = MovePosition;
                         break;
                 }
             }
@@ -191,7 +198,7 @@ namespace EntityData.Characters
             var weaponDamage = Equipment.Weapons.First().DamageRoll();
 
             if (Equipment.Shield == null)
-               return (int)(weaponDamage + DamageBonus * 1.5);
+                return (int)(weaponDamage + DamageBonus * 1.5);
 
             return weaponDamage + DamageBonus;
         }

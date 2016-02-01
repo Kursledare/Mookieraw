@@ -17,6 +17,7 @@ namespace Tests
             public bool IsActive { get; } = true;
             public Vector2 Position { get; set; } = new Vector2();
             public ScreenObject ScreenObject { get; set; }
+            public Vector2 MovePosition { get; set; }
             public IGameObject Target { get; set; }
 
             public void Action()
