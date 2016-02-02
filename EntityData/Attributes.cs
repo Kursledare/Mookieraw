@@ -25,6 +25,15 @@
         public int Charisma { get; set; }
         #endregion
 
+        #region Race/Level Up Adjustments
+        public int[] RaceAdjustments { get; set; }
+        public int[] LevelUpAdjustments { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Not to be confused with the Modifiers, these are simply temporary bonuses
+        /// that are applied via equipment, spells, abilities, or conditions.
+        /// </summary>
         #region Attribute Bonuses
         public int StrBonus { get; set; }
         public int DexBonus { get; set; }
@@ -34,7 +43,11 @@
         public int ChaBonus { get; set; }
         #endregion
 
-        #region Modifiers
+        /// <summary>
+        /// These are the final product of all the bonuses and things related to your
+        /// stats.
+        /// </summary>
+        #region Modifiers: Aggregate Totals
         public int StrModifier => GetModifier(AttributeTypes.Str);
         public int DexModifier => GetModifier(AttributeTypes.Dex);
         public int ConModifier => GetModifier(AttributeTypes.Con);
