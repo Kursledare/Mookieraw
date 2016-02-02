@@ -45,7 +45,7 @@ namespace GameEngine
             get
             {
                 return
-                    GameObjects.Where(go => Vector2.Distance(go.Position, CurrentCharacter.Position) < 5)
+                    GameObjects.Where(go => CurrentCharacter!=null &&Vector2.Distance(go.Position, CurrentCharacter.Position) < 5)
                         .Where(go => go is ICommandable)
                         .Where(go => (go as ICommandable).PlayerControlled == false)
                         .ToList();
