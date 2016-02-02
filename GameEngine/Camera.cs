@@ -57,7 +57,7 @@ namespace GameEngine
 
         public Point WorldPositionToPoint(Vector2 vector)
         {
-            return new Point((vector.X-Position.X)*ScreenObject.PixelsPerUnit,(DisplayCanvas.Height/ScreenObject.PixelsPerUnit)+(vector.Y*ScreenObject.PixelsPerUnit)-Position.Y);
+            return new Point((vector.X-Position.X)*ScreenObject.PixelsPerUnit,DisplayCanvas.Height-(vector.Y*ScreenObject.PixelsPerUnit)-Position.Y+ (DisplayCanvas.Height / ScreenObject.PixelsPerUnit));
         }
     }
 }
