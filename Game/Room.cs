@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using GameEngine;
 using GameEngine.interfaces;
 
@@ -41,6 +42,11 @@ namespace Game
 
             if (index >= Tiles.Length || index < 0) return TileTypes.None;
             return Tiles[index].TileType;
+        }
+
+        public TileTypes GetTile(Point point)
+        {
+            return GetTile(new Vector2((float)point.X,(float)point.Y));
         }
 
         public Tile[] Tiles { get; set; }
