@@ -16,18 +16,18 @@ namespace Game
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        private readonly GameManager GM;
-        private readonly Camera camera;
-        private IGameObject CurrentTarget;
-        private Vector2 movePosition;
+        private readonly Camera _camera;
+        private readonly GameManager _gm;
+        private IGameObject _currentTarget;
+        private Vector2 _movePosition;
 
         public MainWindow()
         {
             InitializeComponent();
-            GM = new GameManager();
-            camera = new Camera(MainCanvas, GM);
+            _gm = new GameManager();
+            _camera = new Camera(MainCanvas, _gm);
             InitLevel();
             InitParty();
             InitGoblins();
@@ -40,11 +40,13 @@ namespace Game
             var num = 5;
             for (var i = 0; i < num; i++)
             {
-                var gob = new Goblin();
-                gob.Position=new Vector2((float)rnd.NextDouble()*5f+.5f,(float)rnd.NextDouble()*5f+.1f);
-                gob.ScreenObject=new ScreenObject("Goblin.png",0,UIElement_OnMouseDown);
+                var gob = new Goblin
+                {
+                    Position = new Vector2((float) rnd.NextDouble()*5f + .5f, (float) rnd.NextDouble()*5f + .1f),
+                    ScreenObject = new ScreenObject("Goblin.png", 0, UIElement_OnMouseDown)
+                };
                 gob.ScreenObject.Image.MouseEnter += Image_MouseEnter;
-                GM.Register(gob);
+                _gm.Register(gob);
             }
         }
 
@@ -54,13 +56,12 @@ namespace Game
             var i = 2f;
             foreach (var name in names)
             {
-                var bs = new BasicFighter(name);
-                bs.ScreenObject = new ScreenObject("basicFighter.png");
+                var bs = new BasicFighter(name) {ScreenObject = new ScreenObject("basicFighter.png")};
                 bs.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
                 bs.ScreenObject.Image.MouseEnter += Image_MouseEnter;
                 bs.Position = new Vector2(i += .5f, 3f);
                 ((ICommandable) bs).PlayerControlled = true;
-                GM.Register(bs);
+                _gm.Register(bs);
             }
         }
 
@@ -69,20 +70,23 @@ namespace Game
             var room1 = FileHandler.Load("Dungion1.mkr", "Dungion1.png");
             room1.Position = new Vector2(2.8f, 3.2f);
             room1.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
-            GM.Register(room1);
+            _gm.Register(room1);
         }
 
         private void InitCamera()
         {
-            GM.Register(camera);
-            camera.RefreshScreen();
+            _gm.Register(_camera);
+            _camera.RefreshScreen();
         }
 
         private void Image_MouseEnter(object sender, MouseEventArgs e)
         {
             var img = sender as Image;
+            if (img == null) return;
             var tt = new ToolTip();
-            var go = GM.GameObjects.FirstOrDefault(a => a.ScreenObject != null && a.ScreenObject.Image == img) as ICharacter;
+            var go =
+                _gm.GameObjects.FirstOrDefault(a => a.ScreenObject != null && ReferenceEquals(a.ScreenObject.Image, img))
+                    as ICharacter;
             tt.Content = new TextBlock {Text = go?.Name + "\n" + "Hp: " + go?.CurrentHp};
             img.ToolTip = tt;
         }
@@ -91,30 +95,35 @@ namespace Game
         {
             if (e.Key == Key.Enter)
             {
-                GM.RunTurn();
+                _gm.RunTurn();
             }
         }
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             var pos = e.GetPosition(MainCanvas);
-            movePosition = camera.PointToWorldPosition(pos);
+            _movePosition = _camera.PointToWorldPosition(pos);
 
-
-            var cm = new ContextMenu();
-            var moveItem = new MenuItem {Header = "Move"};
-            moveItem.Click += Item_Click;
-
-            var target = GM.AvailibleTargets.FirstOrDefault(a => a.ScreenObject.Image == sender as Image);
-            if (target != null)
+            switch (e.ChangedButton)
             {
-                var movAttackItem = new MenuItem {Header = "MoveAndAttack"};
-                movAttackItem.Click += Item_Click;
-                cm.Items.Add(movAttackItem);
-                CurrentTarget = target;
+                case MouseButton.Right:
+                    var cm = new ContextMenu();
+                    var moveItem = new MenuItem {Header = "Move"};
+                    moveItem.Click += Item_Click;
+
+                    var target =
+                        _gm.AvailibleTargets.FirstOrDefault(a => ReferenceEquals(a.ScreenObject.Image, sender as Image));
+                    if (target != null)
+                    {
+                        var movAttackItem = new MenuItem {Header = "MoveAndAttack"};
+                        movAttackItem.Click += Item_Click;
+                        cm.Items.Add(movAttackItem);
+                        _currentTarget = target;
+                    }
+                    cm.Items.Add(moveItem);
+                    MainCanvas.ContextMenu = cm;
+                    break;
             }
-            cm.Items.Add(moveItem);
-            MainCanvas.ContextMenu = cm;
         }
 
         private void Item_Click(object sender, RoutedEventArgs e)
@@ -126,35 +135,33 @@ namespace Game
             switch (item.Header.ToString())
             {
                 case "MoveAndAttack":
-                    GM.CurrentCharacter.Target = CurrentTarget;
-                    GM.CurrentCharacter.MovePosition = movePosition;
-                    (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.Move);
-                    (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.MeleeAttack);
+                    _gm.CurrentCharacter.Target = _currentTarget;
+                    _gm.CurrentCharacter.MovePosition = _movePosition;
+                    (_gm.CurrentCharacter as ICommandable)?.AddCommand(Commands.Move);
+                    (_gm.CurrentCharacter as ICommandable)?.AddCommand(Commands.MeleeAttack);
                     break;
                 case "Move":
-                    GM.CurrentCharacter.MovePosition = movePosition;
-                    (GM.CurrentCharacter as ICommandable)?.AddCommand(Commands.Move);
+                    _gm.CurrentCharacter.MovePosition = _movePosition;
+                    (_gm.CurrentCharacter as ICommandable)?.AddCommand(Commands.Move);
                     break;
             }
         }
 
         private void ValidateMovePosition()
         {
-            
-            var pos = GM.CurrentCharacter.Position;
-            var maxDistance = 2;//TODO fix tilesize/units (GM.CurrentCharacter as Character)?.Race.BaseSpeed.Tiles ?? 0;
+            var pos = _gm.CurrentCharacter.Position;
+            var maxDistance = 2;
+                //TODO fix tilesize/units (GM.CurrentCharacter as Character)?.Race.BaseSpeed.Tiles ?? 0;
             //clamp movement..
-            if (pos.Distance(movePosition) > maxDistance) movePosition = pos+pos.Normalize(movePosition)*maxDistance;
+            if (pos.Distance(_movePosition) > maxDistance)
+                _movePosition = pos + pos.Normalize(_movePosition)*maxDistance;
             // TODO Validate that target is floor
-            
-
-            
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
         {
-          // removed all code here, think it was mostly test code.
-          // Is this needed ?
+            // removed all code here, think it was mostly test code.
+            // Is this needed ?
         }
     }
 }

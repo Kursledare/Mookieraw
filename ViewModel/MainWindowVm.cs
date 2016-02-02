@@ -88,7 +88,7 @@ namespace ViewModel
 
             GameEngine = new GameManager();
             var bs = new BasicFighter("Urban den förskräcklige");
-            var bs2 = new BasicFighter("Jurgen den Oförskräklige");
+            var bs2 = new BasicFighter("Jürgen den oförskräcklige");
 
             bs.Target = bs2;
             bs2.Target = bs;
