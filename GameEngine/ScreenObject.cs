@@ -5,6 +5,9 @@ using System.Windows.Media.Imaging;
 
 namespace GameEngine
 {
+    /// <summary>
+    /// Represents a Object that is to be displayed on the Screen(Canvas)
+    /// </summary>
     public class ScreenObject
     {
         public const int PixelsPerUnit = 100;

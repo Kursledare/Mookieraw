@@ -15,6 +15,9 @@ namespace GameEngine
     {
         public static GameManager ActiveGameManager;
         private int _currentCharacterIndex;
+        /// <summary>
+        /// Action that is invoked in Unregister(IGameObject), before IGameObject is removed from GameManager
+        /// </summary>
         public Action<IGameObject> UnregisterEvent;
         /// <summary>
         /// This is the list of all gameobjects in the "Scene", visible or not.
