@@ -42,9 +42,10 @@ namespace Game
 
         private void UpdateLog(string message)
         {
+            GameLog.CaretIndex = GameLog.Text.Length;
             GameLog.Text += message + Environment.NewLine;
             GameLog.ScrollToEnd();
-
+            GameLog.CaretIndex = GameLog.Text.Length;
         }
 
         private void InitGoblins()
@@ -110,7 +111,7 @@ namespace Game
             switch (e.Key) 
             {
                 case Key.Enter:
-                DuGoblinActions();
+                DoGoblinActions();
                 _gm.RunTurn();
                     break;
                     case Key.Tab:
@@ -120,14 +121,22 @@ namespace Game
             
         }
 
-        private void DuGoblinActions()
+        private void DoGoblinActions()
         {
-            var rnd = new Random();
+           // var rnd = new Random();
             foreach (var availableTargets in _gm.AvailibleTargets)
             {
                 var monster = availableTargets as Monster;
                 if (monster == null) continue;
-                monster.Target = _gm.Party.ElementAt(rnd.Next(0, _gm.Party.Count));
+                var minDistance = _gm.Party.Min(a => Vector2.Distance(a.Position, monster.Position));
+                var tmpTarget = _gm.Party.Find(a => Vector2.Distance(a.Position, monster.Position) == minDistance);
+                var monsterRange = 1;
+                if (minDistance > monsterRange)
+                {
+                    monster.AddCommand(Commands.Move);
+                    monster.MovePosition = monster.Position+ Vector2.Normalize(monster.Position,tmpTarget.Position)*2;
+                }
+                monster.Target = tmpTarget;
                 monster.AddCommand(Commands.MeleeAttack);
             }
         }
@@ -157,7 +166,7 @@ namespace Game
                     MainCanvas.ContextMenu = cm;
                     break;
                 case MouseButton.Left:
-                    MessageBox.Show(_camera.PointToWorldPosition(pos).X.ToString() + "\n" + _camera.PointToWorldPosition(pos).Y.ToString());
+                    //MessageBox.Show(_camera.PointToWorldPosition(pos).X.ToString() + "\n" + _camera.PointToWorldPosition(pos).Y.ToString());
                     break;
             }
         }

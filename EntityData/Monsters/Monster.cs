@@ -34,6 +34,9 @@ namespace EntityData.Monsters
                    
                     Attack(Target as IEntity);
                     break;
+                    case Commands.Move:
+                    Position = MovePosition;
+                    break;
             }
         }
 
@@ -110,18 +113,7 @@ namespace EntityData.Monsters
         public int DamageBonus { get; set; }
         public Equipment Equipment { get; set; }
 
-        Vector2 IGameObject.MovePosition
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public Vector2 MovePosition { get; set; }
 
        
     }
