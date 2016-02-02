@@ -56,8 +56,8 @@ namespace Game
             {
                 var gob = new Goblin
                 {
-                    Name = "Gerblin " + i.ToString(),
-                    Position = new Vector2((float)rnd.NextDouble() * 6f + .6f, (float)rnd.NextDouble() * 4f + 1f),
+                    Name = "Gerblin " + i,
+                    Position = new Vector2((float) rnd.NextDouble()*6f + .6f, (float) rnd.NextDouble()*4f + 1f),
                     ScreenObject = new ScreenObject("Goblin.png", 0, UIElement_OnMouseDown)
                 };
                 gob.ScreenObject.Image.MouseEnter += Image_MouseEnter;
@@ -67,15 +67,15 @@ namespace Game
 
         private void InitParty()
         {
-            string[] names = { "Urban", "Jurgen", "Adylf" };
+            string[] names = {"Urban", "Jurgen", "Adylf"};
             var i = 2f;
             foreach (var name in names)
             {
-                var bs = new BasicFighter(name) { ScreenObject = new ScreenObject("basicFighter.png") };
+                var bs = new BasicFighter(name) {ScreenObject = new ScreenObject("basicFighter.png")};
                 bs.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
                 bs.ScreenObject.Image.MouseEnter += Image_MouseEnter;
                 bs.Position = new Vector2(i += .5f, 3f);
-                ((ICommandable)bs).PlayerControlled = true;
+                ((ICommandable) bs).PlayerControlled = true;
                 _gm.Register(bs);
             }
         }
@@ -102,23 +102,24 @@ namespace Game
             var go =
                 _gm.GameObjects.FirstOrDefault(a => a.ScreenObject != null && ReferenceEquals(a.ScreenObject.Image, img))
                     as ICharacter;
-            tt.Content = new TextBlock { Text = go?.Name + "\n" + "Hp: " + go?.CurrentHp };
+            tt.Content = new TextBlock {Text = go?.Name + "\n" + "Hp: " + go?.CurrentHp};
             img.ToolTip = tt;
         }
 
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key) 
+            switch (e.Key)
             {
                 case Key.Enter:
-                DoGoblinActions();
-                _gm.RunTurn();
+                    DoGoblinActions();
+                    _gm.RunTurn();
+                    if (_gm.AvailibleTargets.Count(a => a.IsActive) <= 0)
+                        MessageBox.Show("Wheee, you killed them all !!!!");
                     break;
-                    case Key.Tab:
+                case Key.Tab:
                     _gm.SelectNextCharacter();
                     break;
             }
-            
         }
 
         private void DoGoblinActions()
@@ -128,12 +129,12 @@ namespace Game
                 var monster = availableTargets as Monster;
                 if (monster == null) continue;
                 var minDistance = _gm.Party.Min(a => Vector2.Distance(a.Position, monster.Position));
-                var tmpTarget = _gm.Party.Find(a => Vector2.Distance(a.Position, monster.Position) == minDistance);
+                var tmpTarget = _gm.Party.Find(a => Math.Abs(Vector2.Distance(a.Position, monster.Position) - minDistance) < 0.1f);
                 var monsterRange = 1;
                 if (minDistance > monsterRange)
                 {
                     monster.AddCommand(Commands.Move);
-                    monster.MovePosition = monster.Position+ Vector2.Normalize(monster.Position,tmpTarget.Position)*2;
+                    monster.MovePosition = monster.Position + Vector2.Normalize(monster.Position, tmpTarget.Position)*2;
                 }
                 monster.Target = tmpTarget;
                 monster.AddCommand(Commands.MeleeAttack);
@@ -149,14 +150,14 @@ namespace Game
             {
                 case MouseButton.Right:
                     var cm = new ContextMenu();
-                    var moveItem = new MenuItem { Header = "Move" };
+                    var moveItem = new MenuItem {Header = "Move"};
                     moveItem.Click += Item_Click;
 
                     var target =
                         _gm.AvailibleTargets.FirstOrDefault(a => ReferenceEquals(a.ScreenObject.Image, sender as Image));
                     if (target != null)
                     {
-                        var movAttackItem = new MenuItem { Header = "MoveAndAttack" };
+                        var movAttackItem = new MenuItem {Header = "MoveAndAttack"};
                         movAttackItem.Click += Item_Click;
                         cm.Items.Add(movAttackItem);
                         _currentTarget = target;
@@ -193,13 +194,30 @@ namespace Game
 
         private void ValidateMovePosition()
         {
+            var room = _gm.GameObjects.FirstOrDefault(a => a is Room) as Room;
+            if (room == null) return;
             var pos = _gm.CurrentCharacter.Position;
-            var maxDistance = 2;
-            //TODO fix tilesize/units (GM.CurrentCharacter as Character)?.Race.BaseSpeed.Tiles ?? 0;
-            //clamp movement..
-            if (pos.Distance(_movePosition) > maxDistance)
-                _movePosition = pos + pos.Normalize(_movePosition) * maxDistance;
-            // TODO Validate that target is floor
+            //TODO fix tilesize/pixelsPerUnit. maxDistance = (GM.CurrentCharacter as Character)?.Race.BaseSpeed.Tiles ?? 0;
+            var maxDistance = Math.Min(2f, pos.Distance(_movePosition));
+
+            float i;
+            // Check if there is a wall in the way.
+            for (i = maxDistance; i >= 0; i -= .1f)
+            {
+                var currentTile = room.GetTile(_camera.WorldPositionToPoint(pos + pos.Normalize(_movePosition)*i));
+                if (currentTile == TileTypes.Wall)
+                {
+                    maxDistance = i;
+                }
+            }
+            // check where the furthest reachable floor tile is
+            for (i = maxDistance; i >= 0; i -= .1f)
+            {
+                var currentTile = room.GetTile(_camera.WorldPositionToPoint(pos + pos.Normalize(_movePosition)*i));
+                if (currentTile == TileTypes.Floor || currentTile == TileTypes.Door) break;
+            }
+            // Set _moveposition to clamped and floor|door checked tile position.
+            _movePosition = pos + pos.Normalize(_movePosition)*i;
         }
 
         private void PointerCanvasDown(object sender, MouseButtonEventArgs e)
