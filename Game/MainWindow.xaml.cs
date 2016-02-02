@@ -32,6 +32,19 @@ namespace Game
             InitParty();
             InitGoblins();
             InitCamera();
+            InitLog();
+        }
+
+        private void InitLog()
+        {
+            GameEngine.Game.OnGameLoggedEntry += UpdateLog;
+        }
+
+        private void UpdateLog(string message)
+        {
+            GameLog.Text += message + Environment.NewLine;
+            GameLog.ScrollToEnd();
+
         }
 
         private void InitGoblins()
@@ -42,7 +55,8 @@ namespace Game
             {
                 var gob = new Goblin
                 {
-                    Position = new Vector2((float) rnd.NextDouble()*5f + .5f, (float) rnd.NextDouble()*5f + .1f),
+                    Name = "Gerblin " + i.ToString(),
+                    Position = new Vector2((float)rnd.NextDouble() * 6f + .6f, (float)rnd.NextDouble() * 4f + 1f),
                     ScreenObject = new ScreenObject("Goblin.png", 0, UIElement_OnMouseDown)
                 };
                 gob.ScreenObject.Image.MouseEnter += Image_MouseEnter;
@@ -52,15 +66,15 @@ namespace Game
 
         private void InitParty()
         {
-            string[] names = {"Urban", "Jurgen", "Adylf"};
+            string[] names = { "Urban", "Jurgen", "Adylf" };
             var i = 2f;
             foreach (var name in names)
             {
-                var bs = new BasicFighter(name) {ScreenObject = new ScreenObject("basicFighter.png")};
+                var bs = new BasicFighter(name) { ScreenObject = new ScreenObject("basicFighter.png") };
                 bs.ScreenObject.Image.MouseDown += UIElement_OnMouseDown;
                 bs.ScreenObject.Image.MouseEnter += Image_MouseEnter;
                 bs.Position = new Vector2(i += .5f, 3f);
-                ((ICommandable) bs).PlayerControlled = true;
+                ((ICommandable)bs).PlayerControlled = true;
                 _gm.Register(bs);
             }
         }
@@ -87,7 +101,7 @@ namespace Game
             var go =
                 _gm.GameObjects.FirstOrDefault(a => a.ScreenObject != null && ReferenceEquals(a.ScreenObject.Image, img))
                     as ICharacter;
-            tt.Content = new TextBlock {Text = go?.Name + "\n" + "Hp: " + go?.CurrentHp};
+            tt.Content = new TextBlock { Text = go?.Name + "\n" + "Hp: " + go?.CurrentHp };
             img.ToolTip = tt;
         }
 
@@ -95,7 +109,20 @@ namespace Game
         {
             if (e.Key == Key.Enter)
             {
+                DuGoblinActions();
                 _gm.RunTurn();
+            }
+        }
+
+        private void DuGoblinActions()
+        {
+            var rnd = new Random();
+            foreach (var availableTargets in _gm.AvailibleTargets)
+            {
+                var monster = availableTargets as Monster;
+                if (monster == null) continue;
+                monster.Target = _gm.Party.ElementAt(rnd.Next(0, _gm.Party.Count));
+                monster.AddCommand(Commands.MeleeAttack);
             }
         }
 
@@ -108,20 +135,23 @@ namespace Game
             {
                 case MouseButton.Right:
                     var cm = new ContextMenu();
-                    var moveItem = new MenuItem {Header = "Move"};
+                    var moveItem = new MenuItem { Header = "Move" };
                     moveItem.Click += Item_Click;
 
                     var target =
                         _gm.AvailibleTargets.FirstOrDefault(a => ReferenceEquals(a.ScreenObject.Image, sender as Image));
                     if (target != null)
                     {
-                        var movAttackItem = new MenuItem {Header = "MoveAndAttack"};
+                        var movAttackItem = new MenuItem { Header = "MoveAndAttack" };
                         movAttackItem.Click += Item_Click;
                         cm.Items.Add(movAttackItem);
                         _currentTarget = target;
                     }
                     cm.Items.Add(moveItem);
                     MainCanvas.ContextMenu = cm;
+                    break;
+                case MouseButton.Left:
+                    MessageBox.Show(_camera.PointToWorldPosition(pos).X.ToString() + "\n" + _camera.PointToWorldPosition(pos).Y.ToString());
                     break;
             }
         }
@@ -151,10 +181,10 @@ namespace Game
         {
             var pos = _gm.CurrentCharacter.Position;
             var maxDistance = 2;
-                //TODO fix tilesize/units (GM.CurrentCharacter as Character)?.Race.BaseSpeed.Tiles ?? 0;
+            //TODO fix tilesize/units (GM.CurrentCharacter as Character)?.Race.BaseSpeed.Tiles ?? 0;
             //clamp movement..
             if (pos.Distance(_movePosition) > maxDistance)
-                _movePosition = pos + pos.Normalize(_movePosition)*maxDistance;
+                _movePosition = pos + pos.Normalize(_movePosition) * maxDistance;
             // TODO Validate that target is floor
         }
 

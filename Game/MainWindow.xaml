@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800"
+        Title="MainWindow" Height="700" Width="800"
         KeyDown="MainWindow_OnKeyDown">
     <Grid>
-        <Canvas Name="MainCanvas" MouseDown="PointerCanvasDown" Height="600"></Canvas>
+        <Canvas Name="MainCanvas" MouseDown="PointerCanvasDown" Height="600" VerticalAlignment="Top"></Canvas>
+        <TextBox x:Name="GameLog" Height="80" VerticalAlignment="Bottom"/>
         <!--<Image MouseDown="UIElement_OnMouseDown"></Image>
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="128" Margin="0,641,0,0" VerticalAlignment="Top" Width="582">
             <ListView.View>

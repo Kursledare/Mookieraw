@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using CommandHandler.enums;
 using CommandHandler.interfaces;
 using EntityData.Interfaces;
@@ -10,6 +13,9 @@ namespace EntityData.Monsters
 {
     public abstract class Monster : IMonster
     {
+        private readonly Dices.Dice _d20 = new Dices.Dice(20);
+        private readonly Queue<Commands> _currentCommands=new Queue<Commands>();
+
         protected Monster()
         {
             Equipment = new Equipment();
@@ -22,16 +28,59 @@ namespace EntityData.Monsters
         public IGameObject Target { get; set; }
         public void Action()
         {
-            //throw new NotImplementedException();
+            switch (CurrentCommands)
+            {
+                case Commands.MeleeAttack:
+                   
+                    Attack(Target as IEntity);
+                    break;
+            }
         }
 
-        public Commands CurrentCommands { get; set; }
+        private void Attack(IEntity entity)
+        {
+            Game.Log($"{Name} is attacking {entity.Name}.");
+            if (!entity.IsActive)
+            {
+                Game.Log($"{entity.Name} is dead!");
+                return;
+            }
+            if (_d20.Roll() + AttackBonus >= entity.Ac)
+            {
+                var damage = CalculateDamage();
+                entity.AlterHealth(-damage);
+            }
+            else
+            {
+                Game.Log(Name + " missed!");
+            }
+        }
+        public int CalculateDamage()
+        {
+            var weaponDamage = Equipment.Weapons.First().DamageRoll();
+
+            if (Equipment.Shield == null)
+                return (int)(weaponDamage + DamageBonus * 1.5);
+
+            return weaponDamage + DamageBonus;
+        }
+
+        public Commands CurrentCommands
+        {
+            get
+            {
+                if (_currentCommands.Count > 0) return _currentCommands.Dequeue();
+                return Commands.None;
+            }
+        }
+
         public Commands AvailableCommands { get; }
         public int NumberOfActionPointsPerTurn { get; }
         public bool PlayerControlled { get; set; }
         public bool AddCommand(Commands command)
         {
-            throw new NotImplementedException();
+            _currentCommands.Enqueue(command);
+            return true;
         }
 
         public Commands GetNextCommand()
@@ -52,6 +101,7 @@ namespace EntityData.Monsters
         {
             CurrentHp += amount;
             IsActive = CurrentHp > 0;
+            Game.Log($"{Name} took {amount} Hp damage.");
         }
 
         public int InitiativeBonus { get; set; }
