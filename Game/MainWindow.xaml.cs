@@ -107,11 +107,17 @@ namespace Game
 
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            switch (e.Key) 
             {
+                case Key.Enter:
                 DuGoblinActions();
                 _gm.RunTurn();
+                    break;
+                    case Key.Tab:
+                    _gm.SelectNextCharacter();
+                    break;
             }
+            
         }
 
         private void DuGoblinActions()

@@ -67,7 +67,18 @@ namespace GameEngine
         public void Register(IGameObject gameObject)
         {
             GameObjects.Add(gameObject);
+            SelectedCarachterOpaciySet();
         }
+
+        private void SelectedCarachterOpaciySet()
+        {
+            foreach (var gameObject in Party)
+            {
+                gameObject.ScreenObject.Image.Opacity = 1d;
+                if(gameObject==CurrentCharacter) gameObject.ScreenObject.Image.Opacity = .7d;
+            }
+        }
+
         /// <summary>
         /// When somebody dies, or when a gameobject doesnt need to be called anyMore, Use Unregister, and it will be removes before the next "Turn"
         /// </summary>
@@ -100,6 +111,7 @@ namespace GameEngine
         {
             var max = Party.Count - 1;
             _currentCharacterIndex = _currentCharacterIndex + 1 > max ? 0 : _currentCharacterIndex + 1;
+            SelectedCarachterOpaciySet();
         }
         public GameManager()
         {
