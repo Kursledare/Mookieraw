@@ -13,9 +13,15 @@ namespace Game
     {
         /// <summary>
         /// Format
-        /// Header:Position.X:Y:#Tiles:Tiles[]:imagepath
+        /// Header:Position.X:Y:#Tiles:Tiles[]
         /// </summary>
-        const string Header = "NdNdv1";
+        private const string Header = "NdNdv1";
+        /// <summary>
+        /// Loads a room data and image file
+        /// </summary>
+        /// <param name="dataFile">Room data file</param>
+        /// <param name="imageFile">Room image file</param>
+        /// <returns></returns>
         public static Room Load(string dataFile,string imageFile)
         {
             var dataFileWithPath = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName+@"\Images\"+dataFile;
@@ -31,13 +37,9 @@ namespace Game
                 var readHeader = Encoding.UTF8.GetString(buffer);
                 if (readHeader != Header) return null;
 
-                //writer.Write(hd, 0, hd.Length);
                 var posX = reader.ReadDouble();
-                //writer.Write(room.Position.X);
                 var posY = reader.ReadDouble();
-                // writer.Write(room.Position.Y);
                 var tilesLength = reader.ReadInt32();
-                //writer.Write(room.Tiles.Length);
                 newRoom = new Room(new Vector2((float)posX,(float)posY),imageFile)
                 {
                     Tiles = new Tile[tilesLength]
@@ -52,6 +54,12 @@ namespace Game
             return newRoom;
 
         }
+        /// <summary>
+        /// Saves a room to data file
+        /// </summary>
+        /// <param name="room">Room to save</param>
+        /// <param name="filename">Absolute path to file</param>
+        /// <returns></returns>
         public static bool Save(Room room, string filename)
         {
             using (var stream = File.Open(filename, FileMode.Create))

@@ -8,9 +8,13 @@ using GameEngine.interfaces;
 
 namespace Game
 {
-    public class Room:IGameObject
+    /// <summary>
+    /// Room Class holds information about a room.
+    /// For the moment it basically holds an Image and an array of Tile.
+    /// </summary>
+    public class Room : IGameObject
     {
-        private const float TileSize=43;
+        private const float TileSize = 43;
         public int Initiative { get; }
         public bool IsActive { get; }
         public Vector2 Position { get; set; }
@@ -35,13 +39,13 @@ namespace Game
                     (Math.Floor(position.Y / TileSize) * Math.Ceiling(ScreenObject.Image.Source.Width / TileSize) +
                      Math.Floor(position.X / TileSize));
 
-            if(index>=Tiles.Length || index<0)return TileTypes.None;
+            if (index >= Tiles.Length || index < 0) return TileTypes.None;
             return Tiles[index].TileType;
         }
 
         public Tile[] Tiles { get; set; }
-    
 
-       
+
+
     }
 }

@@ -15,7 +15,9 @@ namespace Game
         Door,
         None
     }
-
+    /// <summary>
+    /// Describes one tile in a room.
+    /// </summary>
     public class Tile
     {
         public TileTypes TileType { get; set; }

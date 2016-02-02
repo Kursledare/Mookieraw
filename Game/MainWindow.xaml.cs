@@ -123,7 +123,6 @@ namespace Game
 
         private void DoGoblinActions()
         {
-           // var rnd = new Random();
             foreach (var availableTargets in _gm.AvailibleTargets)
             {
                 var monster = availableTargets as Monster;
