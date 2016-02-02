@@ -1,10 +1,19 @@
 ﻿using System.Linq;
+using Dices;
 using EntityData.Interfaces;
 
 namespace EntityData.Classes
 {
-    public class Class : IClass
+    public abstract class Class : IClass
     {
+        #region Fields
+        /// <summary>
+        /// The amount of health gained per level is based on the class.
+        /// That data is stored here.
+        /// </summary>
+        public readonly Dice _hitDie; 
+        #endregion
+
         #region Aggregate Totals
         public int ClassLevel { get; set; }
 
@@ -18,17 +27,25 @@ namespace EntityData.Classes
         }
 
         /// <summary>
-        /// This returns the full attack bonus, which means that it contains the bonuses for
-        /// a 'full' attack, in which can be more than one attack.
+        /// This returns the full attack bonus.  It contains the bonuses for
+        /// a 'full attack', which can be multiple attacks.
         /// </summary>
         public int[] ClassAttackBonusFull => GetClassAttackBonus(ClassLevel, ClassAttackGrowth);
 
+        /// <summary>
+        /// The class adds bonuses to your saves.  These bonuses are calculated by the properties
+        /// below.
+        /// </summary>
         public int ClassFortBonus => GetClassSaveBonus(ClassLevel, ClassFortGrowth);
         public int ClassReflexBonus => GetClassSaveBonus(ClassLevel, ClassReflexGrowth);
         public int ClassWillBonus => GetClassSaveBonus(ClassLevel, ClassWillGrowth);
         #endregion
 
         #region Growth Rates
+        /// <summary>
+        /// Classes have set growth rates for both attack bonuses and saves.  These properties
+        /// hold the growth rates for the specific class.
+        /// </summary>
         private BaseAttackBonusGrowthRates ClassAttackGrowth { get; set; }
 
         private SaveGrowthRates ClassFortGrowth { get; set; }
