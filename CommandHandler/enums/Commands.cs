@@ -2,6 +2,9 @@
 
 namespace CommandHandler.enums
 {
+    /// <summary>
+    /// List of Commands
+    /// </summary>
     [Flags]
     public enum Commands
     {
