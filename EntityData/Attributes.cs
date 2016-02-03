@@ -32,12 +32,12 @@ namespace EntityData
         /// that are applied via equipment, spells, abilities, or conditions.
         /// </summary>
         #region Attribute Bonuses
-        public int StrBonus { get; set; }
-        public int DexBonus { get; set; }
-        public int ConBonus { get; set; }
-        public int IntBonus { get; set; }
-        public int WisBonus { get; set; }
-        public int ChaBonus { get; set; }
+        public int TempStrBonus { get; set; }
+        public int TempDexBonus { get; set; }
+        public int TempConBonus { get; set; }
+        public int TempIntBonus { get; set; }
+        public int TempWisBonus { get; set; }
+        public int TempChaBonus { get; set; }
         #endregion
 
         /// <summary>

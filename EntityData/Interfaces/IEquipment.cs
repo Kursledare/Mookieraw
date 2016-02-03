@@ -8,6 +8,7 @@ namespace EntityData.Interfaces
         List<IWeapon> Weapons { get; set; }
         List<IArmor> Armor { get; set; }
         IShield Shield { get; set; }
+
         int GetEquipmentArmorValue();
         int GetEquipmentEnchantmentBonus();
     }
