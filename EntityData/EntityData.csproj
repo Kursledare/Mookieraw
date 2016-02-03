@@ -51,7 +51,7 @@
     <Compile Include="Interfaces\IAttributes.cs" />
     <Compile Include="Interfaces\IDefence.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
-    <Compile Include="Interfaces\IOffense.cs" />
+    <Compile Include="Interfaces\IOffence.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Monsters\Gnoll.cs" />

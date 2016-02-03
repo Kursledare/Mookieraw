@@ -17,7 +17,7 @@ namespace EntityData.Interfaces
         Size Size { get; set; }
         int InitiativeBonus { get; }
         IAttributes Attributes { get; set; }
-        IOffense Offence { get; set; }
+        IOffence Offence { get; set; }
         IDefence Defence { get; set; }
         IEquipment Equipment { get; set; }
         void AlterHealth(int amount);
