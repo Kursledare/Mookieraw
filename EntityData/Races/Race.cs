@@ -23,10 +23,6 @@ namespace EntityData.Races
         }
     }
 
-    public enum Size
-    {
-        Fine, Diminutive, Tiny, Small, Medium, LargeTall, LargeLong, HugeTall, HugeLong, GargantuanTall, GargantuanLong, ColossalTall, ColossalLong
-    }
     public enum Type
     {
         Animal, Dragon, Fey, Humanoid, MagicalBeast, Ooze, Plant, Undead, Vermin

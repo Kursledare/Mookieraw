@@ -1,6 +1,8 @@
-﻿namespace EntityData
+﻿using EntityData.Interfaces;
+
+namespace EntityData
 {
-    public class Attributes
+    public class Attributes : IAttributes
     {
         /// <summary>
         /// This seems way more complicated than it is, more than likely, so I'll break it down.
@@ -23,11 +25,6 @@
         public int Intelligence { get; set; }
         public int Wisdom { get; set; }
         public int Charisma { get; set; }
-        #endregion
-
-        #region Race/Level Up Adjustments
-        public int[] RaceAdjustments { get; set; }
-        public int[] LevelUpAdjustments { get; set; }
         #endregion
 
         /// <summary>
