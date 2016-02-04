@@ -16,9 +16,12 @@ namespace Tests
     class Inventorytest
     {
         //test to testing drop and pickupfunction in inventory.
-        public List<IWeapon> Weapons { get; set; }
-        public List<IArmor> Armor { get; set; }
-        public List<Item> Items { get; set; }
+        public List<IWeapon> Weapons { get; }
+        public List<IArmor> Armor { get; }
+        public List<IAdventureGear> AdventureGear { get; }
+        public List<ArcaneImplement> ArcaneImplement { get; }
+        public List<Ammmunition> Ammmunition { get; }
+
 
 
 
@@ -41,6 +44,16 @@ namespace Tests
             
             Assert.That(!it.Any(x => string.Equals("Longsword", x.Name)));
         }
+
+        [Test]
+        public void WhatIsAItem()
+        {
+            var closedCandle = new Waterskin();
+            var it = new List<IItems>();
+            it.Add(closedCandle);
+            Assert.That(it.Any(x => string.Equals("Waterskin", x.Name)));
+        } 
+
     }
 }
 
